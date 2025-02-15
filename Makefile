@@ -19,7 +19,7 @@ again: clean all
 
 remove:
 	make clean
-	-rm $(TCP_TARGETS) $(UDP_TARGETS) 
+	-rm $(TARGET)
 
 clean:
 	rm -f *.o $(TARGET) 
