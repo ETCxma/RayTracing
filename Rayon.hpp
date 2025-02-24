@@ -3,6 +3,7 @@
 
 
 #include "Coordonnee.hpp"
+#include "Couleur.hpp"
 #include "Vecteur.hpp"
 
 
@@ -13,9 +14,9 @@ class Rayon: public Vecteur{
         Rayon(Coordonnee x1, Coordonnee x2, double intensite=0);
         Rayon(Vecteur &v, double intensite=0);
         Rayon(Rayon &r);
-    
+
     private:
-        double intensite; // Can be replaced by r,g,b or anything else
+        Couleur Couleur;
 
 
 };

@@ -12,14 +12,13 @@ class Ecran{
         Ecran(Ecran &e);
         Ecran(Resolution r);
 
-        void SetPixel(int i, int j, Pixel pixel);
-        void SetCentrePixel(int i, int j, Coordonnee coordonnee);
+        void SetPixel(int x, int y, Pixel &pixel);
+        void SetCentrePixel(int x, int y, Coordonnee &coordonnee);
+        
         // Coordonnee centre(){}; How ?
         // double largeur(); How ?
         // double hauteur(); How ?
-
-
-        
+       
 
     private:
 
