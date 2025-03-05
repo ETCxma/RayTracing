@@ -6,9 +6,10 @@
 class Sphere: public Objet{
 
     public:
-        Sphere();
+        // Créer une sphère à partir d'une autre sphère
         Sphere(Sphere &Sphere);
-        Sphere(double rayon, Coordonnee centre, int nb_triangles); // This automatically construct every triangle of the sphere 
+        // Crée une sphère à partir de son centre, de son rayon et du nombre de triangles souhaité
+        Sphere(double rayon, Coordonnee centre, int nb_latitudes, int nb_longitudes);
 
     private:
         double rayon;

@@ -19,7 +19,7 @@ class Objet{
 
         std::vector<raytracingUsefulInfo> Intersection(Vecteur vecteur);
 
-    private:
+    protected:
         std::vector<Triangle> elements; 
         Materiau materiau;
 };
