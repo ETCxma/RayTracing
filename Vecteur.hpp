@@ -27,7 +27,10 @@ class Vecteur{
         
         // WIP
         // Vecteur &Reflechi(Triangle &t);
-        
+
+        // Getter
+        Coordonnee getX1(); 
+        Coordonnee getX2(); 
         
     protected:
         Coordonnee x1,x2; 
