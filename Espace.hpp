@@ -42,25 +42,3 @@ class Espace{
 
 #endif
 
-/*
-    SETUP:
-    Create space 
-    Create Objects (and fill them with triangles)
-    Create cameras (with parameters)
-    
-    Raytracing:
-
-    TakePicture()
-        - raytracing()
-            - Check intersection with every triangle of object for each ray of the screen
-                - Calculate each ray position (via Camera and Screen)
-                - For each triangle of each object check intersection (and get "usefulInfo" (tbd))
-            - Calculate intensity (or r,g,b,...) via sum (e.g. Ambient + diffusion + specular)
-                ?
-            - convert to pixelValues 
-                EZ if "Color" well-defined
-
-        - writePixelBufferToPath()
-
-
-*/
