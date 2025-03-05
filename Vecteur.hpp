@@ -4,6 +4,7 @@
 #include "Coordonnee.hpp"
 #include "Objet.hpp"
 #include "Triangle.hpp"
+#include <cmath>
 
 class Vecteur{
 
