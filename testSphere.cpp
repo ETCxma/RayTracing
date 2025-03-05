@@ -39,6 +39,7 @@ class Sphere: public Objet{
                     // Calcul des coordonnées sphériques dans nos conventions
                     double x = centre.x + rayon * (sin(phi) * cos(theta));
                     double y = centre.y + rayon * (sin(phi) * sin(theta));
+                    double y = centre.y + rayon * (sin(phi) * sin(theta));
                     double z = centre.z + rayon * cos(phi);
         
                     // On rajoute les coordonnées
