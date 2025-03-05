@@ -1,6 +1,9 @@
 #ifndef COORDONNEE_H
 #define COORDONNEE_H
 
+#include <iostream>
+#include <cmath>
+
 class Coordonnee{
     public:
         Coordonnee();
@@ -8,6 +11,11 @@ class Coordonnee{
         Coordonnee(Coordonnee &c);
 
         double distance(Coordonnee c);
+
+        // Getter
+        double getX() const; 
+        double getY() const; 
+        double getZ() const; 
     
     private:
         double x,y,z;
