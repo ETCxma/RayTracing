@@ -28,6 +28,7 @@ class Camera{
         double getTheta();
         double getPhi();
         Resolution getResolution();
+        Pixel getPixel(int x, int y);
 
     private:
         void calculRayonsCoord(); // Called by constructor
