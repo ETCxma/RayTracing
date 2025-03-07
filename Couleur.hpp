@@ -7,6 +7,9 @@ class Couleur{
         Couleur();
         Couleur(Couleur &Couleur);
         Couleur(double intensité);
+
+		//getteur
+		double getIntensite();
     
 
     private:
