@@ -125,3 +125,7 @@ double Camera::getPhi(){
 Resolution Camera::getResolution(){
     return this->ecran.getResolution();
 }
+
+Pixel Camera::getPixel(int x, int y){
+    return this->ecran.getPixel(x,y);
+}
