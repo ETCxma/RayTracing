@@ -2,26 +2,23 @@
 #define OBJET_H
 
 #include <vector>
-#include "Triangle.hpp"
 #include "Materiau.hpp"
-#include "Vecteur.hpp"
+#include "Rayon.hpp"
 
+// TODO : figure out
+// For example can be multiple rays that spawn from initial ray with different intensity values
 typedef int raytracingUsefulInfo;
 
 class Objet{
 
     public:
         Objet();
-        Objet(Objet &objet);
-        Objet(std::vector<Triangle> elements);
-        Objet(Materiau materiau);
-        Objet(std::vector<Triangle> elements, Materiau materiau);
 
-        // std::vector<raytracingUsefulInfo> Intersection(Vecteur vecteur);
+        virtual raytracingUsefulInfo intersection(Rayon rayon) = 0;
 
     protected:
-        std::vector<Triangle> elements; 
         Materiau materiau;
+        std::vector<Objet> objets;
 };
 
 #endif
