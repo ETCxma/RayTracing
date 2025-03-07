@@ -77,6 +77,10 @@ Vecteur Vecteur::operator*(double scalaire){
 
 // MÉTHODES
 
+void Vecteur::afficheVecteu(){
+	cout << "(" << this->dx << ", " << this->dy << ", " << this->dz << ")" << endl; 
+}
+
 double Vecteur::norme(){
 	return sqrt(pow(this->getDX(), 2) + pow(this->getDY(), 2) + pow(this->getDZ(), 2)); 
 }

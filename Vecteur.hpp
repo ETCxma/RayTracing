@@ -16,6 +16,12 @@ class Vecteur{
 
         /**
          * Entrée: rien
+         * Sortie: rien, affiche les composantes du vecteur
+         */
+        void afficheVecteu(); 
+
+        /**
+         * Entrée: rien
          * Sortie: renvoie la norme du vecteur
          */
         double norme();
