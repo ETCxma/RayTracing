@@ -5,10 +5,11 @@ class Pixel{
     
     public:
         Pixel();
-        Pixel(int i);
-        Pixel(Pixel &p);
+        Pixel(int intensite);
+        Pixel(Pixel &pixel);
 
-
+        int getIntensite();
+        
     private:
         int intensite; // Can be replaced by r,g,b or anything else
 
