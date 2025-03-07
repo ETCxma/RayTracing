@@ -3,7 +3,6 @@
 using namespace std;
 
 
-
 // Constructor :
 Sphere::Sphere(Coordonnee c, double r){
     centre = c;
@@ -30,4 +29,8 @@ void Sphere::setCentre(Coordonnee c){
 // Afficher les informations d'une sphère
 void Sphere::affichInfos(){
     cout << "Informations de la Sphere : " << endl << "rayon = " << rayon << " / " << "centre = (" << centre.getX() << ", " << centre.getY() << ", " << centre.getZ() << ")"<< endl; 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

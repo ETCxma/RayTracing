@@ -1,31 +1,54 @@
+/**
+ * 
+ * IMPLÉMENTATION DES MÉTHODES DE Vecteur.hpp 
+ * 
+ */
 #include "Vecteur.hpp"
 //TODO: Coodonnee &Intersection(Objet &o); (see header)
 
+using namespace std; 
+
+
+// GETTERS
+
+Coordonnee Vecteur::getX1(){
+	return x1; 
+}
+Coordonnee Vecteur::getX2(){
+	return x2; 
+}
+
+
+// CONSTRUCTEURS
+
 Vecteur::Vecteur(){
-	x1 = Coordonnee(0,0,0);
-	x2 = Coordonnee(0,0,0);
-};
+	this->x1 = Coordonnee(0,0,0);
+	this->x2 = Coordonnee(0,0,0);
+}
 
-Vecteur::Vecteur(Coordonnee x1, Coordonnee x2): x1(x1), x2(x2){};
+Vecteur::Vecteur(Coordonnee x1, Coordonnee x2): x1(x1), x2(x2){}
 
-Vecteur::Vecteur(Vecteur &v): x1(v.x1), x2(v.x2){};
+Vecteur::Vecteur(Vecteur &v){
+	this->x1 = move(v.getX1());
+	this->x2 = move(v.getX2());
+}
+
+
+// MÉTHODES
 
 Coordonnee Vecteur::vecteur(){
-	return Coordonnee(x2.getX()-x1.getX(), 
-						x2.getY()-x1.getY(), 
-						x2.getZ()-x1.getZ()
-					);
-};
+	return Coordonnee((x2.getX()-x1.getX()), (x2.getY()-x1.getY()), (x2.getZ()-x1.getZ()));
+}
 
 double Vecteur::norme(){
 	Coordonnee v = vecteur();
 	return sqrt(v.getX()*v.getX() + v.getY()*v.getY() + v.getZ()*v.getZ());
-};
+}
 
 Vecteur Vecteur::unitaire(){
 	Coordonnee v = vecteur(); // donne la direction du vecteur
 	double nrm = norme(); // ce par quoi on va diviser les coords
-	return Vecteur	(Coordonnee(x1.getX(), x1.getY(), x1.getZ()), 
+	return Vecteur(Coordonnee(x1.getX(), x1.getY(), x1.getZ()), 
 					Coordonnee	(x1.getX() + v.getX()/nrm, 
 								x1.getY() + v.getY()/nrm, 
 								x1.getZ() + v.getZ()/nrm)
@@ -39,7 +62,7 @@ double Vecteur::produitScalaire(Vecteur &v){
 	return 	v1.getX()*v2.getX() + 
 			v1.getY()*v2.getY() + 
 			v1.getZ()*v2.getZ();
-};
+}
 
 Vecteur Vecteur::produitVectoriel(Vecteur &v){
 	Coordonnee v1 = vecteur();
@@ -56,10 +79,10 @@ Vecteur Vecteur::produitVectoriel(Vecteur &v){
 								x1.getZ() + v1.getX()*v2.getY() - v1.getY()*v2.getX()
 					)
 				);
-};
+}
 
 double Vecteur::angle(Vecteur &v){
 	return std::acos(produitScalaire(v)/    // <u,v> /
 				(norme()*v.norme()));  		// ||u||*||v||
-};
+}
 
