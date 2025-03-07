@@ -11,12 +11,12 @@ class Rayon: public Vecteur{
 
     public:
         Rayon();
-        Rayon(Coordonnee x1, Coordonnee x2, double intensite=0);
-        Rayon(Vecteur &v, double intensite=0);
-        Rayon(Rayon &r);
+        Rayon(Coordonnee x1, Coordonnee x2, Couleur couleur=Couleur());
+        Rayon(Vecteur &vecteur, Couleur couleur=Couleur());
+        Rayon(Rayon &rayon);
 
     private:
-        Couleur Couleur;
+        Couleur couleur;
 
 
 };

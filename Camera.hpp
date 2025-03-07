@@ -29,7 +29,7 @@ class Camera{
         Resolution getResolution();
 
     private:
-        void calculateScreenCoords(); // Called by constructor
+        void calculRayonsCoord(); // Called by constructor
 
         Ecran ecran;
         Coordonnee position;

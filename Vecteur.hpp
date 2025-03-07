@@ -22,7 +22,7 @@ class Vecteur{
         Vecteur produitVectoriel(Vecteur &v);
         
         // NEED MORE FOR RAY TRACING
-        Coordonnee &Intersection(Objet &o); // Pass vecteur to o.intersection() and get usefulData for ray calc
+        // Coordonnee &Intersection(Objet &o); // Pass vecteur to o.intersection() and get usefulData for ray calc
         // Coordonnee &Intersection(Triangle &t); Not used because calculation will be done through the object
         
         // WIP

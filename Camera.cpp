@@ -17,7 +17,7 @@ Camera::Camera(Resolution resolution){
     this->phi = 0;
 
     this->ecran = Ecran(resolution);
-    this->calculateScreenCoords();
+    this->calculRayonsCoord();
 }
 
 Camera::Camera(Camera &camera){
@@ -27,7 +27,7 @@ Camera::Camera(Camera &camera){
     this->phi = camera.getPhi();
 
     this->ecran = Ecran(getResolution());
-    this->calculateScreenCoords();
+    this->calculRayonsCoord();
 }
 
 Camera::Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution){    
@@ -37,10 +37,10 @@ Camera::Camera(Coordonnee position, double distance_ecran, double theta, double 
     this->phi = phi;
 
     this->ecran = Ecran(resolution);
-    calculateScreenCoords();
+    calculRayonsCoord();
 }
 
-void Camera::calculateScreenCoords(){
+void Camera::calculRayonsCoord(){
     
     // double x = this->distance_ecran*sin(this->theta)*cos(this->phi);
     // double y = this->distance_ecran*sin(this->theta)*sin(this->phi);
@@ -50,9 +50,10 @@ void Camera::calculateScreenCoords(){
 
     // Vecteur t = Vecteur(this->position, centre_ecran);
     
-    // Vecteur v = Vecteur(t);
+    // Vecteur v = t;
     // // v.rotation(-M_PI_2,2)
-    // Vecteur b = Vecteur(t);
+    
+    // Vecteur b = t;
     // b = b.produitVectoriel(v);
 
     // int k = this->getResolution().x;
@@ -61,13 +62,19 @@ void Camera::calculateScreenCoords(){
     // double gx = this->distance_ecran*tan(M_PI);
     // double gy = gx*(m-1)/(k-1);
     
-    // Vecteur qx = Vecteur(b.unitaire(), 2*gx/(k-1));
-    // Vecteur qy = Vecteur(v.unitaire(), 2*gy/(m-1));
+    // Vecteur qx = b.unitaire()*2*gx/(k-1);
+    // Vecteur qy = v.unitaire()*2*gy/(m-1);
 
     // Vecteur P1m = distance_ecran*t.unitaire() - gx*b.unitaire() - gy*v.unitaire();
 
-
-
+    // for(int i = 0; i < k; i++){
+    //     for(int j = 0; j < m; j++){
+    //         Vecteur pij = P1m + qx*i + qy*j;
+    //         Rayon rij = Rayon(pij.unitaire());
+    //         // this->ecran.SetCentrePixel(i, j,);
+    //         this->ecran.SetRayon(i, j, rij);
+    //     }
+    // }
 
 }
 
