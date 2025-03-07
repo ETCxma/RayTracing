@@ -11,7 +11,7 @@ class Coordonnee{
         Coordonnee(Coordonnee &c);
 
         // Constructeur de copie
-        Coordonnee(Coordonnee& copie); 
+        // Coordonnee(Coordonnee& copie); 
 
         double distance(Coordonnee c);
 
