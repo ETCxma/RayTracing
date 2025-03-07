@@ -8,11 +8,11 @@ Couleur : à faire
 Ecran : fait 
 Espace : entrain d'être fait (Quentin)
 Materiau : à faire
-Objet : entrain d'être fait (Maxime)
+Objet : fait
 Pixel : fait
-Rayon : à faire
+Rayon : fait
 Resolution : fait
-Sphere : fait 
+Sphere : à update
 Triangle : à faire
 Vecteur : entrain d'être fait (Nicolas)
 
