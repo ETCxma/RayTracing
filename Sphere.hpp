@@ -14,15 +14,15 @@ class Sphere{
         Sphere(Coordonnee centre, double rayon);
 
         // Getters
-        int get_rayon();
-        Coordonnee get_centre();
+        int getRayon();
+        Coordonnee getCentre();
 
         // Setters
-        void set_rayon(double r);
-        void set_centre(Coordonnee c);
+        void setRayon(double r);
+        void setCentre(Coordonnee c);
 
         // Afficher les informations d'une sphère
-        void Affich_Infos();
+        void affichInfos();
 
 };
 
