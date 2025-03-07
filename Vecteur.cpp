@@ -15,7 +15,6 @@ using namespace std;
 
 
 // GETTERS
-
 double Vecteur::getDX(){
 	return this->dx; 
 }
@@ -26,6 +25,16 @@ double Vecteur::getDZ(){
 	return this->dz; 
 } 
 
+// SETTERS
+void Vecteur::setDX(double x){
+	this->dx = x;
+}
+void Vecteur::setDY(double y){
+	this->dy = y;
+}
+void Vecteur::setDZ(double z){
+	this->dz = z;
+}
 
 // CONSTRUCTEURS
 
@@ -35,7 +44,7 @@ Vecteur::Vecteur(){
 	dz = 0.0;
 }
 
-Vecteur::Vecteur(double dx=0.0, double dy=0.0, double dz=0.0){
+Vecteur::Vecteur(double dx, double dy, double dz){
 	this->dx = dx;
 	this->dy = dy;
 	this->dz = dz; 
@@ -86,40 +95,9 @@ double Vecteur::produitScalaire(Vecteur &v){
 }
 
 Vecteur Vecteur::produitVectoriel(Vecteur &v){
-	Coordonnee v1 = vecteur();
-	Coordonnee v2 = v.vecteur();
-	// Si v1 et v2 sont colinéaires, le produit vectoriel est nul
-	// On peut donc retourner un vecteur nul
-	
-	/* à la base c'était ça, mais ça ne marche que si les deux vecteurs ont EXACTEMENT les mêmes coordonnées */
-	// if(v1.getX() == v2.getX() && v1.getY() == v2.getY() && v1.getZ() == v2.getZ()){ 
-	//faudrait faire en sorte que ça marche -- en divisant systématiquement par la norme -- avec une sorte de "tolérance" pr les err de calcul
-	double n1 = norme();
-	double n2 = v.norme();
-	
-	/* Mtn faut implémenter les tolérances */
-	// if( (v1.getX()/n1 == v2.getX()/n2)
-	//  && (v1.getY()/n1 == v2.getY()/n2)
-	//  && (v1.getZ()/n1 == v2.getZ()/n2)){
-
-	/* Comme ça, ça devrait marcher. À TESTER */
-	double tol = 1e-6;
-	if (((v1.getX()/n1 - v2.getX()/n2) <= tol)
-	 && ((v1.getY()/n1 - v2.getY()/n2) <= tol)
-	 && ((v1.getZ()/n1 - v2.getZ()/n2) <= tol)){
-		return Vecteur();
-	}
-	// Si v1 et v2 ne sont pas colinéaires, on peut calculer le produit vectoriel
-	return Vecteur	(Coordonnee(x1.getX(), x1.getY(), x1.getZ()), //base aux coordonnées de base du vecteur 
-					Coordonnee(	x1.getX() + v1.getY()*v2.getZ() - v1.getZ()*v2.getY(),
-								x1.getY() + v1.getZ()*v2.getX() - v1.getX()*v2.getZ(), 
-								x1.getZ() + v1.getX()*v2.getY() - v1.getY()*v2.getX()
-					)
-				);
-}
-
-double Vecteur::angle(Vecteur &v){
-	return acos(produitScalaire(v)*(1.0/(norme()*v.norme())));
+	return Vecteur(((this->dy)*v.getDZ() - v.getDY()*(this->dz)), 
+					((this->dz)*v.getDX() - v.getDZ()*(this->dx)),
+					((this->dx)*v.getDY() - v.getDX()*(this->dy))); 
 }
 
 Vecteur Vecteur::cartesienToSpherique(){
@@ -144,5 +122,13 @@ Vecteur Vecteur::spheriqueToCartesien(){
 	z = (this->dx)*cos(this->dz);
 	
 	return Vecteur(x, y, z); 
+}
+
+void Vecteur::rotationTheta(double angle){
+	Vecteur temp = cartesienToSpherique(); 
+	temp.setDY(temp.getDY()+angle); 
+	setDX(temp.getDX());
+	setDY(temp.getDY());
+	setDZ(temp.getDZ());
 }
 

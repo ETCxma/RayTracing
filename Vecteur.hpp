@@ -2,8 +2,8 @@
 #define VECTEUR_H
 
 #include "Coordonnee.hpp"
-#include "Objet.hpp"
-#include "Triangle.hpp"
+// #include "Objet.hpp"
+// #include "Triangle.hpp"
 #include <cmath>
 
 class Vecteur{
@@ -13,12 +13,6 @@ class Vecteur{
         Vecteur();      
         Vecteur(double dx=0.0, double dy=0.0, double dz=0.0);
         Vecteur(Vecteur &v);
-
-        /**
-         * Entrée: rien
-         * Sortie: renvoie les composantes du vecteur
-         */
-        Coordonnee vecteur();
 
         /**
          * Entrée: rien
@@ -65,6 +59,12 @@ class Vecteur{
         Vecteur spheriqueToCartesien(); 
 
         /**
+         * Entrée: un double 
+         * Sortie: Faire tourner le vecteur suivant theta (dy)
+         */
+        void rotationTheta(double angle); 
+
+        /**
          * Entrée: rien
          * Sortie: convertit le vecteur des coordonnées cartésiennes à cylindriques
          */
@@ -81,19 +81,17 @@ class Vecteur{
         double getDY();
         double getDZ();  
 
+        // Setter
+        void setDX(double x);
+        void setDY(double y);
+        void setDZ(double z); 
+
         // Surcharge de l'opérateur "+" pour les vecteurs en coordonnées cartésiennes (x, y, z)
-        Vecteur operator+(Vecteur &v); 
-        // Surcharge de l'opérateur "+" pour les vecteurs en coordonnées sphériques
-        Vecteur operator+(Vecteur &v); 
-        // Surcharge de l'opérateur "+" pour les vecteurs en coordonnées cylindriques
-        Vecteur operator+(Vecteur &v); 
+        Vecteur operator+(Vecteur &v);  
 
         // Surcharge de l'opérateur "*" pour un vecteur en coordonnées cartésiennes
         Vecteur operator*(double scalaire); 
-        // Surcharge de l'opérateur "*" pour un vecteur en coordonnées sphériques 
-        Vecteur operator*(double scalaire);
-        // Surcharge de l'opérateur "*" pour un vecteur en coordonnées cylindriques
-        Vecteur operator*(double scalaire); 
+
         
 
     protected:
