@@ -13,19 +13,21 @@ class Ecran{
         Ecran(Resolution resolution);
 
         Pixel getPixel(int x, int y);
-        Coordonnee getCentrePixel(int x, int y);
+        // Coordonnee getCentrePixel(int x, int y);
         Rayon getRayon(int x, int y);
         Resolution getResolution();
 
+        void setResolution(int x, int y);
+
         void SetPixel(int x, int y, Pixel &pixel);
-        void SetCentrePixel(int x, int y, Coordonnee &coordonnee);
+        // void SetCentrePixel(int x, int y, Coordonnee &coordonnee);
         void SetRayon(int x, int y, Rayon &rayon);
 
     private:
 
         Pixel *pixels; // good storage method ?
         Rayon *rayons; // good ?
-        Coordonnee *centre_pixels; // good storage method ? Filled how ?
+        // Coordonnee *centre_pixels; // good storage method ? Filled how ?
         Resolution resolution;
 
 };
