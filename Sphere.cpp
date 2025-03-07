@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
 #include "Sphere.hpp"
 #include "Coordonnee.hpp"
 using namespace std;
