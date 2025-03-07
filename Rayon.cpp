@@ -1,4 +1,23 @@
 #include "Rayon.hpp"
+#include "Couleur.hpp"
+#include "Vecteur.hpp"
 
-Rayon::Rayon(): Vecteur() {};
+Rayon::Rayon(){
+    Vecteur();
+    this->couleur = Couleur();
+}
 
+Rayon::Rayon(Coordonnee x1, Coordonnee x2, Couleur couleur=Couleur()){
+    Vecteur(x1, x2);
+    this->couleur = couleur;
+}
+
+Rayon::Rayon(Vecteur &vecteur, Couleur couleur=Couleur()){
+    Vecteur(vecteur);
+    this->couleur = couleur;
+}
+
+Rayon::Rayon(Rayon &rayon){
+    Vecteur(rayon);
+    this->couleur = couleur;
+}
