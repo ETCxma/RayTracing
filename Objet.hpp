@@ -17,7 +17,7 @@ class Objet{
         Objet(Materiau materiau);
         Objet(std::vector<Triangle> elements, Materiau materiau);
 
-        std::vector<raytracingUsefulInfo> Intersection(Vecteur vecteur);
+        // std::vector<raytracingUsefulInfo> Intersection(Vecteur vecteur);
 
     protected:
         std::vector<Triangle> elements; 

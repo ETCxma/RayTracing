@@ -1,22 +1,28 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "Objet.hpp"
+#include "Coordonnee.hpp"
 
-class Sphere: public Objet{
-
-    public:
-        // Créer une sphère à partir d'une autre sphère
-        Sphere(Sphere &Sphere);
-        // Crée une sphère à partir de son centre, de son rayon et du nombre de triangles souhaité
-        Sphere(double rayon, Coordonnee centre, int nb_latitudes, int nb_longitudes);
+class Sphere{
 
     private:
         double rayon;
         Coordonnee centre;
 
+    public:
+        // Crée une sphère à partir de son centre et de son rayon
+        Sphere(Coordonnee centre, double rayon);
 
+        // Getters
+        int get_rayon();
+        Coordonnee get_centre();
 
+        // Setters
+        void set_rayon(double r);
+        void set_centre(Coordonnee c);
+
+        // Afficher les informations d'une sphère
+        void Affich_Infos();
 
 };
 
