@@ -126,8 +126,6 @@ Resolution Camera::getResolution(){
     return this->ecran.getResolution();
 }
 
-pixels Camera::getPixels(){
-    Resolution res = this->ecran.getResolution().x;
-    this->ecran.getResolution().y;
-
+Pixel Camera::getPixel(int x, int y){
+    return this->ecran.getPixel(x,y);
 }
