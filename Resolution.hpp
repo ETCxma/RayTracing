@@ -8,9 +8,8 @@ class Resolution{
         Resolution(int x, int y);
         Resolution(Resolution &r);
 
-
-    private:
         int x,y;
+    private:
 };
 
 
