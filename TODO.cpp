@@ -4,7 +4,7 @@ Liste de tous les fichiers avec ceux qui sont déjà fait, ceux qui sont entrain
 
 Camera : fait (reste fonction calculateScreenCoords())
 Coordonnee : fait 
-Couleur : à faire
+Couleur : fait (sort of, à voir si on implémente plus que l'intensité lumineuse)
 Ecran : fait 
 Espace : entrain d'être fait (Quentin)
 Materiau : à faire
@@ -13,8 +13,8 @@ Pixel : fait
 Rayon : à faire
 Resolution : fait
 Sphere : fait 
-Triangle : à faire
-Vecteur : entrain d'être fait (Nicolas)
+Triangle : fait (Benjamin) (sort of, ça va plus servir...)
+Vecteur : entrain d'être fait (Benjamin/Nicolas)
 
 
 TODO : 
