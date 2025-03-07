@@ -1,4 +1,22 @@
 /*
+
+Liste de tous les fichiers avec ceux qui sont déjà fait, ceux qui sont entrain d'être fait et ceux à faire : 
+
+Camera : fait (reste fonction calculateScreenCoords())
+Coordonnee : fait 
+Couleur : à faire
+Ecran : fait 
+Espace : entrain d'être fait (Quentin)
+Materiau : à faire
+Objet : entrain d'être fait (Maxime)
+Pixel : fait
+Rayon : à faire
+Resolution : fait
+Sphere : fait 
+Triangle : à faire
+Vecteur : entrain d'être fait (Nicolas)
+
+
 TODO : 
 - Complete Function Tree
 - Figure out "Couleur"
