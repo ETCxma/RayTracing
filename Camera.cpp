@@ -1,7 +1,7 @@
 #include "Camera.hpp"
 #include <cmath>
 
-Camera::Camera(Resolution resolution){
+Camera::Camera(){
     this->position = Coordonnee(0, 0, 0);
     this->distance_ecran = 1;
     this->theta = 0;
@@ -82,19 +82,29 @@ void Camera::calculRayonsCoord(){
 
 void Camera::setPosition(Coordonnee position){
     this->position = position;
+    this->calculRayonsCoord();
 }
 
 void Camera::setDistanceEcran(double distance_ecran){
     this->distance_ecran = distance_ecran;
+    this->calculRayonsCoord();
 }
 
 void Camera::setTheta(double theta){
     this->theta = theta;
+    this->calculRayonsCoord();
 }
 
 void Camera::setPhi(double phi){
     this->phi = phi;
+    this->calculRayonsCoord();
 }
+
+void Camera::setResolution(int x, int y){
+    this->ecran.setResolution(x, y);
+    this->calculRayonsCoord();
+}
+
 
 Coordonnee Camera::getPosition(){
     return this->position;

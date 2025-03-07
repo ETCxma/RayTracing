@@ -6,10 +6,14 @@ class Resolution{
     public:
         Resolution();
         Resolution(int x, int y);
-        Resolution(Resolution &r);
+        Resolution(Resolution &resolution);
+        
+        void setResolution(int x, int y);
 
-        int x,y;
+        int getX();
+        int getY();
     private:
+        int x,y;
 };
 
 

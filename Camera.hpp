@@ -21,6 +21,7 @@ class Camera{
         void setDistanceEcran(double distance_ecran);
         void setTheta(double theta);
         void setPhi(double phi);
+        void setResolution(int x, int y);
 
         Coordonnee getPosition();
         double getDistanceEcran();
