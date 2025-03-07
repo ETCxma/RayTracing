@@ -10,6 +10,9 @@ class Coordonnee{
         Coordonnee(double x, double y, double z);
         Coordonnee(Coordonnee &c);
 
+        // Constructeur de copie
+        Coordonnee(Coordonnee& copie); 
+
         double distance(Coordonnee c);
 
         // Getter

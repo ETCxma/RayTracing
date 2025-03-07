@@ -42,6 +42,13 @@ Coordonnee::Coordonnee(Coordonnee &c){
     this->z = move(c.getZ());
 }
 
+// Copie
+Coordonnee::Coordonnee(Coordonnee& copie){
+    copie.x = this->x; 
+    copie.y = this->y;
+    copie.z = this->z;
+}
+
 
 //  MÉTHODES 
 
