@@ -132,3 +132,11 @@ void Vecteur::rotationTheta(double angle){
 	setDZ(temp.getDZ());
 }
 
+void Vecteur::rotationPhi(double angle){
+	Vecteur temp = cartesienToSpherique(); 
+	temp.setDZ(temp.getDZ()+angle); 
+	setDX(temp.getDX());
+	setDY(temp.getDY());
+	setDZ(temp.getDZ());	
+}
+

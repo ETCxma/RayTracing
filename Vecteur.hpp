@@ -63,6 +63,11 @@ class Vecteur{
          * Sortie: Faire tourner le vecteur suivant theta (dy)
          */
         void rotationTheta(double angle); 
+        /**
+         * Entrée: un double 
+         * Sortie: faire tourner le vecteur suivant phi (dz)
+         */
+        void rotationPhi(double angle); 
 
         /**
          * Entrée: rien
