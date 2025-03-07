@@ -11,23 +11,23 @@ Sphere::Sphere(Coordonnee c, double r){
 }
 
 // Getters
-int Sphere::get_rayon(){
+int Sphere::getRayon(){
     return rayon;
 }
-Coordonnee Sphere::get_centre(){
+Coordonnee Sphere::getCentre(){
     return centre;  
 }
 
 // Setters
-void Sphere::set_rayon(double r){
+void Sphere::setRayon(double r){
     rayon = r;
 }
 
-void Sphere::set_centre(Coordonnee c){  
+void Sphere::setCentre(Coordonnee c){  
     centre = c;
 }
 
 // Afficher les informations d'une sphère
-void Sphere::Affich_Infos(){
+void Sphere::affichInfos(){
     cout << "Informations de la Sphere : " << endl << "rayon = " << rayon << " / " << "centre = (" << centre.getX() << ", " << centre.getY() << ", " << centre.getZ() << ")"<< endl; 
 }

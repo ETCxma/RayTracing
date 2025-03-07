@@ -13,12 +13,12 @@ int main(){
 
     Coordonnee coor1 (1, 1, 1);
     Sphere Henri (coor1, (double)10);
-    Henri.Affich_Infos();
+    Henri.affichInfos();
 
-    Henri.set_rayon(5);
+    Henri.setRayon(5);
     Coordonnee coor2 (3, 3, 4);
-    Henri.set_centre(coor2);
-    Henri.Affich_Infos();
+    Henri.setCentre(coor2);
+    Henri.affichInfos();
 
     return 0;
 }
