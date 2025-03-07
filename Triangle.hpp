@@ -1,5 +1,8 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
+/*
+	va pu servir, l'implémentation sert à r...
+*/
 
 #include "Coordonnee.hpp"
 #include "Couleur.hpp"
