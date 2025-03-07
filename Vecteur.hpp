@@ -9,17 +9,65 @@
 class Vecteur{
 
     public:
-        Vecteur();
-        Vecteur(Coordonnee x1, Coordonnee x2);
+        // Constructeurs 
+        Vecteur();      
+        Vecteur(double dx=0.0, double dy=0.0, double dz=0.0);
         Vecteur(Vecteur &v);
 
+        /**
+         * Entrée: rien
+         * Sortie: renvoie les composantes du vecteur
+         */
         Coordonnee vecteur();
+
+        /**
+         * Entrée: rien
+         * Sortie: renvoie la norme du vecteur
+         */
         double norme();
+
+        /**
+         * Entrée: rien
+         * Sortie: renvoie le vecteur unitaire du vecteur
+         */
         Vecteur unitaire();
 
+        /**
+         * Entrée: une instance de vecteur
+         * Sortie: renvoie la mesure d'angle entre les deux vecteurs
+         */
         double angle(Vecteur &v);
+
+        /**
+         * Entrée: une instance de vecteur
+         * Sortie: renvoie le résultat du produit scalaire des deux vecteurs
+         */
         double produitScalaire(Vecteur &v);
+
+        /**
+         * Entrée: une instance de vecteur
+         * Sortie: renvoie le résultat du produit vectoriel des deux vecteurs
+         */
         Vecteur produitVectoriel(Vecteur &v);
+
+        /**
+         * Entrée: rien
+         * Sortie: convertit le vecteur des coordonnées cartésiennes à sphériques
+         * dx <=> r
+         * dy <=> theta
+         * dz <=> phi
+         */
+        Vecteur cartesienToSpherique(); 
+        /**
+         * Entrée: rien
+         * Sortie: convertit le vecteur des coordonnées sphériques à cartésiennes
+         */
+        Vecteur spheriqueToCartesien(); 
+
+        /**
+         * Entrée: rien
+         * Sortie: convertit le vecteur des coordonnées cartésiennes à cylindriques
+         */
         
         // NEED MORE FOR RAY TRACING
         // Coordonnee &Intersection(Objet &o); // Pass vecteur to o.intersection() and get usefulData for ray calc
@@ -29,11 +77,28 @@ class Vecteur{
         // Vecteur &Reflechi(Triangle &t);
 
         // Getter
-        Coordonnee getX1(); 
-        Coordonnee getX2(); 
+        double getDX(); 
+        double getDY();
+        double getDZ();  
+
+        // Surcharge de l'opérateur "+" pour les vecteurs en coordonnées cartésiennes (x, y, z)
+        Vecteur operator+(Vecteur &v); 
+        // Surcharge de l'opérateur "+" pour les vecteurs en coordonnées sphériques
+        Vecteur operator+(Vecteur &v); 
+        // Surcharge de l'opérateur "+" pour les vecteurs en coordonnées cylindriques
+        Vecteur operator+(Vecteur &v); 
+
+        // Surcharge de l'opérateur "*" pour un vecteur en coordonnées cartésiennes
+        Vecteur operator*(double scalaire); 
+        // Surcharge de l'opérateur "*" pour un vecteur en coordonnées sphériques 
+        Vecteur operator*(double scalaire);
+        // Surcharge de l'opérateur "*" pour un vecteur en coordonnées cylindriques
+        Vecteur operator*(double scalaire); 
         
+
     protected:
-        Coordonnee x1,x2; 
+        double dx, dy, dz; 
+
 
 };
 
