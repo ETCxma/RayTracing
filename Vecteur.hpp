@@ -11,14 +11,16 @@ class Vecteur{
     public:
         // Constructeurs 
         Vecteur();      
-        Vecteur(double dx=0.0, double dy=0.0, double dz=0.0);
+        Vecteur(double dx, double dy, double dz);
         Vecteur(Vecteur &v);
 
         /**
-         * Entrée: rien
+         * Entrée: un vecteur et un string
          * Sortie: rien, affiche les composantes du vecteur
+         * 
+         * nb: je voulais qu'on ait le nom de l'instance donc j'ai fait comme ça
          */
-        void afficheVecteu(); 
+        void afficheVecteur(std::string nom); 
 
         /**
          * Entrée: rien

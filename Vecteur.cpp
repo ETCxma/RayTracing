@@ -36,6 +36,7 @@ void Vecteur::setDZ(double z){
 	this->dz = z;
 }
 
+
 // CONSTRUCTEURS
 
 Vecteur::Vecteur(){
@@ -77,8 +78,8 @@ Vecteur Vecteur::operator*(double scalaire){
 
 // MÉTHODES
 
-void Vecteur::afficheVecteu(){
-	cout << "(" << this->dx << ", " << this->dy << ", " << this->dz << ")" << endl; 
+void Vecteur::afficheVecteur(string nom){
+	cout << nom << " = (" << this->dx << "," << this->dy << "," << this->dz << ")"; 
 }
 
 double Vecteur::norme(){
@@ -87,7 +88,7 @@ double Vecteur::norme(){
 
 Vecteur Vecteur::unitaire(){
 	if(norme() == 0.0){
-		throw runtime_error("Le vecteur nul ne peut pas être normalisé."); 
+		return Vecteur(0.0, 0.0, 0.0); 
 	}
 	else{
 		return (*this)*(1.0/norme()); 
@@ -110,7 +111,7 @@ Vecteur Vecteur::cartesienToSpherique(){
 	double phi = 0.0;
 
 	r = norme();
-	theta = acos((this->dz)/r); 
+	theta = acos(((this->dz))/r); 
 	phi = asin((this->dy)/(r*sin(theta))); 
 
 	return Vecteur(r, theta, phi); 
