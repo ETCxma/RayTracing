@@ -29,6 +29,8 @@ class Espace{
         // TODO : implement for all X : void ModifyObjetX(int id, XType newX);
 
 
+        std::vector<Camera> getCameras();
+        
     private:
         void rayTracing(int id);
 

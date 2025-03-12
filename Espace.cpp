@@ -19,11 +19,11 @@ Espace::Espace(){
 //     return cameras.size() -1;
 // }
 
-// int Espace::CreerCamera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution res){
-//     Camera cam = Camera(position, distance_ecran, theta, phi, res);   
-//     cameras.push_back(cam);
-//     return cameras.size() -1;
-// }
+int Espace::CreerCamera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution res){
+    Camera cam = Camera(position, distance_ecran, theta, phi, res);   
+    cameras.push_back(cam);
+    return cameras.size() -1;
+}
 
 void Espace::takePicture(int camID, string path) {
     rayTracing(camID);
@@ -60,4 +60,8 @@ int Espace::CreerObjet(){
 // Fonction de la mort
 void Espace::rayTracing(int cameraID){  
     return;
+}
+
+vector<Camera> Espace::getCameras(){
+    return cameras;
 }
