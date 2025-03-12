@@ -30,3 +30,4 @@ remove:
 
 clean:
 	rm -f *.o $(TARGET) 
+	rm -f espace_test

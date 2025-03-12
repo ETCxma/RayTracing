@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
     Resolution res(512,512);
 
     Camera cam = Camera();
-    Esp.cameras.push_back(cam);
+    Esp.getCameras().push_back(cam);
 
     Esp.takePicture(0,string("oui"));
 
