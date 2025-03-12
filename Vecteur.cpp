@@ -167,6 +167,7 @@ Vecteur Vecteur::spheriqueToCartesien(){
 void Vecteur::rotationTheta(double angle){
 	Vecteur temp = cartesienToSpherique(); 
 	temp.setDY(temp.getDY()+angle); 
+	temp.spheriqueToCartesien(); 
 	setDX(temp.getDX());
 	setDY(temp.getDY());
 	setDZ(temp.getDZ());
@@ -175,6 +176,7 @@ void Vecteur::rotationTheta(double angle){
 void Vecteur::rotationPhi(double angle){
 	Vecteur temp = cartesienToSpherique(); 
 	temp.setDZ(temp.getDZ()+angle); 
+	temp.spheriqueToCartesien(); 
 	setDX(temp.getDX());
 	setDY(temp.getDY());
 	setDZ(temp.getDZ());	
