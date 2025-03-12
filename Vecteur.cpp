@@ -114,7 +114,7 @@ Vecteur operator-(Vecteur &v){
 // MÉTHODES
 
 void Vecteur::afficheVecteur(string nom){
-	cout << nom << " = (" << this->dx << "," << this->dy << "," << this->dz << ")"; 
+	cout << nom << " = (" << this->dx << "," << this->dy << "," << this->dz << ")" << endl; 
 }
 
 double Vecteur::norme(){
