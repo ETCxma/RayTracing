@@ -51,7 +51,7 @@ void Camera::calculRayonsCoord(){
     Vecteur t = Vecteur(this->position, centre_ecran);
     
     Vecteur v = t;
-    // v.rotation(-M_PI_2,2)
+    v.rotationPhi(-M_PI_2);
     
     Vecteur b = t;
     b = b.produitVectoriel(v);
@@ -132,6 +132,10 @@ double Camera::getPhi(){
 
 Resolution Camera::getResolution(){
     return this->ecran.getResolution();
+}
+
+Rayon Camera::getRayon(int x, int y){
+    return this->ecran.getRayon(x,y);
 }
 
 Pixel Camera::getPixel(int x, int y){

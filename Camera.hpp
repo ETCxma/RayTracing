@@ -28,6 +28,7 @@ class Camera{
         double getTheta();
         double getPhi();
         Resolution getResolution();
+        Rayon getRayon(int x, int y);
         Pixel getPixel(int x, int y);
 
     private:
