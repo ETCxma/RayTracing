@@ -65,3 +65,8 @@ void Espace::rayTracing(int cameraID){
 vector<Camera> Espace::getCameras(){
     return cameras;
 }
+
+void Espace::setCameras(Camera cam){
+    cameras.push_back(cam);
+    return;
+}
