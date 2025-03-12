@@ -47,8 +47,8 @@ Vecteur::Vecteur(){
 
 Vecteur::Vecteur(Coordonnee x1, Coordonnee x2){
 	this->dx = x2.getX() - x1.getX();
-	this->dx = x2.getY() - x1.getY();
-	this->dx = x2.getZ() - x1.getZ();
+	this->dy = x2.getY() - x1.getY();
+	this->dz = x2.getZ() - x1.getZ();
 }
 
 
@@ -159,7 +159,7 @@ Vecteur Vecteur::spheriqueToCartesien(){
 
 	x = (this->dx)*cos(this->dy)*sin(this->dz);
 	y = (this->dx)*sin(this->dy)*sin(this->dz); 
-	z = (this->dx)*cos(this->dz);
+	z = (this->dx)*cos(this->dy);
 	
 	return Vecteur(x, y, z); 
 }

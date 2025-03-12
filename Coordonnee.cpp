@@ -22,6 +22,19 @@ double Coordonnee::getZ() const{
 }
 
 
+// SETTERS
+
+void Coordonnee::setX(double x){
+    this->x = x; 
+}
+void Coordonnee::setY(double y){
+    this->y = y; 
+}
+void Coordonnee::setZ(double z){
+    this->z = z; 
+}
+
+
 // CONSTRUCTEURS 
 
 Coordonnee::Coordonnee(){
