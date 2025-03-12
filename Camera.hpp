@@ -13,7 +13,7 @@ class Camera{
 
     public:
         Camera();
-        Camera(Camera &camera);
+        Camera(Camera const &camera);
         Camera(Resolution resolution);
         Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution);
 

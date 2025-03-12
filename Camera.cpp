@@ -20,11 +20,11 @@ Camera::Camera(Resolution resolution){
     this->calculRayonsCoord();
 }
 
-Camera::Camera(Camera &camera){
-    this->position = camera.getPosition();
-    this->distance_ecran = camera.getDistanceEcran();
-    this->theta = camera.getTheta();
-    this->phi = camera.getPhi();
+Camera::Camera(Camera const &camera){
+    this->position = camera.position;
+    this->distance_ecran = camera.distance_ecran;
+    this->theta = camera.theta;
+    this->phi = camera.phi;
 
     this->ecran = Ecran(getResolution());
     this->calculRayonsCoord();
