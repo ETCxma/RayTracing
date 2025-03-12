@@ -42,39 +42,47 @@ Camera::Camera(Coordonnee position, double distance_ecran, double theta, double 
 
 void Camera::calculRayonsCoord(){
     
-    // double x = this->distance_ecran*sin(this->theta)*cos(this->phi);
-    // double y = this->distance_ecran*sin(this->theta)*sin(this->phi);
-    // double z = this->distance_ecran*cos(this->theta);
+    double x = this->distance_ecran*sin(this->theta)*cos(this->phi);
+    double y = this->distance_ecran*sin(this->theta)*sin(this->phi);
+    double z = this->distance_ecran*cos(this->theta);
 
-    // Coordonnee centre_ecran = Coordonnee(x,y,z);
+    Coordonnee centre_ecran = Coordonnee(x,y,z);
 
-    // Vecteur t = Vecteur(this->position, centre_ecran);
+    Vecteur t = Vecteur(this->position, centre_ecran);
     
-    // Vecteur v = t;
-    // // v.rotation(-M_PI_2,2)
+    Vecteur v = t;
+    // v.rotation(-M_PI_2,2)
     
-    // Vecteur b = t;
-    // b = b.produitVectoriel(v);
-
-    // int k = this->getResolution().x;
-    // int m = this->getResolution().y;
-
-    // double gx = this->distance_ecran*tan(M_PI);
-    // double gy = gx*(m-1)/(k-1);
+    Vecteur b = t;
+    b = b.produitVectoriel(v);
     
-    // Vecteur qx = b.unitaire()*2*gx/(k-1);
-    // Vecteur qy = v.unitaire()*2*gy/(m-1);
+    
+    Vecteur tn = t.unitaire();
+    Vecteur bn = b.unitaire();
+    Vecteur vn = v.unitaire();
 
-    // Vecteur P1m = distance_ecran*t.unitaire() - gx*b.unitaire() - gy*v.unitaire();
 
-    // for(int i = 0; i < k; i++){
-    //     for(int j = 0; j < m; j++){
-    //         Vecteur pij = P1m + qx*i + qy*j;
-    //         Rayon rij = Rayon(pij.unitaire());
-    //         // this->ecran.SetCentrePixel(i, j,);
-    //         this->ecran.SetRayon(i, j, rij);
-    //     }
-    // }
+
+    int k = this->getResolution().getX();
+    int m = this->getResolution().getY();
+
+    double gx = this->distance_ecran*tan(M_PI);
+    double gy = gx*(m-1)/(k-1);
+    
+    Vecteur qx = bn*((double)2*gx/(double)(k-1));
+    Vecteur qy = vn*((double)2*gy/(double)(m-1));
+
+    Vecteur P1m = tn*distance_ecran - bn*gx - vn*gy;
+
+    for(int i = 0; i < k; i++){
+        for(int j = 0; j < m; j++){
+            Vecteur pij = P1m + qx*i + qy*j;
+            Vecteur pijn = pij.unitaire();
+            Rayon rij = Rayon(pijn);
+            // this->ecran.SetCentrePixel(i, j,);
+            this->ecran.SetRayon(i, j, rij);
+        }
+    }
 
 }
 
