@@ -11,6 +11,7 @@ class Vecteur{
     public:
         // Constructeurs 
         Vecteur();      
+        Vecteur(Coordonnee x1, Coordonnee x2);
         Vecteur(double dx, double dy, double dz);
         Vecteur(Vecteur &v);
 
@@ -100,10 +101,19 @@ class Vecteur{
         void setDZ(double z); 
 
         // Surcharge de l'opérateur "+" pour les vecteurs en coordonnées cartésiennes (x, y, z)
-        Vecteur operator+(Vecteur &v);  
+        friend Vecteur operator+(Vecteur &v, Vecteur &v2);  
+        friend Vecteur operator+(Vecteur v, Vecteur v2);  
+
+        // Surcharge de l'opérateur "-" pour les vecteurs en coordonnées cartésiennes (x, y, z)
+        friend Vecteur operator-(Vecteur &v, Vecteur &v2);  
+        friend Vecteur operator-(Vecteur v, Vecteur v2);  
 
         // Surcharge de l'opérateur "*" pour un vecteur en coordonnées cartésiennes
-        Vecteur operator*(double scalaire); 
+        friend Vecteur operator*(Vecteur &v, double scalaire); 
+        friend Vecteur operator*(Vecteur &v, int scalaire); 
+
+        // Surcharge de l'opérateur "-" pour les vecteurs en coordonnées cartésiennes (x, y, z)
+        friend Vecteur operator-(Vecteur &v);  
 
         
 

@@ -45,6 +45,13 @@ Vecteur::Vecteur(){
 	dz = 0.0;
 }
 
+Vecteur::Vecteur(Coordonnee x1, Coordonnee x2){
+	this->dx = x2.getX() - x1.getX();
+	this->dx = x2.getY() - x1.getY();
+	this->dx = x2.getZ() - x1.getZ();
+}
+
+
 Vecteur::Vecteur(double dx, double dy, double dz){
 	this->dx = dx;
 	this->dy = dy;
@@ -63,23 +70,51 @@ Vecteur::Vecteur(Vecteur &v){
 /**
  * OPÉRATEUR "+" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
  */
-Vecteur Vecteur::operator+(Vecteur &v){
-	return Vecteur((this->dx + v.getDX()), (this->dy + v.getDY()), (this->dz + v.getDZ()));
+Vecteur operator+(Vecteur &v, Vecteur &v2){
+	return Vecteur((v.dx + v2.getDX()), (v.dy + v2.getDY()), (v.dz + v2.getDZ()));
+}
+
+Vecteur operator+(Vecteur v, Vecteur v2){
+	return Vecteur((v.getDX() + v2.getDX()), (v.getDY() + v2.getDY()), (v.getDZ() + v2.getDZ()));
+}
+
+/**
+ * OPÉRATEUR "-" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
+ */
+Vecteur operator-(Vecteur &v, Vecteur &v2){
+	return Vecteur((v.dx - v2.getDX()), (v.dy - v2.getDY()), (v.dz - v2.getDZ()));
+}
+
+Vecteur operator-(Vecteur v, Vecteur v2){
+	return Vecteur((v.getDX() - v2.getDX()), (v.getDY() - v2.getDY()), (v.getDZ() - v2.getDZ()));
 }
 
 /**
  * OPÉRATEUR "*" POUR UN VECTEUR ET UN SCALAIRE EN COORDONNÉES CARTÉSIENNES
  */
-Vecteur Vecteur::operator*(double scalaire){
-	return Vecteur(scalaire*(this->dx), scalaire*(this->dy), scalaire*(this->dz)); 
+Vecteur operator*(Vecteur &v, double scalaire){
+	return Vecteur(scalaire*(v.dx), scalaire*(v.dy), scalaire*(v.dz)); 
 }
 
+/**
+ * OPÉRATEUR "*" POUR UN VECTEUR ET UN SCALAIRE EN COORDONNÉES CARTÉSIENNES
+ */
+Vecteur operator*(Vecteur &v, int scalaire){
+	return Vecteur(scalaire*(v.dx), scalaire*(v.dy), scalaire*(v.dz)); 
+}
+
+/**
+ * OPÉRATEUR "-" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
+ */
+Vecteur operator-(Vecteur &v){
+	return Vecteur(-v.dx, -v.dy, -v.dz);
+}
 
 
 // MÉTHODES
 
 void Vecteur::afficheVecteur(string nom){
-	cout << nom << " = (" << this->dx << "," << this->dy << "," << this->dz << ")"; 
+	cout << nom << " = (" << this->dx << "," << this->dy << "," << this->dz << ")" << endl; 
 }
 
 double Vecteur::norme(){

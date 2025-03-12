@@ -7,17 +7,17 @@ Rayon::Rayon(){
     this->couleur = Couleur();
 }
 
-Rayon::Rayon(Coordonnee x1, Coordonnee x2, Couleur couleur=Couleur()){
-    Vecteur(x1, x2);
+Rayon::Rayon(Coordonnee x1, Coordonnee x2, Couleur couleur):
+    Vecteur(x1, x2){
     this->couleur = couleur;
 }
 
-Rayon::Rayon(Vecteur &vecteur, Couleur couleur=Couleur()){
-    Vecteur(vecteur);
+Rayon::Rayon(Vecteur &vecteur, Couleur couleur):
+    Vecteur(vecteur) {
     this->couleur = couleur;
 }
 
-Rayon::Rayon(Rayon &rayon){
-    Vecteur(rayon);
+Rayon::Rayon(Rayon &rayon):
+    Vecteur(rayon) {
     this->couleur = couleur;
 }
