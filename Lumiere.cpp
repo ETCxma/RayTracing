@@ -12,7 +12,7 @@ using namespace std;
 
 // GETTERS 
 
-int Lumiere::getIntensite(){
+Couleur Lumiere::getIntensite(){
     return this->intensite; 
 }
 
@@ -22,13 +22,13 @@ Coordonnee Lumiere::getSource(){
 
 
 Lumiere::Lumiere(){
-    this->intensite = 0;
+    this->intensite = 0.0;
     (this->source).setX(0.0);
     (this->source).setY(0.0);
     (this->source).setZ(0.0);
 }
 
-Lumiere::Lumiere(int intensite, Coordonnee source){
+Lumiere::Lumiere(Couleur intensite, Coordonnee source){
     this->intensite = intensite;
     this->source = source; 
 }
@@ -36,4 +36,10 @@ Lumiere::Lumiere(int intensite, Coordonnee source){
 Lumiere::Lumiere(Lumiere &l){
     this->intensite = move(l.getIntensite()); 
     this->source = move(l.getSource()); 
+}
+
+
+void Lumiere::afficheLumiere(){
+    cout << "intensité: " << endl;
+    
 }
