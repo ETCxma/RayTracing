@@ -30,6 +30,7 @@ class Espace{
 
 
         std::vector<Camera> getCameras();
+        void setCameras(Camera cam);
         
     private:
         void rayTracing(int id);
