@@ -111,17 +111,18 @@ int main(int argc, char* argv[]){
     cout << endl; 
 
 
-    // // TEST DU CHANGEMENT DE COORDONNÉES DE CARTÉSIEN À SPHÉRIQUE
-    // cout << string(70, '-') << endl; 
-    // cout << "Cinquième test: changement de coordonnées des cartésiennes aux sphériques." << endl; 
-    // cout << "\t TEST: ";
-    // v.afficheVecteur("v_cartésien");
-    // cout << "\t"; 
-    // (v.cartesienToSpherique()).afficheVecteur("v_spherique");
-    // cout << endl; 
-    // cout << "\t VÉRIFICATION: le résultat doit être (3.74,,)" << endl; 
-    // cout << string(70, '-') << endl; 
-    // cout << endl; 
+    // TEST DU CHANGEMENT DE COORDONNÉES DE CARTÉSIEN À SPHÉRIQUE
+    cout << string(70, '-') << endl; 
+    cout << "Cinquième test: changement de coordonnées des cartésiennes aux sphériques." << endl; 
+    cout << "\t TEST: ";
+    v.afficheVecteur("v_cartésien");
+    cout << "\t"; 
+    (v.cartesienToSpherique()).afficheVecteur("v_spherique");
+    cout << endl; 
+    cout << "\t VÉRIFICATION: le résultat doit être (3.74,0.64,1.10)" << endl; 
+    cout << string(70, '-') << endl; 
+    cout << endl; 
+ 
 
     return 0; 
 
