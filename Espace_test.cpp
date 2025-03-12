@@ -18,11 +18,11 @@ using namespace std;
 int main(int argc, char* argv[]){
 
     Espace Esp; 
-    Coordonnee b(1, 2, 3);
-    Resolution res(512,512);
 
     Camera cam = Camera();
     Esp.setCameras(cam);
+    cam.setResolution(512,512);
+    cout << cam.getResolution().getX() << "/" << cam.getResolution().getY() << endl;
 
     Esp.takePicture(0,string("IMAGE_POGGIES"));
 
