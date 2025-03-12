@@ -3,20 +3,23 @@
 
 
 #include "Coordonnee.hpp"
+#include "Couleur.hpp"
 
 class Lumiere{
 
     public:
         Lumiere();
-        Lumiere(int intensite, Coordonnee soure); 
+        Lumiere(Couleur intensite, Coordonnee soure); 
         Lumiere(Lumiere &l);
 
         // Getters
-        int getIntensite();
+        Couleur getIntensite();
         Coordonnee getSource(); 
 
+        void afficheLumiere(); 
+
     private:
-        int intensite;
+        Couleur intensite;
         Coordonnee source; 
 
 };
