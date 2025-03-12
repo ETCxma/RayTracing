@@ -19,6 +19,11 @@ class Coordonnee{
         double getX() const; 
         double getY() const; 
         double getZ() const; 
+
+        // Setter
+        void setX(double x);
+        void setY(double y);
+        void setZ(double z); 
     
     private:
         double x,y,z;
