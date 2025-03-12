@@ -36,17 +36,11 @@ Coordonnee::Coordonnee(double x, double y, double z){
     this->z = z; 
 }
 
-Coordonnee::Coordonnee(Coordonnee &c){
-    this->x = move(c.getX()); 
-    this->y = move(c.getY());
-    this->z = move(c.getZ());
-}
-
 // Copie
-Coordonnee::Coordonnee(Coordonnee& copie){
-    copie.x = this->x; 
-    copie.y = this->y;
-    copie.z = this->z;
+Coordonnee::Coordonnee(Coordonnee& coordonnee){
+    coordonnee.x = this->x; 
+    coordonnee.y = this->y;
+    coordonnee.z = this->z;
 }
 
 
