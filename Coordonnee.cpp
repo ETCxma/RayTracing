@@ -51,9 +51,9 @@ Coordonnee::Coordonnee(double x, double y, double z){
 
 // Copie
 Coordonnee::Coordonnee(Coordonnee& coordonnee){
-    coordonnee.x = this->x; 
-    coordonnee.y = this->y;
-    coordonnee.z = this->z;
+    this->x = coordonnee.x; 
+    this->y = coordonnee.y;
+    this->z = coordonnee.z;
 }
 
 
