@@ -17,8 +17,8 @@ class Espace{
         
 
         // Return camera id
-        int CreerCamera(Camera &Camera);
-        int CreerCamera(Coordonnee position, double distance_ecran, double theta, double phi);
+        int CreerCamera(Camera &camera);
+            int CreerCamera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution res);
         
         void takePicture(int id, std::string path);
         // TODO : implement for all X : void ModifyCameraX(int id, XType newX);
