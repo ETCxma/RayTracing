@@ -1,5 +1,6 @@
 #include "Camera.hpp"
 #include <cmath>
+#include <bitset>
 
 Camera::Camera(){
     this->position = Coordonnee(0, 0, 0);
@@ -27,6 +28,13 @@ Camera::Camera(Camera const &camera){
     this->phi = camera.phi;
 
     this->ecran = Ecran(getResolution());
+    this->calculRayonsCoord();    
+    this->position = camera.position;
+    this->distance_ecran = camera.distance_ecran;
+    this->theta = camera.theta;
+    this->phi = camera.phi;
+
+    this->ecran = Ecran(getResolution());
     this->calculRayonsCoord();
 }
 
@@ -41,45 +49,40 @@ Camera::Camera(Coordonnee position, double distance_ecran, double theta, double 
 }
 
 void Camera::calculRayonsCoord(){
-    
-    double x = this->distance_ecran*sin(this->theta)*cos(this->phi);
-    double y = this->distance_ecran*sin(this->theta)*sin(this->phi);
-    double z = this->distance_ecran*cos(this->theta);
 
-    Coordonnee centre_ecran = Coordonnee(x,y,z);
+    Vecteur centre_ecran = Vecteur(this->distance_ecran,theta,phi);
+    Vecteur t = centre_ecran.spheriqueToCartesien();
 
-    Vecteur t = Vecteur(this->position, centre_ecran);
-    
     Vecteur v = t;
     v.rotationPhi(-M_PI_2);
     
-    Vecteur b = t;
-    b = b.produitVectoriel(v);
-    
+    Vecteur b = t.produitVectoriel(v);
     
     Vecteur tn = t.unitaire();
     Vecteur bn = b.unitaire();
     Vecteur vn = v.unitaire();
 
-
-
     int k = this->getResolution().getX();
     int m = this->getResolution().getY();
 
     double gx = this->distance_ecran*tan(M_PI);
-    double gy = gx*(m-1)/(k-1);
+    double gy = gx*(double)(m-1)/(double)(k-1);
     
     Vecteur qx = bn*((double)2*gx/(double)(k-1));
     Vecteur qy = vn*((double)2*gy/(double)(m-1));
 
     Vecteur P1m = tn*distance_ecran - bn*gx - vn*gy;
 
+    qx.afficheVecteur("qx");
+    qy.afficheVecteur("qy");
+    P1m.afficheVecteur("P1m");
+
+
     for(int i = 0; i < k; i++){
         for(int j = 0; j < m; j++){
             Vecteur pij = P1m + qx*i + qy*j;
             Vecteur pijn = pij.unitaire();
             Rayon rij = Rayon(pijn);
-            // this->ecran.SetCentrePixel(i, j,);
             this->ecran.SetRayon(i, j, rij);
         }
     }
