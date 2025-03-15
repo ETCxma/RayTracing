@@ -59,9 +59,9 @@ Vecteur::Vecteur(double dx, double dy, double dz){
 }
 
 Vecteur::Vecteur(Vecteur &v){
-	this->dx = move(v.getDX());
-	this->dy = move(v.getDY());
-	this->dz = move(v.getDZ());		
+	this->dx = v.dx;
+	this->dy = v.dy;
+	this->dz = v.dz;		
 }
 
 
@@ -70,9 +70,9 @@ Vecteur::Vecteur(Vecteur &v){
 /**
  * OPÉRATEUR "+" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
  */
-Vecteur operator+(Vecteur &v, Vecteur &v2){
-	return Vecteur((v.dx + v2.getDX()), (v.dy + v2.getDY()), (v.dz + v2.getDZ()));
-}
+// Vecteur operator+(Vecteur &v, Vecteur &v2){
+// 	return Vecteur((v.dx + v2.getDX()), (v.dy + v2.getDY()), (v.dz + v2.getDZ()));
+// }
 
 Vecteur operator+(Vecteur v, Vecteur v2){
 	return Vecteur((v.getDX() + v2.getDX()), (v.getDY() + v2.getDY()), (v.getDZ() + v2.getDZ()));
@@ -81,9 +81,9 @@ Vecteur operator+(Vecteur v, Vecteur v2){
 /**
  * OPÉRATEUR "-" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
  */
-Vecteur operator-(Vecteur &v, Vecteur &v2){
-	return Vecteur((v.dx - v2.getDX()), (v.dy - v2.getDY()), (v.dz - v2.getDZ()));
-}
+// Vecteur operator-(Vecteur &v, Vecteur &v2){
+// 	return Vecteur((v.dx - v2.getDX()), (v.dy - v2.getDY()), (v.dz - v2.getDZ()));
+// }
 
 Vecteur operator-(Vecteur v, Vecteur v2){
 	return Vecteur((v.getDX() - v2.getDX()), (v.getDY() - v2.getDY()), (v.getDZ() - v2.getDZ()));
@@ -92,19 +92,19 @@ Vecteur operator-(Vecteur v, Vecteur v2){
 /**
  * OPÉRATEUR "*" POUR UN VECTEUR ET UN SCALAIRE EN COORDONNÉES CARTÉSIENNES
  */
-Vecteur operator*(Vecteur &v, double scalaire){
+Vecteur operator*(Vecteur v, double scalaire){
 	return Vecteur(scalaire*(v.dx), scalaire*(v.dy), scalaire*(v.dz)); 
 }
 
 /**
  * OPÉRATEUR "*" POUR UN VECTEUR ET UN SCALAIRE EN COORDONNÉES CARTÉSIENNES
  */
-Vecteur operator*(Vecteur &v, int scalaire){
+Vecteur operator*(Vecteur v, int scalaire){
 	return Vecteur(scalaire*(v.dx), scalaire*(v.dy), scalaire*(v.dz)); 
 }
 
 /**
- * OPÉRATEUR "-" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
+ * OPÉRATEUR "-" D'INVERSION
  */
 Vecteur operator-(Vecteur &v){
 	return Vecteur(-v.dx, -v.dy, -v.dz);
@@ -147,7 +147,10 @@ Vecteur Vecteur::cartesienToSpherique(){
 
 	r = norme();
 	theta = acos(((this->dz))/r); 
-	phi = asin((this->dy)/(r*sin(theta))); 
+	if(this->dy == 0.0)
+		phi = 0; 
+	else
+		phi = copysign(1.0, this->dy)*acos((this->dx)/sqrt(this->dx*this->dx + this->dy*this->dy));
 
 	return Vecteur(r, theta, phi); 
 }
@@ -157,7 +160,7 @@ Vecteur Vecteur::spheriqueToCartesien(){
 	double y = 0.0;
 	double z = 0.0;
 
-	x = (this->dx)*cos(this->dy)*sin(this->dz);
+	x = (this->dx)*sin(this->dy)*cos(this->dz);
 	y = (this->dx)*sin(this->dy)*sin(this->dz); 
 	z = (this->dx)*cos(this->dy);
 	
@@ -167,7 +170,7 @@ Vecteur Vecteur::spheriqueToCartesien(){
 void Vecteur::rotationTheta(double angle){
 	Vecteur temp = cartesienToSpherique(); 
 	temp.setDY(temp.getDY()+angle); 
-	temp.spheriqueToCartesien(); 
+	temp = temp.spheriqueToCartesien(); 
 	setDX(temp.getDX());
 	setDY(temp.getDY());
 	setDZ(temp.getDZ());
@@ -176,7 +179,7 @@ void Vecteur::rotationTheta(double angle){
 void Vecteur::rotationPhi(double angle){
 	Vecteur temp = cartesienToSpherique(); 
 	temp.setDZ(temp.getDZ()+angle); 
-	temp.spheriqueToCartesien(); 
+	temp = temp.spheriqueToCartesien(); 
 	setDX(temp.getDX());
 	setDY(temp.getDY());
 	setDZ(temp.getDZ());	

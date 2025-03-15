@@ -118,11 +118,30 @@ int main(int argc, char* argv[]){
     v.afficheVecteur("v_cartésien");
     cout << "\t"; 
     (v.cartesienToSpherique()).afficheVecteur("v_spherique");
+    (v.cartesienToSpherique().spheriqueToCartesien()).afficheVecteur("v_spherique_to_c");
     cout << endl; 
     cout << "\t VÉRIFICATION: le résultat doit être (3.74,0.64,1.10)" << endl; 
     cout << string(70, '-') << endl; 
     cout << endl; 
+
+    // TEST ROTATION
+    cout << string(70, '-') << endl; 
+    cout << "Sixième test: Rotation de vecteur." << endl; 
+    cout << "\t TEST: ";
+    Vecteur v2(1,0,0);
+    v2.afficheVecteur("v_initial");
+    cout << "\t"; 
+    v2.rotationPhi(M_PI);
+    v2.afficheVecteur("v_rotated +pi (phi)");
+    cout << "\t VÉRIFICATION: le résultat doit être (-1,0,0)" << endl; 
+    cout << endl; 
+    v2.rotationTheta(-M_PI_2);
+    v2.afficheVecteur("v_rotated +pi/2 (theta)");
+    cout << "\t VÉRIFICATION: le résultat doit être (0,0,1)" << endl; 
+    cout << string(70, '-') << endl; 
+    cout << endl; 
  
+
 
     return 0; 
 
