@@ -61,11 +61,11 @@ void Camera::calculRayonsCoord(){
     Vecteur tn = t.unitaire();
     Vecteur bn = b.unitaire();
     Vecteur vn = v.unitaire();
-
+    
     int k = this->getResolution().getX();
     int m = this->getResolution().getY();
 
-    double gx = this->distance_ecran*tan(M_PI);
+    double gx = this->distance_ecran*tan(M_PI_4);
     double gy = gx*(double)(m-1)/(double)(k-1);
     
     Vecteur qx = bn*((double)2*gx/(double)(k-1));
@@ -76,7 +76,6 @@ void Camera::calculRayonsCoord(){
     qx.afficheVecteur("qx");
     qy.afficheVecteur("qy");
     P1m.afficheVecteur("P1m");
-
 
     for(int i = 0; i < k; i++){
         for(int j = 0; j < m; j++){

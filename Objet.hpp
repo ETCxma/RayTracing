@@ -2,6 +2,7 @@
 #define OBJET_H
 
 #include <vector>
+#include "Coordonnee.hpp"
 #include "Materiau.hpp"
 #include "Rayon.hpp"
 
@@ -14,7 +15,7 @@ class Objet{
     public:
         Objet();
 
-        virtual raytracingUsefulInfo intersection(Rayon rayon) = 0;
+        virtual raytracingUsefulInfo intersection(Rayon rayon, Coordonnee) = 0;
 
     protected:
         Materiau materiau;

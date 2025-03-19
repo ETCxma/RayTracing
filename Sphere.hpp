@@ -2,8 +2,10 @@
 #define SPHERE_H
 
 #include "Coordonnee.hpp"
+#include "Objet.hpp"
+#include "Rayon.hpp"
 
-class Sphere{
+class Sphere: public Objet{
 
     private:
         double rayon;
@@ -23,6 +25,8 @@ class Sphere{
 
         // Afficher les informations d'une sphère
         void affichInfos();
+
+        raytracingUsefulInfo intersection(Rayon rayon, Coordonnee centre_camera);
 
 };
 
