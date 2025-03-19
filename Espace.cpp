@@ -54,8 +54,9 @@ void Espace::takePicture(int camID, string path) {
 }
 
 // Return Objet id
-int Espace::CreerObjet(){
-    return 0;
+int Espace::AjouterObjet(Objet obj){
+    objets.push_back(obj);
+    return;
 }
 
 // Fonction de la mort
@@ -67,12 +68,12 @@ void Espace::rayTracing(int camID){
 
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
-            for (auto o : objects){
+            for (int o = 0; o < objets.size(); o++){
                 // Envoyer un rayon
                 r = cameras.at(camID).getRayon(i,j);
                 p = cameras.at(camID).getPixel(i, j);
                 // S'il y a intersection
-                if (o.intersection(r,camera.getPosition()) == 1){
+                if (objets.at(o).intersection(r, cameras.at(camID).getPosition()) == 1){
                     p.setIntensite(255);
                 }
                 else{
@@ -93,11 +94,6 @@ void Espace::setCamera(Camera cam){
     return;
 }
 
-vector<Object> Espace::getObjects(){
+vector<Objet> Espace::getObjects(){
     return objets;
-}
-
-void Espace::setObject(Object obj){
-    objets.push_back(obj);
-    return;
 }
