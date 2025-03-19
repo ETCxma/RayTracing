@@ -25,6 +25,12 @@ class Coordonnee{
         void setY(double y);
         void setZ(double z); 
     
+        // SURCHARGES DES OPÉRATEURS
+        friend Coordonnee operator-(Coordonnee c1, Coordonnee c2);
+        friend Coordonnee operator-(Coordonnee &c1, Coordonnee &c2); 
+        friend Coordonnee operator*(Coordonnee c1, Coordonnee c2); 
+        friend Coordonnee operator*(Coordonnee &c1, Coordonnee &c2); 
+
     private:
         double x,y,z;
 };
