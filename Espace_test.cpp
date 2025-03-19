@@ -19,15 +19,19 @@ using namespace std;
 
 int main(int argc, char* argv[]){
 
-    Espace Esp; 
+    Espace Esp;
+    Camera cam = Camera(Resolution (512,512));
+    Esp.AjouterCamera(&cam);
 
-    Camera cam = Camera();
-    Esp.setCamera(cam);
-    cam.setResolution(512,512);
+    Coordonnee c (2,2,2);
+    Sphere Sph (c, 1.5);
+
+    Esp.AjouterObjet(&Sph);
+
     cout << cam.getResolution().getX() << "/" << cam.getResolution().getY() << endl;
 
     Esp.takePicture(0,string("IMAGE_POGGIES"));
 
     return 0; 
 
-}
+}   
