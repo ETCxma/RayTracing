@@ -30,6 +30,7 @@ class Espace{
 
 
         std::vector<Camera> getCameras();
+        std::vector<Objet> getObjects();
         void setCameras(Camera cam);
         
     private:

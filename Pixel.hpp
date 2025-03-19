@@ -9,6 +9,7 @@ class Pixel{
         Pixel(Pixel &pixel);
 
         int getIntensite();
+        void setIntensite();
         
     private:
         int intensite; // Can be replaced by r,g,b or anything else

@@ -38,10 +38,11 @@ void Espace::takePicture(int camID, string path) {
     }
 
     img << "P3\n" << x << " " << y << "\n255\n"; // PPM Header
+    Pixel p;
 
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            Pixel p = cameras.at(camID).getPixel(i, j);
+    for (int i = 0; i < x; i++){
+        for (int j = 0; j < y; j++){
+            p = cameras.at(camID).getPixel(i, j);
             int value = p.getIntensite();
             int r = value, g = value, b = value;
             img << r << " " << g << " " << b << "\n"; // Write RGB values
@@ -58,7 +59,28 @@ int Espace::CreerObjet(){
 }
 
 // Fonction de la mort
-void Espace::rayTracing(int cameraID){  
+void Espace::rayTracing(int camID){  
+    int x = cameras.at(camID).getResolution().getX();
+    int y = cameras.at(camID).getResolution().getY();
+    Rayon r;
+    Pixel p;
+
+    for (int i = 0; i < x; i++){
+        for (int j = 0; j < y; j++){
+            for (auto o : objects){
+                // Envoyer un rayon
+                r = cameras.at(camID).getRayon(i,j);
+                p = cameras.at(camID).getPixel(i, j);
+                // S'il y a intersection
+                if (o.intersection(r,camera.getPosition()) == 1){
+                    p.setIntensite(255);
+                }
+                else{
+                    p.setIntensite(50);
+                }
+            }
+        }
+    }
     return;
 }
 
@@ -66,7 +88,16 @@ vector<Camera> Espace::getCameras(){
     return cameras;
 }
 
-void Espace::setCameras(Camera cam){
+void Espace::setCamera(Camera cam){
     cameras.push_back(cam);
+    return;
+}
+
+vector<Object> Espace::getObjects(){
+    return objets;
+}
+
+void Espace::setObject(Object obj){
+    objets.push_back(obj);
     return;
 }
