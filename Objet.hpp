@@ -13,7 +13,7 @@ typedef int raytracingUsefulInfo;
 class Objet{
 
     public:
-        Objet();
+        // Objet();
 
         virtual raytracingUsefulInfo intersection(Rayon rayon, Coordonnee) = 0;
 

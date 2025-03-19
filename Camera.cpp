@@ -115,6 +115,9 @@ void Camera::setResolution(int x, int y){
     this->calculRayonsCoord();
 }
 
+void Camera::setPixel(int x, int y, Pixel pix){
+    this->ecran.SetPixel(x, y, pix);
+}
 
 Coordonnee Camera::getPosition(){
     return this->position;

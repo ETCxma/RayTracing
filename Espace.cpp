@@ -56,6 +56,7 @@ void Espace::takePicture(int camID, string path) {
             p = cameras.at(camID)->getPixel(i, j);
             int value = p.getIntensite();
             int r = value, g = value, b = value;
+            printf("value : %d\n", value);
             img << r << " " << g << " " << b << "\n"; // Write RGB values
         }
     }
@@ -87,10 +88,14 @@ void Espace::rayTracing(int camID){
                 p = cameras.at(camID)->getPixel(i, j);
                 // S'il y a intersection
                 if (objets.at(o)->intersection(r, cameras.at(camID)->getPosition()) == 1){
+                    printf("if");
                     p.setIntensite(255);
+                    cameras.at(camID)->setPixel(i, j, p);
                 }
                 else{
-                    p.setIntensite(50);
+                    printf("else");
+                    p.setIntensite(100);
+                    cameras.at(camID)->setPixel(i, j, p);
                 }
             }
         }
