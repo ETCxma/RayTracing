@@ -110,6 +110,50 @@ Vecteur operator-(Vecteur &v){
 	return Vecteur(-v.dx, -v.dy, -v.dz);
 }
 
+/**
+ * OPÉRATEUR "*" ENTRE DEUX VECTEURS
+ */
+Vecteur operator*(Vecteur v1, Vecteur v2){
+	return Vecteur((v1.getDX()*v2.getDX()), (v1.getDY()*v2.getDY()), (v1.getDZ()*v2.getDZ()));
+}
+
+Vecteur operator*(Vecteur &v1, Vecteur &v2){
+	return Vecteur((v1.dx*v2.getDX()), (v1.dy*v2.getDY()), (v1.dz*v2.getDZ()));
+}
+
+/**
+ * OPÉRATEUR "*" ENTRE UN VECTEUR ET UNE COORDONNÉE
+ */
+Vecteur operator*(Vecteur v, Coordonnee c){
+	return Vecteur((v.getDX()*c.getX()), (v.getDY()*c.getY()), (v.getDZ()*c.getZ()));
+}
+
+Vecteur operator*(Vecteur &v, Coordonnee &c){
+	return Vecteur((v.dx*c.getX()), (v.dy*c.getY()), (v.dz*c.getZ()));
+}
+
+/**
+ * OPÉRATEUR "+" ENTRE UN VECTEUR ET UNE COORDONNÉE
+ */
+Vecteur operator+(Vecteur v, Coordonnee c){
+	return Vecteur((v.getDX()+c.getX()), (v.getDY()+c.getY()), (v.getDZ()+c.getZ()));
+}
+
+Vecteur operator+(Vecteur &v, Coordonnee &c){
+	return Vecteur((v.dx+c.getX()), (v.dy+c.getY()), (v.dz+c.getZ()));
+}
+
+/**
+ * OPÉRATEUR "-" ENTRE UN VECTEUR ET UNE COORDONNÉE
+ */
+Vecteur operator-(Vecteur v, Coordonnee c){
+	return Vecteur((v.getDX()-c.getX()), (v.getDY()-c.getY()), (v.getDZ()-c.getZ()));
+}
+
+Vecteur operator-(Vecteur &v, Coordonnee &c){
+	return Vecteur((v.dx-c.getX()), (v.dy-c.getY()), (v.dz-c.getZ()));
+}
+
 
 // MÉTHODES
 
@@ -128,6 +172,10 @@ Vecteur Vecteur::unitaire(){
 	else{
 		return (*this)*(1.0/norme()); 
 	}
+}
+
+double Vecteur::angle(Vecteur &v){
+	return acos(produitScalaire(v)/(norme()*v.norme())); 
 }
 
 double Vecteur::produitScalaire(Vecteur &v){
@@ -184,4 +232,5 @@ void Vecteur::rotationPhi(double angle){
 	setDY(temp.getDY());
 	setDZ(temp.getDZ());	
 }
+
 

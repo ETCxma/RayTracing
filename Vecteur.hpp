@@ -115,6 +115,21 @@ class Vecteur{
         // Surcharge de l'opérateur "-" pour les vecteurs en coordonnées cartésiennes (x, y, z)
         friend Vecteur operator-(Vecteur &v);  
 
+        // Surcharge de l'opérateur "*" entre deux vecteurs (on multiplie composante par composante)
+        friend Vecteur operator*(Vecteur v1, Vecteur v2);
+        friend Vecteur operator*(Vecteur &v1, Vecteur &v2);
+
+        // Surcharge de l'opérateur "*" entre une coordonnée et un vecteur 
+        friend Vecteur operator*(Vecteur v, Coordonnee c); 
+        friend Vecteur operator*(Vecteur &v, Coordonnee &c);  
+
+        // Surcharge de l'opérateur "+" entre un vecteur et une coordonnée
+        friend Vecteur operator+(Vecteur v, Coordonnee c);
+        friend Vecteur operator+(Vecteur &v, Coordonnee &c);
+
+        // Surcharge de l'opérateur "-" entre un vecteur et une coordonnée
+        friend Vecteur operator-(Vecteur v, Coordonnee c);
+        friend Vecteur operator-(Vecteur &v, Coordonnee &c); 
         
 
     protected:
