@@ -66,22 +66,9 @@ Coordonnee operator-(Coordonnee c1, Coordonnee c2){
     return Coordonnee((c1.getX()-c2.getX()), (c1.getY()-c2.getY()), c1.getZ()-c2.getZ()); 
 }
 
-Coordonnee operator-(Coordonnee &c1, Coordonnee &c2){
-    return Coordonnee((c1.x - c2.getX()), (c1.y - c2.getY()), (c1.z - c2.getZ())); 
-}
-
-/**
- * OPÉRATEUR "*" POUR DEUX COORDONNÉES
- */
-Coordonnee operator*(Coordonnee c1, Coordonnee c2){
-    return Coordonnee((c1.getX()*c2.getX()), (c1.getY()*c2.getY()), (c1.getZ()*c2.getZ())); 
-}
-
-Coordonnee operator*(Coordonnee &c1, Coordonnee &c2){
-    return Coordonnee((c1.x * c2.getX()), (c1.y * c2.getY()), (c1.z * c2.getZ()));
-}
-
-
+// Coordonnee operator-(Coordonnee &c1, Coordonnee &c2){
+//     return Coordonnee((c1.x - c2.getX()), (c1.y - c2.getY()), (c1.z - c2.getZ())); 
+// }
 
 //  MÉTHODES 
 

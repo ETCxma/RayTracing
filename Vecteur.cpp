@@ -45,6 +45,12 @@ Vecteur::Vecteur(){
 	dz = 0.0;
 }
 
+Vecteur::Vecteur(Coordonnee coordonnee){
+	this->dx = coordonnee.getX();
+	this->dy = coordonnee.getY();
+	this->dz = coordonnee.getZ();
+}
+
 Vecteur::Vecteur(Coordonnee x1, Coordonnee x2){
 	this->dx = x2.getX() - x1.getX();
 	this->dy = x2.getY() - x1.getY();
@@ -111,37 +117,15 @@ Vecteur operator-(Vecteur &v){
 }
 
 /**
- * OPÉRATEUR "*" ENTRE DEUX VECTEURS
- */
-Vecteur operator*(Vecteur v1, Vecteur v2){
-	return Vecteur((v1.getDX()*v2.getDX()), (v1.getDY()*v2.getDY()), (v1.getDZ()*v2.getDZ()));
-}
-
-Vecteur operator*(Vecteur &v1, Vecteur &v2){
-	return Vecteur((v1.dx*v2.getDX()), (v1.dy*v2.getDY()), (v1.dz*v2.getDZ()));
-}
-
-/**
- * OPÉRATEUR "*" ENTRE UN VECTEUR ET UNE COORDONNÉE
- */
-Vecteur operator*(Vecteur v, Coordonnee c){
-	return Vecteur((v.getDX()*c.getX()), (v.getDY()*c.getY()), (v.getDZ()*c.getZ()));
-}
-
-Vecteur operator*(Vecteur &v, Coordonnee &c){
-	return Vecteur((v.dx*c.getX()), (v.dy*c.getY()), (v.dz*c.getZ()));
-}
-
-/**
  * OPÉRATEUR "+" ENTRE UN VECTEUR ET UNE COORDONNÉE
  */
 Vecteur operator+(Vecteur v, Coordonnee c){
 	return Vecteur((v.getDX()+c.getX()), (v.getDY()+c.getY()), (v.getDZ()+c.getZ()));
 }
 
-Vecteur operator+(Vecteur &v, Coordonnee &c){
-	return Vecteur((v.dx+c.getX()), (v.dy+c.getY()), (v.dz+c.getZ()));
-}
+// Vecteur operator+(Vecteur &v, Coordonnee &c){
+// 	return Vecteur((v.dx+c.getX()), (v.dy+c.getY()), (v.dz+c.getZ()));
+// }
 
 /**
  * OPÉRATEUR "-" ENTRE UN VECTEUR ET UNE COORDONNÉE
@@ -150,9 +134,9 @@ Vecteur operator-(Vecteur v, Coordonnee c){
 	return Vecteur((v.getDX()-c.getX()), (v.getDY()-c.getY()), (v.getDZ()-c.getZ()));
 }
 
-Vecteur operator-(Vecteur &v, Coordonnee &c){
-	return Vecteur((v.dx-c.getX()), (v.dy-c.getY()), (v.dz-c.getZ()));
-}
+// Vecteur operator-(Vecteur &v, Coordonnee &c){
+// 	return Vecteur((v.dx-c.getX()), (v.dy-c.getY()), (v.dz-c.getZ()));
+// }
 
 
 // MÉTHODES
