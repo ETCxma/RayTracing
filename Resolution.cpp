@@ -7,7 +7,7 @@ Resolution::Resolution(){
 
 Resolution::Resolution(int x, int y){
     this->x = x;
-    this->y = x;
+    this->y = y;
 }
 
 Resolution::Resolution(Resolution &resolution){
@@ -17,7 +17,7 @@ Resolution::Resolution(Resolution &resolution){
 
 void Resolution::setResolution(int x, int y){
     this->x = x;
-    this->y = x;    
+    this->y = y;    
 }
 
 int Resolution::getX(){
