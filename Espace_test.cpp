@@ -12,6 +12,8 @@
 #include "Vecteur.hpp"
 #include "Camera.hpp"
 #include "Objet.hpp"
+#include "Sphere.hpp"
+
 using namespace std; 
 
 
@@ -20,7 +22,7 @@ int main(int argc, char* argv[]){
     Espace Esp; 
 
     Camera cam = Camera();
-    Esp.setCameras(cam);
+    Esp.setCamera(cam);
     cam.setResolution(512,512);
     cout << cam.getResolution().getX() << "/" << cam.getResolution().getY() << endl;
 

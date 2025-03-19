@@ -18,28 +18,25 @@ class Espace{
 
         // Return camera id
         int CreerCamera(Camera &camera);
-            int CreerCamera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution res);
+        int CreerCamera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution res);
         
         void takePicture(int id, std::string path);
         // TODO : implement for all X : void ModifyCameraX(int id, XType newX);
         
         
         // Return Objet id
-        int CreerObjet();
+        int AjouterObjet(Objet *obj);
         // TODO : implement for all X : void ModifyObjetX(int id, XType newX);
 
-
         std::vector<Camera> getCameras();
-        std::vector<Objet> getObjects();
-        void setCameras(Camera cam);
+        std::vector<Objet *> &getObjects();    
+        void setCamera(Camera cam);
         
     private:
         void rayTracing(int id);
 
-
-        Coordonnee origine; // not 0,0,0 by default ??
         Vecteur v[3]; // not defined by default ??
-        std::vector<Objet> objets;
+        std::vector<Objet*> objets;
         std::vector<Camera> cameras;
 
 };
