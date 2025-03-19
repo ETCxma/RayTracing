@@ -12,6 +12,8 @@
 #include "Vecteur.hpp"
 #include "Camera.hpp"
 #include "Objet.hpp"
+#include "Sphere.hpp"
+
 using namespace std; 
 
 
