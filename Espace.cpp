@@ -12,24 +12,35 @@ using namespace std;
 Espace::Espace(){
 }
 
-// Return camera ID
-// int Espace::CreerCamera(Camera &camera){
-//     cAM
-//     cameras.push_back(camera);
-//     return cameras.size() -1;
-// }
-
-int Espace::CreerCamera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution res){
-    Camera cam = Camera(position, distance_ecran, theta, phi, res);   
-    cameras.push_back(cam);
-    return cameras.size() -1;
+vector<Camera *> &Espace::getCameras(){
+    return cameras;
 }
 
-void Espace::takePicture(int camID, string path) {
-    rayTracing(camID);
-    int x = cameras.at(camID).getResolution().getX();
-    int y = cameras.at(camID).getResolution().getY();
 
+vector<Objet *> &Espace::getObjects(){
+    return objets;
+}
+
+// Return Objet id
+int Espace::AjouterObjet(Objet* obj){
+    objets.push_back(obj);
+    return objets.size() - 1;
+}
+
+// Return Camera id
+int Espace::AjouterCamera(Camera *cam){
+    cameras.push_back(cam);
+    return cameras.size() - 1;
+}
+
+
+void Espace::takePicture(int camID, string path) {
+    printf("ouais take picture let's go \n");
+    rayTracing(camID);
+    printf("ouais take picture let's go 2\n");
+    int x = cameras.at(camID)->getResolution().getX();
+    int y = cameras.at(camID)->getResolution().getY();
+    
     ofstream img(path);  // using "test.ppm" as test
 
     if (!img.is_open()) {
@@ -42,7 +53,7 @@ void Espace::takePicture(int camID, string path) {
 
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
-            p = cameras.at(camID).getPixel(i, j);
+            p = cameras.at(camID)->getPixel(i, j);
             int value = p.getIntensite();
             int r = value, g = value, b = value;
             img << r << " " << g << " " << b << "\n"; // Write RGB values
@@ -51,29 +62,31 @@ void Espace::takePicture(int camID, string path) {
 
     img.close();
     system(("open " + path).c_str()); // Open the file
+    printf("ouais End of take picture let's go \n");
+    return;
 }
 
-// Return Objet id
-int Espace::AjouterObjet(Objet* obj){
-    objets.push_back(obj);
-    return objets.size() - 1;
-}
 
 // Fonction de la mort
-void Espace::rayTracing(int camID){  
-    int x = cameras.at(camID).getResolution().getX();
-    int y = cameras.at(camID).getResolution().getY();
+void Espace::rayTracing(int camID){
+    printf("ouais RayTracing let's go \n");
+    int x = cameras.at(camID)->getResolution().getX();
+    printf("ouais RayTracing let's go n°1.5\n");
+    int y = cameras.at(camID)->getResolution().getY();
+    printf("ouais RayTracing let's go n°2\n");
     Rayon r;
     Pixel p;
+    printf("ouais RayTracing let's go n°3\n");
 
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
-            for (int o = 0; o < objets.size(); o++){
+            for (int o = 0; o < (int)objets.size(); o++){
+                printf("Woooooooo %d / %d\n", i, j);
                 // Envoyer un rayon
-                r = cameras.at(camID).getRayon(i,j);
-                p = cameras.at(camID).getPixel(i, j);
+                r = cameras.at(camID)->getRayon(i, j);
+                p = cameras.at(camID)->getPixel(i, j);
                 // S'il y a intersection
-                if (objets.at(o)->intersection(r, cameras.at(camID).getPosition()) == 1){
+                if (objets.at(o)->intersection(r, cameras.at(camID)->getPosition()) == 1){
                     p.setIntensite(255);
                 }
                 else{
@@ -82,18 +95,6 @@ void Espace::rayTracing(int camID){
             }
         }
     }
+    printf("ouais End of RayTracing let's go \n");
     return;
-}
-
-vector<Camera> Espace::getCameras(){
-    return cameras;
-}
-
-void Espace::setCamera(Camera cam){
-    cameras.push_back(cam);
-    return;
-}
-
-vector<Objet *> &Espace::getObjects(){
-    return objets;
 }
