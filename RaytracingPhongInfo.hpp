@@ -9,10 +9,10 @@ class RaytracingPhongInfo{
     public:
         RaytracingPhongInfo();
         RaytracingPhongInfo(bool intersection);
-        RaytracingPhongInfo(bool intersection, Vecteur normale, Vecteur lumiere_to_objet, Vecteur lumiere_to_objet_reflechi, Vecteur camera_to_objet);
+        RaytracingPhongInfo(bool intersection, Vecteur normale, Vecteur objet_to_lumiere, Vecteur objet_to_lumiere_reflechi, Vecteur objet_to_camera);
     
         bool intersection;
-        Vecteur normale, lumiere_to_objet, lumiere_to_objet_reflechi, camera_to_objet;
+        Vecteur normale, objet_to_lumiere, objet_to_lumiere_reflechi, objet_to_camera;
 
 };
 
