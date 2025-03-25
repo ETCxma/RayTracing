@@ -31,7 +31,7 @@ void Sphere::affichInfos(){
     cout << "Informations de la Sphere : " << endl << "rayon = " << rayon << " / " << "centre = (" << centre.getX() << ", " << centre.getY() << ", " << centre.getZ() << ")"<< endl; 
 }
 
-raytracingUsefulInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera){
+raytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera){
     double t1, t2;
     
     
