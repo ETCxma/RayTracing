@@ -7,6 +7,7 @@
 #include "Vecteur.hpp"
 #include "Camera.hpp"
 #include "Objet.hpp"
+#include "Lumiere.hpp"
 
 
 class Espace{
@@ -26,7 +27,8 @@ class Espace{
         // TODO : implement for all X : void ModifyObjetX(int id, XType newX);
 
         std::vector<Camera *> &getCameras();
-        std::vector<Objet *> &getObjects();    
+        std::vector<Objet *> &getObjects();
+        std::vector<Lumiere*> &getLumieres();
         
     private:
         void rayTracingSimple(int id);
@@ -35,6 +37,7 @@ class Espace{
         Vecteur v[3]; // not defined by default ??
         std::vector<Objet*> objets;
         std::vector<Camera*> cameras;
+        std::vector<Lumiere*> lumieres;
 
 };
 
