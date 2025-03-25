@@ -73,10 +73,6 @@ void Camera::calculRayonsCoord(){
 
     Vecteur P1m = tn*distance_ecran - bn*gx - vn*gy;
 
-    qx.afficheVecteur("qx");
-    qy.afficheVecteur("qy");
-    P1m.afficheVecteur("P1m");
-
     for(int i = 0; i < k; i++){
         for(int j = 0; j < m; j++){
             Vecteur pij = P1m + qx*i + qy*j;
