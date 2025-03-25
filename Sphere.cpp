@@ -35,7 +35,7 @@ raytracingUsefulInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
     double t1, t2;
     
     
-    Vecteur v = Vecteur(this->centre - centre_camera);
+    Vecteur v = Vecteur(this->centre, centre_camera);
     double vdotd = v.produitScalaire(rayon);
     
     // std::cout << vdotd << std::endl;
@@ -46,36 +46,30 @@ raytracingUsefulInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
     // std::cout << delta << std::endl;
     
     if(delta > 0){
-        Vecteur n1, n2;
-        Vecteur y1, y2;
-        Vecteur x1, x2;
-
-        Vecteur r, x;
+        Vecteur n;
+        Vecteur y;
+        Vecteur x;
+        Vecteur r;
         
-        t1 = vdotd + delta;
-        t2 = vdotd - delta;
-        y1 = (rayon*t1 + centre_camera);
-        y2 = (rayon*t2 + centre_camera);
+        t1 = -vdotd + delta;
+        t2 = -vdotd - delta;
 
-        n1 = (y1 - this->centre).unitaire();
-        n2 = (y2 - this->centre).unitaire();
-
-        std::cout << t1 << std::endl;
-        std::cout << t2 << std::endl;
-
-        // y1.afficheVecteur("y1");
-        // y2.afficheVecteur("y2");
-        // n1.afficheVecteur("n1");
-        // n2.afficheVecteur("n2");
-
-        // double n1angle = rayon.angle(n1);
-
-        if(t1 < t2)
-            r = rayon - (n1*n1.produitScalaire(rayon)*2);
-        else
-            r = rayon - (n2*n2.produitScalaire(rayon)*2);
-
+        // std::cout << t1 << std::endl;
+        // std::cout << t2 << std::endl;
+                
+        if(t1 < t2){
+            y = (rayon*t1 + centre_camera);
+        }
+        else{
+            y = (rayon*t2 + centre_camera);
+        }
+        n = (y - this->centre).unitaire();
+        r = rayon - (n*n.produitScalaire(rayon)*2);
         r = r.unitaire();
+
+
+        // y.afficheVecteur("y");
+        // n.afficheVecteur("n");
         // r.afficheVecteur("r");
 
 
