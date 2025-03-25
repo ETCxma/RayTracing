@@ -6,10 +6,12 @@ class Materiau{
     public:
         Materiau();
         Materiau(Materiau &materiau);
-        Materiau(double indice_interne);
+        Materiau(double indice_spectular, double indice_diffuse, double indice_ambient);
 
     private:
-        double indice_interne;
+        double indice_spectular;
+        double indice_diffuse;
+        double indice_ambient;
         // TODO: Add more
 };
 
