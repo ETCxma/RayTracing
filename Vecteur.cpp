@@ -15,59 +15,55 @@ using namespace std;
 
 
 // GETTERS
+Coordonnee Vecteur::getVecteur(){
+	return this->vecteur;
+}
+
 double Vecteur::getDX(){
-	return this->dx; 
+	return this->vecteur.getX(); 
 }
 double Vecteur::getDY(){
-	return this->dy; 
+	return this->vecteur.getY(); 
 }
 double Vecteur::getDZ(){
-	return this->dz; 
+	return this->vecteur.getZ(); 
 } 
 
 // SETTERS
 void Vecteur::setDX(double x){
-	this->dx = x;
+	this->vecteur.setX(x);
 }
 void Vecteur::setDY(double y){
-	this->dy = y;
+	this->vecteur.setY(y);
 }
 void Vecteur::setDZ(double z){
-	this->dz = z;
+	this->vecteur.setZ(z);
 }
 
 
 // CONSTRUCTEURS
 
 Vecteur::Vecteur(){
-	dx = 0.0;
-	dy = 0.0;
-	dz = 0.0;
+	this->vecteur = Coordonnee(0,0,0);
 }
 
 Vecteur::Vecteur(Coordonnee coordonnee){
-	this->dx = coordonnee.getX();
-	this->dy = coordonnee.getY();
-	this->dz = coordonnee.getZ();
+	this->vecteur = Coordonnee(coordonnee.getX(), coordonnee.getY(), coordonnee.getZ());
 }
 
 Vecteur::Vecteur(Coordonnee x1, Coordonnee x2){
-	this->dx = x2.getX() - x1.getX();
-	this->dy = x2.getY() - x1.getY();
-	this->dz = x2.getZ() - x1.getZ();
+	this->vecteur = Coordonnee(x2.getX() - x1.getX(),
+							   x2.getY() - x1.getY(),
+		 					   x2.getZ() - x1.getZ());
 }
 
 
 Vecteur::Vecteur(double dx, double dy, double dz){
-	this->dx = dx;
-	this->dy = dy;
-	this->dz = dz; 
+	this->vecteur = Coordonnee(dx, dy, dz);
 }
 
 Vecteur::Vecteur(Vecteur &v){
-	this->dx = v.dx;
-	this->dy = v.dy;
-	this->dz = v.dz;		
+	this->vecteur = v.getVecteur();
 }
 
 
@@ -99,21 +95,21 @@ Vecteur operator-(Vecteur v, Vecteur v2){
  * OPÉRATEUR "*" POUR UN VECTEUR ET UN SCALAIRE EN COORDONNÉES CARTÉSIENNES
  */
 Vecteur operator*(Vecteur v, double scalaire){
-	return Vecteur(scalaire*(v.dx), scalaire*(v.dy), scalaire*(v.dz)); 
+	return Vecteur(scalaire*(v.getDX()), scalaire*(v.getDY()), scalaire*(v.getDZ())); 
 }
 
 /**
  * OPÉRATEUR "*" POUR UN VECTEUR ET UN SCALAIRE EN COORDONNÉES CARTÉSIENNES
  */
 Vecteur operator*(Vecteur v, int scalaire){
-	return Vecteur(scalaire*(v.dx), scalaire*(v.dy), scalaire*(v.dz)); 
+	return Vecteur(scalaire*(v.getDX()), scalaire*(v.getDY()), scalaire*(v.getDZ())); 
 }
 
 /**
  * OPÉRATEUR "-" D'INVERSION
  */
 Vecteur operator-(Vecteur &v){
-	return Vecteur(-v.dx, -v.dy, -v.dz);
+	return Vecteur(-v.getDX(), -v.getDY(), -v.getDY());
 }
 
 /**
@@ -142,7 +138,7 @@ Vecteur operator-(Vecteur v, Coordonnee c){
 // MÉTHODES
 
 void Vecteur::afficheVecteur(string nom){
-	cout << nom << " = (" << this->dx << "," << this->dy << "," << this->dz << ")" << endl; 
+	cout << nom << " = (" << this->getDX() << "," << this->getDY() << "," << this->getDZ() << ")" << endl; 
 }
 
 double Vecteur::norme(){
@@ -163,13 +159,13 @@ double Vecteur::angle(Vecteur &v){
 }
 
 double Vecteur::produitScalaire(Vecteur &v){
-	return ((this->dx)*(v.getDX()) + (this->dy)*(v.getDY()) + (this->dz)*(v.getDZ())); 
+	return ((this->getDX())*(v.getDX()) + (this->getDY())*(v.getDY()) + (this->getDZ())*(v.getDZ())); 
 }
 
 Vecteur Vecteur::produitVectoriel(Vecteur &v){
-	return Vecteur(((this->dy)*v.getDZ() - v.getDY()*(this->dz)), 
-					((this->dz)*v.getDX() - v.getDZ()*(this->dx)),
-					((this->dx)*v.getDY() - v.getDX()*(this->dy))); 
+	return Vecteur(((this->getDY())*v.getDZ() - v.getDY()*(this->getDZ())), 
+					((this->getDZ())*v.getDX() - v.getDZ()*(this->getDX())),
+					((this->getDX())*v.getDY() - v.getDX()*(this->getDY()))); 
 }
 
 Vecteur Vecteur::cartesienToSpherique(){
@@ -178,11 +174,11 @@ Vecteur Vecteur::cartesienToSpherique(){
 	double phi = 0.0;
 
 	r = norme();
-	theta = acos(((this->dz))/r); 
-	if(this->dy == 0.0)
+	theta = acos(((this->getDZ()))/r); 
+	if(this->getDY() == 0.0)
 		phi = 0; 
 	else
-		phi = copysign(1.0, this->dy)*acos((this->dx)/sqrt(this->dx*this->dx + this->dy*this->dy));
+		phi = copysign(1.0, this->getDY())*acos((this->getDX())/sqrt(this->getDX()*this->getDX() + this->getDY()*this->getDY()));
 
 	return Vecteur(r, theta, phi); 
 }
@@ -192,9 +188,9 @@ Vecteur Vecteur::spheriqueToCartesien(){
 	double y = 0.0;
 	double z = 0.0;
 
-	x = (this->dx)*sin(this->dy)*cos(this->dz);
-	y = (this->dx)*sin(this->dy)*sin(this->dz); 
-	z = (this->dx)*cos(this->dy);
+	x = (this->getDX())*sin(this->getDY())*cos(this->getDZ());
+	y = (this->getDX())*sin(this->getDY())*sin(this->getDZ()); 
+	z = (this->getDX())*cos(this->getDY());
 	
 	return Vecteur(x, y, z); 
 }
