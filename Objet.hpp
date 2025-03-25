@@ -17,6 +17,10 @@ class Objet{
 
         virtual raytracingUsefulInfo intersection(Rayon rayon, Coordonnee) = 0;
 
+        double getIndiceSpectular();
+        double getIndiceDiffuse();
+        double getIndiceAmbient();
+
     protected:
         Materiau materiau;
         std::vector<Objet> objets;

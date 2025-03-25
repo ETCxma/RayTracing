@@ -15,6 +15,8 @@ class Rayon: public Vecteur{
         Rayon(Vecteur &vecteur, Couleur couleur=Couleur());
         Rayon(Rayon &rayon);
 
+        void addIntensite(double intensite);
+
     private:
         Couleur couleur;
 
