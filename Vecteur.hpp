@@ -92,6 +92,8 @@ class Vecteur{
         // Vecteur &Reflechi(Triangle &t);
 
         // Getter
+        Coordonnee getVecteur();
+
         double getDX(); 
         double getDY();
         double getDZ();  
@@ -134,7 +136,8 @@ class Vecteur{
         
 
     protected:
-        double dx, dy, dz; 
+        Coordonnee vecteur;
+        // double dx, dy, dz; 
 
 
 };

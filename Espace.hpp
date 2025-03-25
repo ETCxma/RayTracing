@@ -30,6 +30,7 @@ class Espace{
         
     private:
         void rayTracingSimple(int id);
+        void rayTracingPhong(int id);
 
         Vecteur v[3]; // not defined by default ??
         std::vector<Objet*> objets;

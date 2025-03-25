@@ -91,3 +91,9 @@ void Espace::rayTracingSimple(int camID){
     }
     return;
 }
+
+// Fonction de la mort v2.0
+void Espace::rayTracingPhong(int camID){
+    // HELLLLLLLLLP
+    return;
+}
