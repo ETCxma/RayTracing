@@ -126,12 +126,12 @@ void Espace::rayTracingPhong(int camID){
 
                 for (int l = 0; l < (int)lumieres.size(); l++)
                     // On utilise la méthode de Maxime afin d'obtenir les vecteurs nécessaires à la méthode de Phong
-                    Phong_Vectors = objets.at(o)->intersectionPhong(r, cameras.at(camID)->getPosition(), lumieres.at(l)->getSource());
+                    Phong_Vectors = objets.at(o)->intersectionPhong(r, cameras.at(camID)->getPosition(), lumieres.at(l)->getPosition());
 
-                    Vecteur vL_m = Phong_Vectors.lumiere_to_objet;
+                    Vecteur vL_m = Phong_Vectors.objet_to_lumiere;
                     Vecteur vN = Phong_Vectors.normale;
-                    Vecteur vR_m = Phong_Vectors.lumiere_to_objet_reflechi;
-                    Vecteur vV = Phong_Vectors.camera_to_objet;
+                    Vecteur vR_m = Phong_Vectors.objet_to_lumiere_reflechi;
+                    Vecteur vV = Phong_Vectors.objet_to_camera;
 
                     calculus += k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(int)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s;
                     // plutôt que de modifier l'intensité du pixel, on va modifier l'intensité de la couleur associée au rayon
