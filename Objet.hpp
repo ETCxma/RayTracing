@@ -22,6 +22,7 @@ class Objet{
         double getIndiceSpectular();
         double getIndiceDiffuse();
         double getIndiceAmbient();
+        double getAlpha();
 
     protected:
         Materiau materiau;

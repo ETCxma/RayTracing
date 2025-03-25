@@ -13,3 +13,6 @@ double Objet::getIndiceDiffuse(){
 double Objet::getIndiceAmbient(){
     return this->materiau.getIndiceDiffuse();
 }
+double Objet::getAlpha(){
+    return this->materiau.getAlpha();
+}
