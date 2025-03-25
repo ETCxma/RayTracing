@@ -29,7 +29,7 @@ class Espace{
         std::vector<Objet *> &getObjects();    
         
     private:
-        void rayTracing(int id);
+        void rayTracingSimple(int id);
 
         Vecteur v[3]; // not defined by default ??
         std::vector<Objet*> objets;

@@ -35,7 +35,7 @@ int Espace::AjouterCamera(Camera *cam){
 
 
 void Espace::takePicture(int camID, string path) {
-    rayTracing(camID);
+    rayTracingSimple(camID);
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
     
@@ -65,7 +65,7 @@ void Espace::takePicture(int camID, string path) {
 
 
 // Fonction de la mort
-void Espace::rayTracing(int camID){
+void Espace::rayTracingSimple(int camID){
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
     Rayon r;
