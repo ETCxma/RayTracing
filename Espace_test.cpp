@@ -20,12 +20,12 @@ using namespace std;
 int main(int argc, char* argv[]){
 
     Espace Esp;
+
     Camera cam = Camera(Resolution (512,512));
     Esp.AjouterCamera(&cam);
 
-    Coordonnee c (2,2,2);
+    Coordonnee c (0,0,10);
     Sphere Sph (c, 1.5);
-
     Esp.AjouterObjet(&Sph);
 
     cout << cam.getResolution().getX() << "/" << cam.getResolution().getY() << endl;

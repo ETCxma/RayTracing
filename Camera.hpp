@@ -22,6 +22,7 @@ class Camera{
         void setTheta(double theta);
         void setPhi(double phi);
         void setResolution(int x, int y);
+        void setPixel(int x, int y, Pixel pix);
 
         Coordonnee getPosition();
         double getDistanceEcran();
