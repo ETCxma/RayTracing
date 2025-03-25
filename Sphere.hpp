@@ -26,7 +26,8 @@ class Sphere: public Objet{
         // Afficher les informations d'une sphère
         void affichInfos();
 
-        raytracingSimpleInfo intersection(Rayon rayon, Coordonnee centre_camera);
+        RaytracingSimpleInfo intersection(Rayon rayon, Coordonnee centre_camera);
+        RaytracingPhongInfo intersectionPhong(Rayon rayon, Coordonnee centre_camera, Coordonnee position_lumiere);
 
 };
 
