@@ -8,6 +8,10 @@ class Materiau{
         Materiau(Materiau &materiau);
         Materiau(double indice_spectular, double indice_diffuse, double indice_ambient);
 
+        double getIndiceSpectular();
+        double getIndiceDiffuse();
+        double getIndiceAmbient();
+
     private:
         double indice_spectular;
         double indice_diffuse;

@@ -11,3 +11,15 @@ Materiau::Materiau(double indice_spectular, double indice_diffuse, double indice
     this->indice_diffuse = indice_diffuse;
     this->indice_ambient = indice_ambient;
 }
+
+double Materiau::getIndiceSpectular(){
+    return this->indice_spectular;
+}
+
+double Materiau::getIndiceDiffuse(){
+    return this->indice_diffuse;
+}
+
+double Materiau::getIndiceAmbient(){
+    return this->indice_ambient;
+}
