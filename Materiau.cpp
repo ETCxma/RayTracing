@@ -23,3 +23,7 @@ double Materiau::getIndiceDiffuse(){
 double Materiau::getIndiceAmbient(){
     return this->indice_ambient;
 }
+
+double Materiau::getAlpha(){
+    return this->alpha;
+}
