@@ -54,7 +54,7 @@ void Camera::calculRayonsCoord(){
     Vecteur t = centre_ecran.spheriqueToCartesien();
 
     Vecteur v = t;
-    v.rotationPhi(-M_PI_2);
+    v.rotationTheta(-M_PI_2);
     
     Vecteur b = t.produitVectoriel(v);
     
