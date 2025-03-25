@@ -5,7 +5,7 @@
 #include "Coordonnee.hpp"
 #include "Materiau.hpp"
 #include "Rayon.hpp"
-#include "raytracingPhongInfo.hpp"
+#include "RaytracingPhongInfo.hpp"
 
 // TODO : figure out
 // For example can be multiple rays that spawn from initial ray with different intensity values
@@ -17,7 +17,7 @@ class Objet{
         // Objet();
 
         virtual raytracingSimpleInfo intersection(Rayon rayon, Coordonnee centre_camera) = 0;
-        virtual raytracingPhongInfo intersectionPhong(Rayon rayon, Coordonnee centre_camera) = 0;
+        virtual RaytracingSimpleInfo intersectionPhong(Rayon rayon, Coordonnee centre_camera) = 0;
 
         double getIndiceSpectular();
         double getIndiceDiffuse();
