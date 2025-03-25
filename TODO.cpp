@@ -2,6 +2,16 @@
 
 Liste de tous les fichiers avec ceux qui sont déjà fait, ceux qui sont entrain d'être fait et ceux à faire : 
 
+Faire un lumiere_test.cpp qui creer une source de lumiere (Nicolas et Benjamin)
+Faire une méthode dans lumiere.cpp qui renvoit le rayon entre cette source de lumière et une sphere (Nicolas et Benjamin)
+
+Faire une autre méthode RayTracing utilisant le modèle de Phong (Quentin)
+Maximus doit faire son truc (idk what)
+
+
+
+
+
 Camera : fait (reste fonction calculateScreenCoords())
 Coordonnee : fait 
 Couleur : fait (sort of, à voir si on implémente plus que l'intensité lumineuse)
