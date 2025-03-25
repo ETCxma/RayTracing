@@ -21,3 +21,6 @@ void Pixel::setIntensite(int value){
     intensite = value;
 }
 
+void Pixel::addIntensite(int value){
+    intensite |= value;
+}
