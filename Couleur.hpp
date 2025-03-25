@@ -10,10 +10,13 @@ class Couleur{
 
 		//getteur
 		double getIntensite();
+		
+        void setIntensite(double intensite);
+        void addIntensite(double intensite);
     
 
     private:
-        double intensité; // or r,g,b/spectrogram/...
+        double intensite; // or r,g,b/spectrogram/...
 
 };
 

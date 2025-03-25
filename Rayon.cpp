@@ -21,3 +21,7 @@ Rayon::Rayon(Rayon &rayon):
     Vecteur(rayon) {
     this->couleur = couleur;
 }
+
+void Rayon::addIntensite(double intensite){
+    this->addIntensite(intensite);
+}

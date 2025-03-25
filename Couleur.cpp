@@ -1,16 +1,23 @@
 #include "Couleur.hpp"
 
 Couleur::Couleur(){
-	this->intensité = 0;
+	this->intensite = 0;
 };
 
 Couleur::Couleur(Couleur &Couleur){
-	this->intensité = Couleur.getIntensite();
+	this->intensite = Couleur.getIntensite();
 };
 
-Couleur::Couleur(double intensité): intensité(intensité){};
+Couleur::Couleur(double intensite): intensite(intensite){};
 
 double Couleur::getIntensite(){
-	return intensité;
+	return this->intensite;
 }
 
+void Couleur::setIntensite(double intensite){
+	this->intensite = intensite;
+}
+
+void Couleur::addIntensite(double intensite){
+	this->intensite += intensite;
+}
