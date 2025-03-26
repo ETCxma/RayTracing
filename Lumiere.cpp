@@ -20,16 +20,16 @@ Coordonnee Lumiere::getPosition(){
     return Coordonnee(this->getX(), this->getY(), this->getZ()); 
 }
 
-float Lumiere::getIS(){
-	return this->i_s;
+float Lumiere::getIntensiteSpecular(){
+	return this->intensite_specular;
 }
 
-float Lumiere::getID(){
-	return this->i_d;
+float Lumiere::getIntensiteDiffuse(){
+	return this->intensite_diffuse;
 }
 
-float Lumiere::getIA(){
-	return this->i_a;
+float Lumiere::getIntensiteAmbient(){
+	return this->intensite_ambient;
 }
 
 // Setteurs.
@@ -43,16 +43,16 @@ void Lumiere::setPosition(Coordonnee source){
 	this->setZ(source.getZ());
 }
 
-void Lumiere::setIS(float i_s){
-	this->i_s = i_s;
+void Lumiere::setIntensiteSpecular(float intensite_specular){
+	this->intensite_specular = intensite_specular;
 }
 
-void Lumiere::setID(float i_d){
-	this->i_d = i_d;
+void Lumiere::setIntensiteDiffuse(float intensite_diffuse){
+	this->intensite_diffuse = intensite_diffuse;
 }
 
-void Lumiere::setIA(float i_a){
-	this->i_a = i_a;
+void Lumiere::setIntensiteAmbient(float intensite_ambient){
+	this->intensite_ambient = intensite_ambient;
 }
 
 
@@ -62,7 +62,7 @@ Lumiere::Lumiere() : Coordonnee(){
     this->intensite = 0.0;
 }
 
-Lumiere::Lumiere(Couleur intensite, Coordonnee source, float i_s, float i_d, float i_a): Coordonnee(source){
+Lumiere::Lumiere(Couleur intensite, Coordonnee source, float intensite_s, float intensite_d, float intensite_a): Coordonnee(source){
     this->intensite = intensite;
 }
 
