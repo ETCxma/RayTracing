@@ -14,9 +14,6 @@ class Ecran{
         Ecran(Resolution resolution);
         // ~Ecran();
         
-        // Ecran& operator=(Ecran &ecran);
-
-        int size();
 
         // Pixel getPixel(int x, int y);
         // Coordonnee getCentrePixel(int x, int y);

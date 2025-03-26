@@ -19,10 +19,12 @@ class Objet{
         virtual RaytracingSimpleInfo intersection(Rayon rayon, Coordonnee centre_camera) = 0;
         virtual RaytracingPhongInfo intersectionPhong(Rayon rayon, Coordonnee centre_camera, Coordonnee position_lumiere) = 0;
 
-        double getIndiceSpectular();
+        double getIndiceSpecular();
         double getIndiceDiffuse();
         double getIndiceAmbient();
         double getAlpha();
+
+        void setMateriau(const Materiau& mat);
 
     protected:
         Materiau materiau;

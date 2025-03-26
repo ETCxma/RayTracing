@@ -44,32 +44,10 @@ Ecran::Ecran(Resolution resolution){
      }
 }
 
-// Ecran::~Ecran(){
-//     delete[] this->pixels;
-//     delete[] this->rayons;
-// }
-
-// Ecran& Ecran::operator=(Ecran &ecran){
-//     if(this == &ecran)
-//         return *this;
-
-//     try{
-//         std::copy(ecran.rayons, ecran.rayons + ecran.size(), this->rayons);    
-//         std::copy(ecran.pixels, ecran.pixels + ecran.size(), this->pixels);
-//     }
-//     catch(const std::exception& e){
-//         std::cout << e.what() << '\n';
-//         throw;
-//     }
-
-//     return *this;
-// }
-
-// int Ecran::size(){
-//     return this->getResolution().getX()*this->getResolution().getY();
-// }
-
-
+Ecran::~Ecran(){
+    delete[] this->pixels;
+    delete[] this->rayons;
+}
 
 void Ecran::setResolution(int x, int y){
     return this->resolution.setResolution(x, y);
