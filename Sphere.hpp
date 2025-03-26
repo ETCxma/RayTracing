@@ -12,8 +12,8 @@ class Sphere: public Objet{
         Coordonnee centre;
 
     public:
-        // Crée une sphère à partir de son centre et de son rayon
-        Sphere(Coordonnee centre, double rayon);
+        // Crée une sphère à partir de son centre, de son rayon et de son matériau
+        Sphere(Coordonnee centre, double rayon, Materiau mat);
 
         // Getters
         int getRayon();

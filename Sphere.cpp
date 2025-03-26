@@ -4,9 +4,10 @@ using namespace std;
 
 
 // Constructor :
-Sphere::Sphere(Coordonnee c, double r){
+Sphere::Sphere(Coordonnee c, double r, Materiau m){
     centre = c;
     rayon = r;
+    materiau = m;
 }
 
 // Getters

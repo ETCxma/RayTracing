@@ -26,10 +26,11 @@ int main(int argc, char* argv[]){
     Lumiere lum = Lumiere(Couleur(1),Coordonnee(5,0,0),1,1,1);
     Esp.AjouterLumiere(&lum);
     Coordonnee c (0,0,10);
-    Sphere Sph (c, 1);
+    Materiau m1 = Materiau(10.0,10.0,10.0,2.0);
+    Sphere Sph (c, 1, m1);
     Esp.AjouterObjet(&Sph);
     Coordonnee c2 (2,4,10);
-    Sphere Sph2 (c2, 4);
+    Sphere Sph2 (c2, 4, m1);
     Esp.AjouterObjet(&Sph2);
 
     // cout << cam.getResolution().getX() << "/" << cam.getResolution().getY() << endl;

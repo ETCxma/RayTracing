@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include<cmath>
+#include <cmath>
 #include "Vecteur.hpp"
 #include "Camera.hpp"
 #include "Objet.hpp"
@@ -139,7 +139,10 @@ void Espace::rayTracingPhong(int camID){
                     Vecteur vN = Phong_Vectors.normale;
                     Vecteur vR_m = Phong_Vectors.objet_to_lumiere_reflechi;
                     Vecteur vV = Phong_Vectors.objet_to_camera;
-                    // cout << "vL_m = " << afficheVecteur(vL_m) << "/ vN = " << vN << "/ vR_m = " << vR_m << "vV = " << vV << endl;
+                    vL_m.afficheVecteur(string("vL_m"));
+                    vN.afficheVecteur(string("vN"));
+                    vR_m.afficheVecteur(string("vR_m"));
+                    vV.afficheVecteur(string("vV"));
 
                     calculus += k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(int)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s;
                     cout << calculus <<endl;
