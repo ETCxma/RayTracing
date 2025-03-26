@@ -1,20 +1,20 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
-/*
-	va pu servir, l'implémentation sert à r...
-*/
 
-#include "Coordonnee.hpp"
-#include "Couleur.hpp"
+
+#include "Point.hpp"
+#include "Vecteur.hpp"
 
 class Triangle{
 
     public:
-        Triangle();
-        Triangle(Coordonnee c1, Coordonnee c2, Coordonnee c3);
+        // Constructeur
+        Triangle(); 
+        Triangle(Point* points);        // On lui donne une référence vers un tableau de Points
+        Triangle(Triangle& t); 
 
     private:
-        Coordonnee c[3];
+        Point points[3]; 
 };
 
 
