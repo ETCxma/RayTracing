@@ -128,6 +128,8 @@ void Espace::rayTracingPhong(int camID){
                 int alpha = objets.at(o)->getAlpha();;
                 int i_m_s = objets.at(o)->getIndiceSpectular();
                 int calculus = k_a*i_a;
+                cout << calculus <<endl;
+                cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ alpha = " << alpha << "/ i_m_s = " << i_m_s << endl;  
 
                 for (int l = 0; l < (int)lumieres.size(); l++){
                     // On utilise la méthode de Maxime afin d'obtenir les vecteurs nécessaires à la méthode de Phong
@@ -137,15 +139,21 @@ void Espace::rayTracingPhong(int camID){
                     Vecteur vN = Phong_Vectors.normale;
                     Vecteur vR_m = Phong_Vectors.objet_to_lumiere_reflechi;
                     Vecteur vV = Phong_Vectors.objet_to_camera;
+                    // cout << "vL_m = " << afficheVecteur(vL_m) << "/ vN = " << vN << "/ vR_m = " << vR_m << "vV = " << vV << endl;
 
                     calculus += k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(int)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s;
+                    cout << calculus <<endl;
+                    r.addIntensite(calculus);
                     // plutôt que de modifier l'intensité du pixel, on va modifier l'intensité de la couleur associée au rayon
                     // On fera ensuite une autre méthode qui permet de transformer les rayons en pixel afin d'avoir leur intensité et all gud
-                    p.addIntensite(calculus);
-                    cameras.at(camID)->setPixel(i, j, p);
+                    // p.addIntensite(calculus);
+                    // cameras.at(camID)->setPixel(i, j, p);
                 }
+                cout << calculus <<endl;
             }
+            // r.RayontoPixel(r.couleur, 255);
         }
     }
+    //ecran.RayontoPixel();
     return;
 }
