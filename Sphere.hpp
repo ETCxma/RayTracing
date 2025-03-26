@@ -10,10 +10,11 @@ class Sphere: public Objet{
     private:
         double rayon;
         Coordonnee centre;
+        Materiau mat;
 
     public:
         // Crée une sphère à partir de son centre, de son rayon et de son matériau
-        Sphere(Coordonnee centre, double rayon, Materiau mat);
+        Sphere(Coordonnee centre, double rayon,const Materiau& mat);
 
         // Getters
         int getRayon();

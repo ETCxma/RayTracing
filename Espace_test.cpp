@@ -13,6 +13,7 @@
 #include "Camera.hpp"
 #include "Objet.hpp"
 #include "Sphere.hpp"
+#include "Materiau.hpp"
 
 using namespace std; 
 
@@ -25,12 +26,15 @@ int main(int argc, char* argv[]){
     Esp.AjouterCamera(&cam);
     Lumiere lum = Lumiere(Couleur(1),Coordonnee(5,0,0),1,1,1);
     Esp.AjouterLumiere(&lum);
-    Coordonnee c (0,0,10);
-    Materiau m1 = Materiau(10.0,10.0,10.0,2.0);
-    Sphere Sph (c, 1, m1);
+    Coordonnee c = Coordonnee(0,0,10);
+    Materiau m1 = Materiau((double)10,(double)10,(double)10,(double)2);
+    m1.afficheMateriau();
+    Sphere Sph = Sphere(c, 1, m1);
+    Sph.affichInfos();
     Esp.AjouterObjet(&Sph);
-    Coordonnee c2 (2,4,10);
-    Sphere Sph2 (c2, 4, m1);
+    Coordonnee c2 = Coordonnee(2,4,10);
+    Sphere Sph2 = Sphere(c2, 4, m1);
+    Sph2.affichInfos();
     Esp.AjouterObjet(&Sph2);
 
     // cout << cam.getResolution().getX() << "/" << cam.getResolution().getY() << endl;
