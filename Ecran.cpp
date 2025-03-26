@@ -3,14 +3,17 @@
 Ecran::Ecran(){
     this->resolution = Resolution(100, 100);
     
-    this->pixels = new Pixel[this->resolution.getX()*this->resolution.getY()];
-    this->rayons = new Rayon[this->resolution.getX()*this->resolution.getY()];
+    int x = this->getResolution().getX();
+    int y = this->getResolution().getY();
+
+    this->pixels = new Pixel[x*y];
+    this->rayons = new Rayon[x*y];
     // this->centre_pixels = new Coordonnee[this->resolution.getX()*this->resolution.getY()];
 
-    for(int i = 0; i < this->resolution.getX(); i++){
-        for (int j = 0; j < this->resolution.getX(); j++) {
-            *(this->pixels + i*this->resolution.getX() + j) = Pixel(); 
-            *(this->rayons + i*this->resolution.getX() + j) = Rayon(); 
+    for(int i = 0; i < x; i++){
+        for (int j = 0; j < y; j++) {
+            *(this->pixels + i*x + j) = Pixel(); 
+            *(this->rayons + i*x + j) = Rayon(); 
             // *(this->centre_pixels + i*this->resolution.getX() + j) = Coordonnee();
         }
     }
@@ -19,17 +22,25 @@ Ecran::Ecran(){
 Ecran::Ecran(Resolution resolution){
     this->resolution = resolution;
     
-    this->pixels = new Pixel[this->resolution.getX()*this->resolution.getY()];
-    this->rayons = new Rayon[this->resolution.getX()*this->resolution.getY()];
+    int x = this->getResolution().getX();
+    int y = this->getResolution().getY();
+
+    this->pixels = new Pixel[x*y];
+    this->rayons = new Rayon[x*y];
     // this->centre_pixels = new Coordonnee[this->resolution.getX()*this->resolution.getY()];
 
-    for(int i = 0; i < this->resolution.getX(); i++){
-        for (int j = 0; j < this->resolution.getX(); j++) {
-            *(this->pixels + i*this->resolution.getX() + j) = Pixel(); 
-            *(this->rayons + i*this->resolution.getX() + j) = Rayon(); 
+    for(int i = 0; i < x; i++){
+        for (int j = 0; j < y; j++) {
+            *(this->pixels + i*x + j) = Pixel(); 
+            *(this->rayons + i*x + j) = Rayon(); 
             // *(this->centre_pixels + i*this->resolution.getX() + j) = Coordonnee();
         }
     }
+}
+
+Ecran::~Ecran(){
+    delete[] this->pixels;
+    delete[] this->rayons;
 }
 
 void Ecran::setResolution(int x, int y){

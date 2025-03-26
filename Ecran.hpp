@@ -11,6 +11,8 @@ class Ecran{
     public:
         Ecran();
         Ecran(Resolution resolution);
+        
+        ~Ecran();
 
         Pixel getPixel(int x, int y);
         // Coordonnee getCentrePixel(int x, int y);
