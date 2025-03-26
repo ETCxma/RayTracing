@@ -4,10 +4,10 @@ using namespace std;
 
 
 // Constructor :
-Sphere::Sphere(Coordonnee c, double r, Materiau m){
+Sphere::Sphere(Coordonnee c, double r,const  Materiau& m){
     centre = c;
     rayon = r;
-    materiau = m;
+    this->setMateriau(m);
 }
 
 // Getters
@@ -30,6 +30,7 @@ void Sphere::setCentre(Coordonnee c){
 // Afficher les informations d'une sphère
 void Sphere::affichInfos(){
     cout << "Informations de la Sphere : " << endl << "rayon = " << rayon << " / " << "centre = (" << centre.getX() << ", " << centre.getY() << ", " << centre.getZ() << ")"<< endl; 
+    cout << "Materiau : alpha = " << this->getAlpha() << "/ i_s = " <<this->getIndiceSpecular() << "/ i_d = " << this->getIndiceDiffuse() << "/ i_a = " << this->getIndiceAmbient() << endl; 
 }
 
 RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera){

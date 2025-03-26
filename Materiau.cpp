@@ -1,4 +1,5 @@
 #include "Materiau.hpp"
+using namespace std; 
 
 Materiau::Materiau(){}
 
@@ -6,15 +7,15 @@ Materiau::Materiau(Materiau &materiau){
 
 }
 
-Materiau::Materiau(double indice_spectular, double indice_diffuse, double indice_ambient, double alpha){
-    this->indice_spectular = indice_spectular;
-    this->indice_diffuse = indice_diffuse;
-    this->indice_ambient = indice_ambient;
-    this->alpha = alpha;
+Materiau::Materiau(double i_s, double i_d, double i_a, double a){
+    this->indice_specular = i_s;
+    this->indice_diffuse = i_d;
+    this->indice_ambient = i_a;
+    this->alpha = a;
 }
 
-double Materiau::getIndiceSpectular(){
-    return this->indice_spectular;
+double Materiau::getIndiceSpecular(){
+    return this->indice_specular;
 }
 
 double Materiau::getIndiceDiffuse(){
@@ -27,4 +28,8 @@ double Materiau::getIndiceAmbient(){
 
 double Materiau::getAlpha(){
     return this->alpha;
+}
+
+void Materiau::afficheMateriau(){
+    cout << "i_s = " << indice_specular << "/ i_d = " << indice_diffuse << "/ i_a = " << indice_ambient << "/ alpha = " << alpha << endl;
 }

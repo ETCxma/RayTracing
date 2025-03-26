@@ -1,9 +1,10 @@
 #include "Objet.hpp"
 
+
 // Objet::Objet(){}
 
-double Objet::getIndiceSpectular(){
-    return this->materiau.getIndiceSpectular();
+double Objet::getIndiceSpecular(){
+    return this->materiau.getIndiceSpecular();
 }
 
 double Objet::getIndiceDiffuse(){
@@ -15,4 +16,8 @@ double Objet::getIndiceAmbient(){
 }
 double Objet::getAlpha(){
     return this->materiau.getAlpha();
+}
+
+void Objet::setMateriau(const Materiau& mat){
+    this->materiau = mat;
 }

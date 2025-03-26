@@ -119,17 +119,17 @@ void Espace::rayTracingPhong(int camID){
                 r = cameras.at(camID)->getRayon(i, j);
                 p = cameras.at(camID)->getPixel(i, j);
 
-                int k_a = 1;
-                int k_d = 0.5;
-                int k_s = 0.5;
+                double k_a = 1;
+                double k_d = 0.5;
+                double k_s = 0.5;
 
-                int i_a = objets.at(o)->getIndiceAmbient();
-                int i_m_d = objets.at(o)->getIndiceDiffuse();
-                int alpha = objets.at(o)->getAlpha();;
-                int i_m_s = objets.at(o)->getIndiceSpectular();
-                int calculus = k_a*i_a;
+                double i_a = objets.at(o)->getIndiceAmbient();
+                double i_m_d = objets.at(o)->getIndiceDiffuse();
+                double i_m_s = objets.at(o)->getIndiceSpecular();
+                double alpha = objets.at(o)->getAlpha();;
+                double calculus = k_a*i_a;
                 cout << calculus <<endl;
-                cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ alpha = " << alpha << "/ i_m_s = " << i_m_s << endl;  
+                cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ i_m_s = " << i_m_s << "/ alpha = " << alpha << endl;  
 
                 for (int l = 0; l < (int)lumieres.size(); l++){
                     // On utilise la méthode de Maxime afin d'obtenir les vecteurs nécessaires à la méthode de Phong
