@@ -22,7 +22,7 @@ class Camera{
         void setTheta(double theta);
         void setPhi(double phi);
         void setResolution(int x, int y);
-        void setPixel(int x, int y, Pixel pix);
+        // void setPixel(int x, int y, Pixel pix);
 
         Coordonnee getPosition();
         double getDistanceEcran();
@@ -30,10 +30,11 @@ class Camera{
         double getPhi();
         Resolution getResolution();
         Rayon getRayon(int x, int y);
-        Pixel getPixel(int x, int y);
+        // Pixel getPixel(int x, int y);
+        int getPixelIntensite(int x, int y);
 
-        void addIntensitePixel(int x, int y, int intensite);
-        void addIntensiteRayon(int x, int y, double intensite);
+        void addPixelIntensite(int x, int y, int intensite);
+        void addRayonIntensite(int x, int y, double intensite);
 
         void updatePixels();
 

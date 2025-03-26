@@ -1,6 +1,7 @@
 #include "Rayon.hpp"
 #include "Couleur.hpp"
 #include "Vecteur.hpp"
+#include <utility>
 
 Rayon::Rayon(){
     Vecteur();
@@ -17,7 +18,12 @@ Rayon::Rayon(Vecteur &vecteur, Couleur couleur):
     this->couleur = couleur;
 }
 
-Rayon::Rayon(Rayon &rayon):
+// Rayon::Rayon(Rayon &rayon):
+//     Vecteur(rayon) {
+//     this->couleur = couleur;
+// }
+
+Rayon::Rayon(Rayon &&rayon):
     Vecteur(rayon) {
     this->couleur = couleur;
 }

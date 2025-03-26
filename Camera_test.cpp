@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
     for(int i = 0; i < c.getResolution().getX(); i++){
         for(int j = 0; j < c.getResolution().getY(); j++){
             std::cout << i << " " << j << "";
-            c.getRayon(i, j).afficheVecteur("");
+            // c.getRayon(i, j).afficheVecteur("");
         }
     }
 
