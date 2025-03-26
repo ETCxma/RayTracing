@@ -2,49 +2,45 @@
 #include <cmath>
 #include <bitset>
 
-Camera::Camera(){
+Camera::Camera():
+    ecran()    
+{
     this->position = Coordonnee(0, 0, 0);
     this->distance_ecran = 1;
     this->theta = 0;
     this->phi = 0;
-
-    this->ecran = Ecran();
 }
 
-Camera::Camera(Resolution resolution){
+Camera::Camera(Resolution resolution):
+    ecran(resolution)
+{
     this->position = Coordonnee(0, 0, 0);
     this->distance_ecran = 1;
     this->theta = 0;
     this->phi = 0;
 
-    this->ecran = Ecran(resolution);
     this->calculRayonsCoord();
 }
 
-Camera::Camera(Camera const &camera){
+Camera::Camera(Camera const &camera):
+    ecran(getResolution())
+{
     this->position = camera.position;
     this->distance_ecran = camera.distance_ecran;
     this->theta = camera.theta;
     this->phi = camera.phi;
 
-    this->ecran = Ecran(getResolution());
     this->calculRayonsCoord();    
-    this->position = camera.position;
-    this->distance_ecran = camera.distance_ecran;
-    this->theta = camera.theta;
-    this->phi = camera.phi;
-
-    this->ecran = Ecran(getResolution());
-    this->calculRayonsCoord();
 }
 
-Camera::Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution){    
+Camera::Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution):
+    ecran(resolution)
+{    
     this->position = position;
     this->distance_ecran = distance_ecran;
     this->theta = theta;
     this->phi = phi;
 
-    this->ecran = Ecran(resolution);
     calculRayonsCoord();
 }
 
@@ -75,13 +71,13 @@ void Camera::calculRayonsCoord(){
 
     for(int i = 0; i < k; i++){
         for(int j = 0; j < m; j++){
+            std::cout << i << j << std::endl;
             Vecteur pij = P1m + qx*i + qy*j;
             Vecteur pijn = pij.unitaire();
             Rayon rij = Rayon(pijn);
             this->ecran.SetRayon(i, j, rij);
         }
     }
-
 }
 
 
@@ -111,17 +107,17 @@ void Camera::setResolution(int x, int y){
     this->calculRayonsCoord();
 }
 
-void Camera::addIntensitePixel(int x, int y, int intensite){
-    this->ecran.addIntensitePixel(x, y, intensite);
+void Camera::addPixelIntensite(int x, int y, int intensite){
+    this->ecran.addPixelIntensite(x, y, intensite);
 }
 
-void Camera::addIntensiteRayon(int x, int y, double intensite){
-    this->ecran.addIntensiteRayon(x, y, intensite);
+void Camera::addRayonIntensite(int x, int y, double intensite){
+    this->ecran.addRayonIntensite(x, y, intensite);
 }
 
-void Camera::setPixel(int x, int y, Pixel pix){
-    this->ecran.SetPixel(x, y, pix);
-}
+// void Camera::setPixel(int x, int y, Pixel pix){
+//     this->ecran.SetPixel(x, y, pix);
+// }
 
 Coordonnee Camera::getPosition(){
     return this->position;
@@ -143,35 +139,18 @@ Resolution Camera::getResolution(){
     return this->ecran.getResolution();
 }
 
-Rayon Camera::getRayon(int x, int y){
-    return this->ecran.getRayon(x,y);
-}
+// Rayon Camera::getRayon(int x, int y){
+//     return this->ecran.getRayon(x,y);
+// }
 
-Pixel Camera::getPixel(int x, int y){
-    return this->ecran.getPixel(x,y);
+// Pixel Camera::getPixel(int x, int y){
+//     return this->ecran.getPixel(x,y);
+// }
+
+int Camera::getPixelIntensite(int x, int y){
+    return this->ecran.getPixelIntensite(x, y);
 }
 
 void Camera::updatePixels(){
-
-    double intensite_max = 0;
-
-    int x = this->getResolution().getX();
-    int y = this->getResolution().getY();
-
-    for(int i = 0; i < x; i++){
-        for(int j = 0; j < y; j++){
-            double intensite = this->ecran.getRayonIntensite(i, j);
-            intensite_max = intensite_max > intensite ? intensite_max : intensite; 
-        }
-    }
-
-    if(intensite_max == 0) return;
-
-    for(int i = 0; i < x; i++){
-        for(int j = 0; j < y; j++){
-            double intensite = this->ecran.getRayonIntensite(i, j);
-            this->setPixel(i, j, Pixel((255*intensite)/intensite_max));
-        }
-    }
-
+    this->ecran.updatePixels();
 }

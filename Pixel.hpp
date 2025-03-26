@@ -6,6 +6,7 @@ class Pixel{
     public:
         Pixel();
         Pixel(int intensite);
+        Pixel(Pixel &&pixel);
         Pixel(Pixel &pixel);
 
         int getIntensite();

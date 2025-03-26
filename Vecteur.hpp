@@ -99,6 +99,8 @@ class Vecteur{
         double getDZ();  
 
         // Setter
+        void setVecteur(Coordonnee vecteur);
+
         void setDX(double x);
         void setDY(double y);
         void setDZ(double z); 

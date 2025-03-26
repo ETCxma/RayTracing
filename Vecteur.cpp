@@ -30,6 +30,11 @@ double Vecteur::getDZ(){
 } 
 
 // SETTERS
+void Vecteur::setVecteur(Coordonnee vecteur){
+	this->vecteur = vecteur;
+}
+
+
 void Vecteur::setDX(double x){
 	this->vecteur.setX(x);
 }

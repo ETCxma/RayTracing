@@ -13,7 +13,8 @@ class Rayon: public Vecteur{
         Rayon();
         Rayon(Coordonnee x1, Coordonnee x2, Couleur couleur=Couleur());
         Rayon(Vecteur &vecteur, Couleur couleur=Couleur());
-        Rayon(Rayon &rayon);
+        // Rayon(Rayon &rayon);
+        Rayon(Rayon &&rayon);
 
         void addIntensite(double intensite);
         double getIntensite();
