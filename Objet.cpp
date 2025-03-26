@@ -12,7 +12,7 @@ double Objet::getIndiceDiffuse(){
 }
 
 double Objet::getIndiceAmbient(){
-    return this->materiau.getIndiceDiffuse();
+    return this->materiau.getIndiceAmbient();
 }
 double Objet::getAlpha(){
     return this->materiau.getAlpha();
