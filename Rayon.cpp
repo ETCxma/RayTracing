@@ -22,6 +22,10 @@ Rayon::Rayon(Rayon &rayon):
     this->couleur = couleur;
 }
 
+double Rayon::getIntensite(){
+    return this->couleur.getIntensite();
+}
+
 void Rayon::addIntensite(double intensite){
-    this->addIntensite(couleur.intensite);
+    this->couleur.addIntensite(intensite);
 }

@@ -74,3 +74,47 @@ void Ecran::SetPixel(int x, int y, Pixel &pixel){
 void Ecran::SetRayon(int x, int y, Rayon &rayon){
     *(this->rayons + x*this->resolution.getX() + y) = rayon;
 }
+
+void Ecran::addIntensitePixel(int x, int y, int intensite){
+    (this->pixels + x*this->resolution.getX() + y)->addIntensite(intensite);
+}
+
+void Ecran::setPixelIntensite(int x, int y, int intensite){
+    (this->pixels + x*this->resolution.getX() + y)->setIntensite(intensite);
+}
+
+int Ecran::getPixelIntensite(int x, int y){
+    return (this->pixels + x*this->resolution.getX() + y)->getIntensite();
+}
+
+double Ecran::getRayonIntensite(int x, int y){
+    return (this->rayons + x*this->resolution.getX() + y)->getIntensite();
+}
+
+void Ecran::addIntensiteRayon(int x, int y, double intensite){
+    (this->rayons + x*this->resolution.getX() + y)->addIntensite(intensite);
+}
+
+void Ecran::updatePixels(){
+    double intensite_max = 0;
+
+    int x = this->getResolution().getX();
+    int y = this->getResolution().getY();
+
+    for(int i = 0; i < x; i++){
+        for(int j = 0; j < y; j++){
+            double intensite = this->getRayonIntensite(i, j);
+            intensite_max = intensite_max > intensite ? intensite_max : intensite; 
+        }
+    }
+
+    if(intensite_max == 0) return;
+
+    for(int i = 0; i < x; i++){
+        for(int j = 0; j < y; j++){
+            double intensite = this->getRayonIntensite(i, j);
+            this->setPixelIntensite(i, j, (255*intensite)/intensite_max);
+        }
+    }
+
+}

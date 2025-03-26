@@ -111,6 +111,14 @@ void Camera::setResolution(int x, int y){
     this->calculRayonsCoord();
 }
 
+void Camera::addIntensitePixel(int x, int y, int intensite){
+    this->ecran.addIntensitePixel(x, y, intensite);
+}
+
+void Camera::addIntensiteRayon(int x, int y, double intensite){
+    this->ecran.addIntensiteRayon(x, y, intensite);
+}
+
 void Camera::setPixel(int x, int y, Pixel pix){
     this->ecran.SetPixel(x, y, pix);
 }
@@ -141,4 +149,29 @@ Rayon Camera::getRayon(int x, int y){
 
 Pixel Camera::getPixel(int x, int y){
     return this->ecran.getPixel(x,y);
+}
+
+void Camera::updatePixels(){
+
+    double intensite_max = 0;
+
+    int x = this->getResolution().getX();
+    int y = this->getResolution().getY();
+
+    for(int i = 0; i < x; i++){
+        for(int j = 0; j < y; j++){
+            double intensite = this->ecran.getRayonIntensite(i, j);
+            intensite_max = intensite_max > intensite ? intensite_max : intensite; 
+        }
+    }
+
+    if(intensite_max == 0) return;
+
+    for(int i = 0; i < x; i++){
+        for(int j = 0; j < y; j++){
+            double intensite = this->ecran.getRayonIntensite(i, j);
+            this->setPixel(i, j, Pixel((255*intensite)/intensite_max));
+        }
+    }
+
 }

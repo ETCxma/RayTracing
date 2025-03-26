@@ -32,6 +32,11 @@ class Camera{
         Rayon getRayon(int x, int y);
         Pixel getPixel(int x, int y);
 
+        void addIntensitePixel(int x, int y, int intensite);
+        void addIntensiteRayon(int x, int y, double intensite);
+
+        void updatePixels();
+
     private:
         void calculRayonsCoord(); // Called by constructor
 
