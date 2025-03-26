@@ -6,7 +6,7 @@ class Materiau{
     public:
         Materiau();
         Materiau(Materiau &materiau);
-        Materiau(double indice_spectular, double indice_diffuse, double indice_ambient);
+        Materiau(double indice_spectular, double indice_diffuse, double indice_ambient, double alpha);
 
         double getIndiceSpectular();
         double getIndiceDiffuse();

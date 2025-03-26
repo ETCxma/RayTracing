@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include<cmath>
+#include <cmath>
 #include "Vecteur.hpp"
 #include "Camera.hpp"
 #include "Objet.hpp"
@@ -40,9 +40,14 @@ int Espace::AjouterCamera(Camera *cam){
     return cameras.size() - 1;
 }
 
+int Espace::AjouterLumiere (Lumiere *lum){
+    lumieres.push_back(lum);
+    return lumieres.size() - 1;
+}
+
 
 void Espace::takePicture(int camID, string path) {
-    rayTracingSimple(camID);
+    rayTracingPhong(camID);
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
     
@@ -123,8 +128,10 @@ void Espace::rayTracingPhong(int camID){
                 int alpha = objets.at(o)->getAlpha();;
                 int i_m_s = objets.at(o)->getIndiceSpectular();
                 int calculus = k_a*i_a;
+                cout << calculus <<endl;
+                cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ alpha = " << alpha << "/ i_m_s = " << i_m_s << endl;  
 
-                for (int l = 0; l < (int)lumieres.size(); l++)
+                for (int l = 0; l < (int)lumieres.size(); l++){
                     // On utilise la méthode de Maxime afin d'obtenir les vecteurs nécessaires à la méthode de Phong
                     Phong_Vectors = objets.at(o)->intersectionPhong(r, cameras.at(camID)->getPosition(), lumieres.at(l)->getPosition());
 
@@ -132,14 +139,24 @@ void Espace::rayTracingPhong(int camID){
                     Vecteur vN = Phong_Vectors.normale;
                     Vecteur vR_m = Phong_Vectors.objet_to_lumiere_reflechi;
                     Vecteur vV = Phong_Vectors.objet_to_camera;
+                    vL_m.afficheVecteur(string("vL_m"));
+                    vN.afficheVecteur(string("vN"));
+                    vR_m.afficheVecteur(string("vR_m"));
+                    vV.afficheVecteur(string("vV"));
 
                     calculus += k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(int)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s;
+                    cout << calculus <<endl;
+                    r.addIntensite(calculus);
                     // plutôt que de modifier l'intensité du pixel, on va modifier l'intensité de la couleur associée au rayon
                     // On fera ensuite une autre méthode qui permet de transformer les rayons en pixel afin d'avoir leur intensité et all gud
-                    p.addIntensite(calculus);
-                    cameras.at(camID)->setPixel(i, j, p);
+                    // p.addIntensite(calculus);
+                    // cameras.at(camID)->setPixel(i, j, p);
+                }
+                cout << calculus <<endl;
             }
+            // r.RayontoPixel(r.couleur, 255);
         }
     }
+    //ecran.RayontoPixel();
     return;
 }

@@ -1,6 +1,6 @@
 #include "Objet.hpp"
 
-Objet::Objet(){}
+// Objet::Objet(){}
 
 double Objet::getIndiceSpectular(){
     return this->materiau.getIndiceSpectular();
