@@ -40,9 +40,14 @@ int Espace::AjouterCamera(Camera *cam){
     return cameras.size() - 1;
 }
 
+int Espace::AjouterLumiere (Lumiere *lum){
+    lumieres.push_back(lum);
+    return lumieres.size() - 1;
+}
+
 
 void Espace::takePicture(int camID, string path) {
-    rayTracingSimple(camID);
+    rayTracingPhong(camID);
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
     
@@ -124,7 +129,7 @@ void Espace::rayTracingPhong(int camID){
                 int i_m_s = objets.at(o)->getIndiceSpectular();
                 int calculus = k_a*i_a;
 
-                for (int l = 0; l < (int)lumieres.size(); l++)
+                for (int l = 0; l < (int)lumieres.size(); l++){
                     // On utilise la méthode de Maxime afin d'obtenir les vecteurs nécessaires à la méthode de Phong
                     Phong_Vectors = objets.at(o)->intersectionPhong(r, cameras.at(camID)->getPosition(), lumieres.at(l)->getPosition());
 
@@ -138,6 +143,7 @@ void Espace::rayTracingPhong(int camID){
                     // On fera ensuite une autre méthode qui permet de transformer les rayons en pixel afin d'avoir leur intensité et all gud
                     p.addIntensite(calculus);
                     cameras.at(camID)->setPixel(i, j, p);
+                }
             }
         }
     }

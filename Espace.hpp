@@ -25,6 +25,7 @@ class Espace{
         // Return Camera id
         int AjouterCamera(Camera *cam);
         // TODO : implement for all X : void ModifyObjetX(int id, XType newX);
+        int AjouterLumiere (Lumiere *lum);
 
         std::vector<Camera *> &getCameras();
         std::vector<Objet *> &getObjects();

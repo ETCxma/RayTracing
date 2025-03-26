@@ -23,7 +23,8 @@ int main(int argc, char* argv[]){
 
     Camera cam = Camera(Coordonnee(0, 0, 0), 1, 0, 0, Resolution (512,512));
     Esp.AjouterCamera(&cam);
-    
+    Lumiere lum = Lumiere(Couleur(1),Coordonnee(5,0,0),1,1,1);
+    Esp.AjouterLumiere(&lum);
     Coordonnee c (0,0,10);
     Sphere Sph (c, 1);
     Esp.AjouterObjet(&Sph);

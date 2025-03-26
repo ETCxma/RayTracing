@@ -8,7 +8,7 @@ OBJ =
 TARGET_TEST = $(TARGET_ESPACE_TEST) $(TARGET_CAMERA_TEST) $(TARGET_VECTEUR_TEST) $(TARGET_SPHERE_TEST)
 
 TARGET_ESPACE_TEST = espace_test
-OBJ_ESPACE_TEST = Espace_test.o Camera.o Coordonnee.o Couleur.o Ecran.o Espace.o Pixel.o Vecteur.o Resolution.o Rayon.o Sphere.o Materiau.o
+OBJ_ESPACE_TEST = Espace_test.o Camera.o Coordonnee.o Couleur.o Ecran.o Espace.o Pixel.o Vecteur.o Resolution.o Rayon.o Sphere.o Materiau.o Objet.o RaytracingPhongInfo.o Lumiere.o
 
 TARGET_CAMERA_TEST = camera_test
 OBJ_CAMERA_TEST = Camera_test.o Resolution.o Camera.o Vecteur.o Rayon.o Ecran.o Coordonnee.o Couleur.o Ecran.o Pixel.o   
