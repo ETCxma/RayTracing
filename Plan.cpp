@@ -86,5 +86,8 @@ void Plan::afficher(){
     cout << "Origine des deux vecteurs du plan: (" << (this->origin).getX() << ", " <<  (this->origin).getY() << ", " << (this->origin).getZ() << ")" << endl; 
     cout << "vecteur 1: (" << (this->c1).getX() << ", " <<  (this->c1).getY() << ", " << (this->c1).getZ() << ")" << endl;
     cout << "vecteur 2: (" << (this->c2).getX() << ", " <<  (this->c2).getY() << ", " << (this->c2).getZ() << ")" << endl;
-    
+}
+
+Coordonnee Plan::intersectionPlan(Rayon r){
+        
 }
