@@ -1,10 +1,10 @@
 #ifndef PLAN_H
 #define PLAN_H
 
-#include <vector>
 #include <array> 
 #include "Coordonnee.hpp"
 #include "Vecteur.hpp"
+#include "Rayon.hpp" 
 
 /**
  * L'idée derrière cette classe est d'implémenter le calcul d'intersection entre un triangle et un rayon.
@@ -67,10 +67,16 @@ class Plan{
         std::array<Vecteur, 2> vec();  
 
         /**
-         * Entrée: un plan
+         * Entrée: rien
          * Sortie: rien, affiche les informations du plan
          */
         void afficher(); 
+
+        /**
+         * Entrée: un rayon 
+         * Sortie: renvoie les coordonnées d'intersection du rayon et du plan si intersection il y a 
+         */
+        Coordonnee intersectionPlan(Rayon r); 
 
 };
 
