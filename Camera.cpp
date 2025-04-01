@@ -71,11 +71,13 @@ void Camera::calculRayonsCoord(){
 
     for(int i = 0; i < k; i++){
         for(int j = 0; j < m; j++){
-            std::cout << i << j << std::endl;
             Vecteur pij = P1m + qx*i + qy*j;
             Vecteur pijn = pij.unitaire();
             Rayon rij = Rayon(pijn);
             this->ecran.SetRayon(i, j, rij);
+
+            // rij.afficheVecteur("rij");
+            // this->ecran.getRayon(i,j).afficheVecteur("real");
         }
     }
 }
@@ -145,7 +147,9 @@ Resolution Camera::getResolution(){
 }
 
 Rayon Camera::getRayon(int x, int y){
-    return this->ecran.getRayon(x,y);
+    Rayon r = this->ecran.getRayon(x,y);
+    // r.afficheVecteur("r camera");
+    return r;
 }
 
 Pixel Camera::getPixel(int x, int y){

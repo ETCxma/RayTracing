@@ -11,13 +11,13 @@ using namespace std;
 
 // GETTERS
 
-double Coordonnee::getX() const{
+double Coordonnee::getX(){
     return x; 
 }
-double Coordonnee::getY() const{
+double Coordonnee::getY(){
     return y; 
 }
-double Coordonnee::getZ() const{
+double Coordonnee::getZ(){
     return z; 
 }
 

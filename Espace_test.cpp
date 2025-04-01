@@ -29,9 +29,9 @@ int main(int argc, char* argv[]){
     Coordonnee c = Coordonnee(0,0,10);
     Materiau m1 = Materiau((double)100,(double)200,(double)50,(double)3);
     m1.afficheMateriau();
-    // Sphere Sph = Sphere(c, 1, m1);
-    // Sph.affichInfos();
-    // Esp.AjouterObjet(&Sph);
+    Sphere Sph = Sphere(c, 1, m1);
+    Sph.affichInfos();
+    Esp.AjouterObjet(&Sph);
     Coordonnee c2 = Coordonnee(2,4,10);
     Sphere Sph2 = Sphere(c2, 4, m1);
     Sph2.affichInfos();

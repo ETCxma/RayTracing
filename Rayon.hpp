@@ -19,7 +19,9 @@ class Rayon: public Vecteur{
         Rayon(Rayon &&rayon);
 
         Rayon operator=(Rayon rayon){
-            return Rayon(rayon.getVecteur(), rayon.getCouleur());
+            Rayon r = Rayon(rayon.getVecteur(), rayon.getCouleur()); 
+            // r.afficheVecteur("r =");
+            return r;
         }
 
         void addIntensite(double intensite);
