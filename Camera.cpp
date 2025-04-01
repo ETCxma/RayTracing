@@ -2,6 +2,7 @@
 #include <cmath>
 #include <bitset>
 
+// Constructors
 Camera::Camera():
     ecran()    
 {
@@ -44,6 +45,67 @@ Camera::Camera(Coordonnee position, double distance_ecran, double theta, double 
     calculRayonsCoord();
 }
 
+// Setters
+void Camera::setPosition(Coordonnee position){
+    this->position = position;
+    this->calculRayonsCoord();
+}
+
+void Camera::setDistanceEcran(double distance_ecran){
+    this->distance_ecran = distance_ecran;
+    this->calculRayonsCoord();
+}
+
+void Camera::setTheta(double theta){
+    this->theta = theta;
+    this->calculRayonsCoord();
+}
+
+void Camera::setPhi(double phi){
+    this->phi = phi;
+    this->calculRayonsCoord();
+}
+
+void Camera::setResolution(int x, int y){
+    this->ecran.setResolution(x, y);
+    this->calculRayonsCoord();
+}
+
+// Getters
+Coordonnee Camera::getPosition(){
+    return this->position;
+}
+
+double Camera::getDistanceEcran(){
+    return this->distance_ecran;
+}
+
+double Camera::getTheta(){
+    return this->theta;
+}
+
+double Camera::getPhi(){
+    return this->phi;
+}
+
+Resolution Camera::getResolution(){
+    return this->ecran.getResolution();
+}
+
+Rayon Camera::getRayon(int x, int y){
+    Rayon r = this->ecran.getRayon(x,y);
+    return r;
+}
+
+Pixel Camera::getPixel(int x, int y){
+    return this->ecran.getPixel(x,y);
+}
+
+int Camera::getPixelIntensite(int x, int y){
+    return this->ecran.getPixelIntensite(x, y);
+}
+
+// Others
 void Camera::calculRayonsCoord(){
 
     Vecteur centre_ecran = Vecteur(this->distance_ecran,theta,phi);
@@ -82,31 +144,8 @@ void Camera::calculRayonsCoord(){
     }
 }
 
-
-
-void Camera::setPosition(Coordonnee position){
-    this->position = position;
-    this->calculRayonsCoord();
-}
-
-void Camera::setDistanceEcran(double distance_ecran){
-    this->distance_ecran = distance_ecran;
-    this->calculRayonsCoord();
-}
-
-void Camera::setTheta(double theta){
-    this->theta = theta;
-    this->calculRayonsCoord();
-}
-
-void Camera::setPhi(double phi){
-    this->phi = phi;
-    this->calculRayonsCoord();
-}
-
-void Camera::setResolution(int x, int y){
-    this->ecran.setResolution(x, y);
-    this->calculRayonsCoord();
+void Camera::updatePixels(){
+    this->ecran.updatePixels();
 }
 
 void Camera::addPixelIntensite(int x, int y, int intensite){
@@ -115,51 +154,4 @@ void Camera::addPixelIntensite(int x, int y, int intensite){
 
 void Camera::addRayonIntensite(int x, int y, double intensite){
     this->ecran.addRayonIntensite(x, y, intensite);
-}
-
-// void Camera::setRayonIntensite(int x, int y, double intensite){
-//     this->ecran.setRayonIntensite(x, y, intensite);
-// }
-
-
-// void Camera::setPixel(int x, int y, Pixel pix){
-//     this->ecran.SetPixel(x, y, pix);
-// }
-
-Coordonnee Camera::getPosition(){
-    return this->position;
-}
-
-double Camera::getDistanceEcran(){
-    return this->distance_ecran;
-}
-
-double Camera::getTheta(){
-    return this->theta;
-}
-
-double Camera::getPhi(){
-    return this->phi;
-}
-
-Resolution Camera::getResolution(){
-    return this->ecran.getResolution();
-}
-
-Rayon Camera::getRayon(int x, int y){
-    Rayon r = this->ecran.getRayon(x,y);
-    // r.afficheVecteur("r camera");
-    return r;
-}
-
-Pixel Camera::getPixel(int x, int y){
-    return this->ecran.getPixel(x,y);
-}
-
-int Camera::getPixelIntensite(int x, int y){
-    return this->ecran.getPixelIntensite(x, y);
-}
-
-void Camera::updatePixels(){
-    this->ecran.updatePixels();
 }
