@@ -16,9 +16,9 @@ class Coordonnee{
         double distance(Coordonnee c);
 
         // Getter
-        double getX() const; 
-        double getY() const; 
-        double getZ() const; 
+        double getX(); 
+        double getY(); 
+        double getZ(); 
 
         // Setter
         void setX(double x);
