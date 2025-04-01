@@ -15,6 +15,7 @@ using namespace std;
 Espace::Espace(){
 }
 
+// Getters
 vector<Camera *> &Espace::getCameras(){
     return cameras;
 }
@@ -40,41 +41,43 @@ int Espace::AjouterCamera(Camera *cam){
     return cameras.size() - 1;
 }
 
+// Return Lumiere id
 int Espace::AjouterLumiere (Lumiere *lum){
     lumieres.push_back(lum);
     return lumieres.size() - 1;
 }
 
-
+// Take a picture of space and save it at path
 void Espace::takePicture(int camID, string path){
     rayTracingPhong(camID);
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
-    
-    ofstream img(path);  // using "test.ppm" as test
+    ofstream img(path);
 
     if (!img.is_open()) {
         cerr << "Error opening file: " << path << endl;
         return;
     }
-
-    img << "P3\n" << x << " " << y << "\n255\n"; // PPM Header
+    // PPM Header (needed)
+    img << "P3\n" << x << " " << y << "\n255\n";
 
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
             int value = cameras.at(camID)->getPixelIntensite(i, j);
             int r = value, g = value, b = value;
-            img << r << " " << g << " " << b << "\n"; // Write RGB values
+            // Write RGB values
+            img << r << " " << g << " " << b << "\n";
         }
     }
 
     img.close();
-    system(("open " + path).c_str()); // Open the file
+    // Open the file
+    system(("open " + path).c_str());
     return;
 }
 
 
-// Fonction de la mort
+// Fonction Simple de la mort : Affiche la présence d'objets dans l'espace
 void Espace::rayTracingSimple(int camID){
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
@@ -82,7 +85,7 @@ void Espace::rayTracingSimple(int camID){
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
             for (int o = 0; o < (int)objets.size(); o++){
-                // On envoie un Rayon et on check s'il y a intersection
+                // On envoie un Rayon et on check s'il y a intersection (pour chacun des pixels et chacun des objets)
                 if (objets.at(o)->intersection(cameras.at(camID)->getRayon(i,j), cameras.at(camID)->getPosition()) == 1){
                     cameras.at(camID)->addPixelIntensite(i, j, 255);
                 }
@@ -95,21 +98,15 @@ void Espace::rayTracingSimple(int camID){
     return;
 }
 
-// Fonction de la mort v2.0
+// Fonction de la mort v2.0 : On utilise la méthode de Phong afin de faire du RayTracing
 void Espace::rayTracingPhong(int camID){
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
-    // Rayon r;
     RaytracingPhongInfo Phong_Vectors;
 
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
-            for (int o = 0; o < (int)objets.size(); o++){
-                // Envoyer un rayon
-                // cameras.at(camID)->getRayon(i, j).afficheVecteur("r espace");
-                // r = cameras.at(camID)->getRayon(i, j);
-                // r.afficheVecteur("r");  
-
+            for (int o = 0; o < (int)objets.size(); o++){ 
                 double k_a = 1;
                 double k_d = 0.5;
                 double k_s = 0.5;
@@ -119,19 +116,21 @@ void Espace::rayTracingPhong(int camID){
                 double i_m_s = objets.at(o)->getIndiceSpecular();
                 double alpha = objets.at(o)->getAlpha();;
                 double calculus = k_a*i_a;
-                //cout << calculus <<endl;
-                // cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ i_m_s = " << i_m_s << "/ alpha = " << alpha << endl;  
 
+                // Decomment line for debug
+                // cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ i_m_s = " << i_m_s << "/ alpha = " << alpha << endl;
+
+                // Pour chacun des pixel, des objets et des lumières, on va calculer l'éclairement 
                 for (int l = 0; l < (int)lumieres.size(); l++){
-                    // On utilise la méthode de Maxime afin d'obtenir les vecteurs nécessaires à la méthode de Phong
+                    // On utilise la méthode intersectionPhong afin d'obtenir les vecteurs nécessaires à la méthode de Phong
                     Phong_Vectors = objets.at(o)->intersectionPhong(cameras.at(camID)->getRayon(i, j), cameras.at(camID)->getPosition(), lumieres.at(l)->getPosition());
-
 
                     Vecteur vL_m = Phong_Vectors.objet_to_lumiere;
                     Vecteur vN = Phong_Vectors.normale;
                     Vecteur vR_m = Phong_Vectors.objet_to_lumiere_reflechi;
                     Vecteur vV = Phong_Vectors.objet_to_camera;
 
+                    // Decomment lines for debug
                     // vL_m.afficheVecteur(string("vL_m"));
                     // vN.afficheVecteur(string("vN"));
                     // vR_m.afficheVecteur(string("vR_m"));
@@ -139,10 +138,9 @@ void Espace::rayTracingPhong(int camID){
 
                     calculus += abs(k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(double)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s);
                     calculus = (int)calculus;
-                    // cout << calculus <<endl;
                     cameras.at(camID)->addRayonIntensite(i, j, calculus);
-                    // r.addIntensite(calculus);
                 }
+                // Decomment line for debug
                 // cout << calculus <<endl;
             }
         }
