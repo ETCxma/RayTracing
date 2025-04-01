@@ -76,12 +76,16 @@ void Ecran::updatePixels(){
         }
     }
 
-    if(intensite_max == 0) return;
+    if(intensite_max == 0.0) return;
+    std::cout << intensite_max << std::endl;
 
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
             double intensite = this->getRayonIntensite(i, j);
-            this->setPixelIntensite(i, j, (255*intensite)/intensite_max);
+            if(intensite > 0)
+                this->setPixelIntensite(i, j, (255*intensite)/intensite_max);
+            else
+               this->setPixelIntensite(i, j, 0);
         }
     }
 

@@ -20,15 +20,15 @@ Coordonnee Lumiere::getPosition(){
     return Coordonnee(this->getX(), this->getY(), this->getZ()); 
 }
 
-float Lumiere::getIntensiteSpecular(){
+double Lumiere::getIntensiteSpecular(){
 	return this->intensite_specular;
 }
 
-float Lumiere::getIntensiteDiffuse(){
+double Lumiere::getIntensiteDiffuse(){
 	return this->intensite_diffuse;
 }
 
-float Lumiere::getIntensiteAmbient(){
+double Lumiere::getIntensiteAmbient(){
 	return this->intensite_ambient;
 }
 
@@ -43,15 +43,15 @@ void Lumiere::setPosition(Coordonnee source){
 	this->setZ(source.getZ());
 }
 
-void Lumiere::setIntensiteSpecular(float intensite_specular){
+void Lumiere::setIntensiteSpecular(double intensite_specular){
 	this->intensite_specular = intensite_specular;
 }
 
-void Lumiere::setIntensiteDiffuse(float intensite_diffuse){
+void Lumiere::setIntensiteDiffuse(double intensite_diffuse){
 	this->intensite_diffuse = intensite_diffuse;
 }
 
-void Lumiere::setIntensiteAmbient(float intensite_ambient){
+void Lumiere::setIntensiteAmbient(double intensite_ambient){
 	this->intensite_ambient = intensite_ambient;
 }
 
@@ -62,8 +62,11 @@ Lumiere::Lumiere() : Coordonnee(){
     this->intensite = 0.0;
 }
 
-Lumiere::Lumiere(Couleur intensite, Coordonnee source, float intensite_s, float intensite_d, float intensite_a): Coordonnee(source){
+Lumiere::Lumiere(Couleur intensite, Coordonnee source, double intensite_s, double intensite_d, double intensite_a): Coordonnee(source){
     this->intensite = intensite;
+    this->intensite_ambient = intensite_a;
+    this->intensite_diffuse = intensite_d;
+    this->intensite_specular = intensite_s;
 }
 
 Lumiere::Lumiere(Lumiere &l): Coordonnee(l.getX(), l.getY(), l.getZ()){

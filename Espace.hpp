@@ -31,6 +31,8 @@ class Espace{
         // Methods to make rayTracing
         void rayTracingSimple(int id);
         void rayTracingPhong(int id);
+        
+        double calcIntesiteAmbient();
 
         std::vector<Objet*> objets;
         std::vector<Camera*> cameras;
