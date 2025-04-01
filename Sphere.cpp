@@ -38,12 +38,7 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
     Vecteur v = Vecteur(this->centre, centre_camera);
     double vdotd = v.produitScalaire(rayon);
     
-    // std::cout << vdotd << std::endl;
-    
     double delta = sqrt(vdotd*vdotd - (v.norme()*v.norme() - this->rayon*this->rayon));
-    
-    // std::cout << vdotd*vdotd - (v.norme()*v.norme() - this->rayon*this->rayon) << std::endl;
-    // std::cout << delta << std::endl;
     
     if(delta > 0){
         Vecteur n;
@@ -67,11 +62,9 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
         r = rayon - (n*n.produitScalaire(rayon)*2);
         r = r.unitaire();
 
-
         // y.afficheVecteur("y");
         // n.afficheVecteur("n");
         // r.afficheVecteur("r");
-
 
         return 1;
     }
@@ -79,7 +72,7 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
         return 0;
 }
 
-
+// https://en.wikipedia.org/wiki/Phong_reflection_model
 RaytracingPhongInfo Sphere::intersectionPhong(Rayon rayon, Coordonnee centre_camera, Coordonnee position_lumiere){
     double t1, t2;
     RaytracingPhongInfo ret(false);

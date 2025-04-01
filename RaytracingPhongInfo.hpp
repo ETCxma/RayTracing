@@ -4,6 +4,7 @@
 #include "Coordonnee.hpp"
 #include "Vecteur.hpp"
 
+// https://en.wikipedia.org/wiki/Phong_reflection_model
 class RaytracingPhongInfo{
     
     public:
