@@ -15,9 +15,9 @@ class Ecran{
         // ~Ecran();
         
 
-        // Pixel getPixel(int x, int y);
+        Pixel getPixel(int x, int y);
         // Coordonnee getCentrePixel(int x, int y);
-        // Rayon getRayon(int x, int y);
+        Rayon getRayon(int x, int y);
         Resolution getResolution();
 
         int getPixelIntensite(int x, int y);

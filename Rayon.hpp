@@ -13,11 +13,19 @@ class Rayon: public Vecteur{
         Rayon();
         Rayon(Coordonnee x1, Coordonnee x2, Couleur couleur=Couleur());
         Rayon(Vecteur &vecteur, Couleur couleur=Couleur());
-        // Rayon(Rayon &rayon);
+        Rayon(Coordonnee vecteur, Couleur couleur=Couleur());
+        Rayon(Rayon &rayon);
+        // Rayon(const Rayon&) = default;
         Rayon(Rayon &&rayon);
+
+        Rayon operator=(Rayon rayon){
+            return Rayon(rayon.getVecteur(), rayon.getCouleur());
+        }
 
         void addIntensite(double intensite);
         double getIntensite();
+
+        Couleur getCouleur();
 
     private:
         Couleur couleur;

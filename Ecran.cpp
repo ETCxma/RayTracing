@@ -44,26 +44,26 @@ Ecran::Ecran(Resolution resolution){
      }
 }
 
-Ecran::~Ecran(){
-    delete[] this->pixels;
-    delete[] this->rayons;
-}
+// Ecran::~Ecran(){
+//     delete[] this->pixels;
+//     delete[] this->rayons;
+// }
 
 void Ecran::setResolution(int x, int y){
     return this->resolution.setResolution(x, y);
 }
 
-// Pixel Ecran::getPixel(int x, int y){
-//     return this->pixels.at(x*this->getResolution().getX() + y);
-// }
+Pixel Ecran::getPixel(int x, int y){
+    return this->pixels.at(x*this->getResolution().getX() + y);
+}
 
 // Coordonnee Ecran::getCentrePixel(int x, int y){
 //     return *(this->centre_pixels + x*this->resolution.getX() + y);
 // }
 
-// Rayon Ecran::getRayon(int x, int y){
-//     return this->rayons.at(x*this->getResolution().getX() + y);
-// }
+Rayon Ecran::getRayon(int x, int y){
+    return this->rayons.at(x*this->getResolution().getX() + y);
+}
 
 Resolution Ecran::getResolution(){
     return this->resolution;

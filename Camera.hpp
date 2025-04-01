@@ -30,11 +30,12 @@ class Camera{
         double getPhi();
         Resolution getResolution();
         Rayon getRayon(int x, int y);
-        // Pixel getPixel(int x, int y);
+        Pixel getPixel(int x, int y);
         int getPixelIntensite(int x, int y);
 
         void addPixelIntensite(int x, int y, int intensite);
         void addRayonIntensite(int x, int y, double intensite);
+        // void setRayonIntensite(int x, int y, double intensite);
 
         void updatePixels();
 

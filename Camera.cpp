@@ -115,6 +115,11 @@ void Camera::addRayonIntensite(int x, int y, double intensite){
     this->ecran.addRayonIntensite(x, y, intensite);
 }
 
+// void Camera::setRayonIntensite(int x, int y, double intensite){
+//     this->ecran.setRayonIntensite(x, y, intensite);
+// }
+
+
 // void Camera::setPixel(int x, int y, Pixel pix){
 //     this->ecran.SetPixel(x, y, pix);
 // }
@@ -139,13 +144,13 @@ Resolution Camera::getResolution(){
     return this->ecran.getResolution();
 }
 
-// Rayon Camera::getRayon(int x, int y){
-//     return this->ecran.getRayon(x,y);
-// }
+Rayon Camera::getRayon(int x, int y){
+    return this->ecran.getRayon(x,y);
+}
 
-// Pixel Camera::getPixel(int x, int y){
-//     return this->ecran.getPixel(x,y);
-// }
+Pixel Camera::getPixel(int x, int y){
+    return this->ecran.getPixel(x,y);
+}
 
 int Camera::getPixelIntensite(int x, int y){
     return this->ecran.getPixelIntensite(x, y);

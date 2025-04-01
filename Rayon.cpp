@@ -18,15 +18,23 @@ Rayon::Rayon(Vecteur &vecteur, Couleur couleur):
     this->couleur = couleur;
 }
 
-// Rayon::Rayon(Rayon &rayon):
-//     Vecteur(rayon) {
-//     this->couleur = couleur;
-// }
+Rayon::Rayon(Coordonnee vecteur, Couleur couleur=Couleur()):
+    Vecteur(vecteur) {
+    this->couleur = couleur;
+}
+
+
+Rayon::Rayon(Rayon &rayon):
+    Vecteur(rayon) {
+    this->couleur = couleur;
+}
 
 Rayon::Rayon(Rayon &&rayon):
     Vecteur(rayon) {
     this->couleur = couleur;
 }
+
+
 
 double Rayon::getIntensite(){
     return this->couleur.getIntensite();
