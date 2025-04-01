@@ -61,10 +61,10 @@ void Plan::setCentre(Coordonnee centre){
 
 // MÉTHODES
 
-Vecteur* Plan::vec(){
-    Vecteur* vecs = new Vecteur(); 
-    *(vecs) = Vecteur(this->origin, this->c1); 
-    *(vecs + 1) = Vecteur(this->origin, this->c2); 
+vector<Vecteur> Plan::vec(){
+    vector<Vecteur> vecs = {}; 
+    vecs.push_back(move(Vecteur(this->origin, this->c1))); 
+    vecs.push_back(move(Vecteur(this->origin, this->c2))); 
     return vecs; 
 }
 
@@ -80,6 +80,9 @@ double Plan::distance(){
     return (Vecteur(this->centre)).norme(); 
 }
 
-void afficher(const Plan& p){
-    cout << "Origine des deux vecteurs du plan: (" << p.origin.getX() 
+void Plan::afficher(){
+    cout << "Origine des deux vecteurs du plan: (" << (this->origin).getX() << ", " <<  (this->origin).getY() << ", " << (this->origin).getZ() << ")" << endl; 
+    cout << "vecteur 1: " << (this->c1).getX() << ", " <<  (this->c1).getY() << ", " << (this->c1).getZ() << ")" << endl;
+    cout << "vecteur 2: " << (this->c2).getX() << ", " <<  (this->c2).getY() << ", " << (this->c2).getZ() << ")" << endl;
+    
 }
