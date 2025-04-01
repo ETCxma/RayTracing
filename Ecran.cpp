@@ -44,10 +44,10 @@ Ecran::Ecran(Resolution resolution){
      }
 }
 
-Ecran::~Ecran(){
-    delete[] this->pixels;
-    delete[] this->rayons;
-}
+// Ecran::~Ecran(){
+//     delete[] this->pixels;
+//     delete[] this->rayons;
+// }
 
 void Ecran::setResolution(int x, int y){
     return this->resolution.setResolution(x, y);
