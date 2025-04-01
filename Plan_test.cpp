@@ -3,33 +3,37 @@
 using namespace std;
 
 int main() {
+    // Création de plusieurs plans pour tester différents cas
 
-    // Création d'un plan avec des coordonnées spécifiques
-    Coordonnee origine(1, 1, 1);
-    Coordonnee c1(2, 3, 4);
-    Coordonnee c2(4, 5, 6);
-    Coordonnee centre(2, 2, 2);
+    // Test 1: Plan avec un vecteur normal simple
+    Plan plan1(Vecteur(1, 0, 0), Coordonnee(3, 0, 0));
+    cout << "Test 1 - Plan 1 :" << endl;
+    plan1.afficher();
+    cout << "Distance du Plan 1 à l'origine: " << plan1.distance() << endl;
+    cout << "----------------------------------------" << endl;
 
-    Plan plan2(origine, c1, c2, centre);
-    cout << "Plan 2 (coordonnées personnalisées): " << endl;
+    // Test 2: Plan avec un autre vecteur normal
+    Plan plan2(Vecteur(0, 1, 0), Coordonnee(0, 4, 0));
+    cout << "Test 2 - Plan 2 :" << endl;
     plan2.afficher();
-    cout << endl;
+    cout << "Distance du Plan 2 à l'origine: " << plan2.distance() << endl;
+    cout << "----------------------------------------" << endl;
 
-    // Test de la méthode vec()
-    array<Vecteur, 2> vecteurs = plan2.vec();
-    cout << "Vecteurs du Plan 2: " << endl;
-    cout << "Vecteur 1: (" << vecteurs[0].getDX() << ", " << vecteurs[0].getDY() << ", " << vecteurs[0].getDZ() << ")" << endl;
-    cout << "Vecteur 2: (" << vecteurs[1].getDX() << ", " << vecteurs[1].getDY() << ", " << vecteurs[1].getDZ() << ")" << endl;
-    cout << endl;
+    // Test 3: Plan avec un vecteur normal en diagonale
+    Plan plan3(Vecteur(1, 1, 1), Coordonnee(2, 2, 2));
+    cout << "Test 3 - Plan 3 :" << endl;
+    plan3.afficher();
+    cout << "Distance du Plan 3 à l'origine: " << plan3.distance() << endl;
+    cout << "----------------------------------------" << endl;
 
-    // Test du vecteur normal
-    Vecteur normal = plan2.vecteurNormal();
-    cout << "Vecteur normal du Plan 2: (" << normal.getDX() << ", " << normal.getDY() << ", " << normal.getDZ() << ")" << endl;
-    cout << endl;
-
-    // Test de la distance du plan à l'origine
-    double d = plan2.distance();
-    cout << "Distance du centre du Plan 2 à l'origine: " << d << endl;
+    // Test 4: Modifier un plan avec les setters et vérifier
+    Plan plan4;
+    cout << "Test 4 - Plan 4 (modification avec setters) :" << endl;
+    plan4.setNormal(Vecteur(0, 0, 1));
+    plan4.setOrigin(Coordonnee(0, 0, 5));
+    plan4.afficher();
+    cout << "Distance du Plan 4 à l'origine: " << plan4.distance() << endl;
+    cout << "----------------------------------------" << endl;
 
     return 0;
 }

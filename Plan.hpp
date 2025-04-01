@@ -9,62 +9,45 @@
 /**
  * L'idée derrière cette classe est d'implémenter le calcul d'intersection entre un triangle et un rayon.
  * 
- * Équation d'un plan: ax + by + cz + d = 0, où:
- *      - a, b et c sont les coordonnées du vecteur n, normal au plan (donnant au passage son orientation)
- *      - d représente la distance du centre du plan à l'origine du repère 
+ * Équation d'un plan: Nx*x0 + Ny*y0 + Nz*z0 + d = 0, où:
+ *      - (Nx, Ny, Nz): composante du vecteur normal du plan 
+ *      - d représente la distance du centre du plan à l'origine de l'espace 
  * 
  * Tout ces paramètres peuvent récupérés de la façon suivante:
- *      - a, b, c: on détermine n grâce à la relation n = produitVectoriel(u, v) 
- *      - d: on calcule la distance euclidienne entre le centre de notre plan et l'origine du repère
+ *      - (Nx, Ny, Nz): attributs de la classe Plan
+ *      - d: on calcule la distance euclidienne entre l'origine notre plan et l'origine du repère 
  */
 class Plan{
 
     private:
-        Coordonnee origin;      // Point commun des deux vecteurs (point d'origine, à ne pas confondre avec l'origine du repère)
-        Coordonnee c1;          // Point d'arrivé du premier vecteur du plan vectoriel
-        Coordonnee c2;          // Point d'arrivé du deuxième vecteur du plan vectoriel
-        Coordonnee centre;      // Permet d'accéder à d
+        Vecteur normal;            // Vecteur normal au plan
+        Coordonnee origin;         // Origine du vecteur normal
 
     public: 
         // Constructeur
-        Plan();
-        // Par défaut, un plan est contenu dans l'axe z
-        Plan(Coordonnee origin=Coordonnee(0,0,0), Coordonnee c1=Coordonnee(1,0,0), Coordonnee c2=Coordonnee(0,1,0), Coordonnee centre=Coordonnee(0,0,0)); 
+        // Plan();
+        Plan(Vecteur n=Vecteur(1,1,1), Coordonnee origin=Coordonnee(0,0,0)); 
         Plan(Plan& p); 
 
         // GETTER
         Coordonnee getOrigin(); 
-        Coordonnee getC1(); 
-        Coordonnee getC2(); 
-        Coordonnee getCentre(); 
+        Vecteur getNormal(); 
 
         // SETTER
         void setOrigin(Coordonnee origin); 
-        void setC1(Coordonnee c);
-        void setC2(Coordonnee c);
-        void setCentre(Coordonnee centre); 
+        void setNormal(Vecteur normal);  
+
 
         /**
          * Entrée: rien
          * Sortie: 
-         * - Renvoie le vecteur de ce plan (produit vectoriel des deux vecteurs définissant ce plan)
-         * - Procéder de cette manière nous permet de récupérer les scalaires a, b et c 
-         */
-        Vecteur vecteurNormal(); 
-
-        /**
-         * Entrée: rien
-         * Sortie: 
-         * - renvoie la norme du vecteur ((0,0,0), centre)
-         * - procéder de cette manière nous permet de récupérer d
+         * - renvoie le paramètre D, représentant la "distance" du plan à l'origine de l'espace (0,0,0). 
+         * - Pour cela, on passe par l'équation Nx*x0 + Ny*y0 + Nz*z0 + D = 0, où:
+         * - (Nx, Ny, Nz): composante du vecteur normal au plan (obtenu grâce à vecteurNormal()); 
+         * - (x0, y0 z0): coordonnées d'un point quelconque du plan (ici on prendra le point origin). 
          */
         double distance(); 
-
-        /**
-         * Entrée: rien
-         * Sortie: renvoie un pointeur vers un tableau de vecteur contenant les deux vecteurs de plan
-         */
-        std::array<Vecteur, 2> vec();  
+  
 
         /**
          * Entrée: rien
@@ -72,11 +55,11 @@ class Plan{
          */
         void afficher(); 
 
-        /**
-         * Entrée: un rayon 
-         * Sortie: renvoie les coordonnées d'intersection du rayon et du plan si intersection il y a 
-         */
-        Coordonnee intersectionPlan(Rayon r); 
+        // /**
+        //  * Entrée: un rayon 
+        //  * Sortie: renvoie les coordonnées d'intersection du rayon et du plan si intersection il y a 
+        //  */
+        // Coordonnee intersectionPlan(Rayon r); 
 
 };
 
