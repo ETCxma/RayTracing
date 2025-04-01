@@ -61,11 +61,13 @@ void Plan::setCentre(Coordonnee centre){
 
 // MÉTHODES
 
-vector<Vecteur> Plan::vec(){
-    vector<Vecteur> vecs = {}; 
-    vecs.push_back(move(Vecteur(this->origin, this->c1))); 
-    vecs.push_back(move(Vecteur(this->origin, this->c2))); 
-    return vecs; 
+array<Vecteur, 2> Plan::vec(){
+    array<Vecteur, 2> vecs = {}; 
+    Vecteur v1 = Vecteur(this->origin, this->c1); 
+    Vecteur v2 = Vecteur(this->origin, this->c2);
+    vecs[0] = v1; 
+    vecs[1] = v2; 
+    return vecs;  
 }
 
 Vecteur Plan::vecteurNormal(){
@@ -82,7 +84,7 @@ double Plan::distance(){
 
 void Plan::afficher(){
     cout << "Origine des deux vecteurs du plan: (" << (this->origin).getX() << ", " <<  (this->origin).getY() << ", " << (this->origin).getZ() << ")" << endl; 
-    cout << "vecteur 1: " << (this->c1).getX() << ", " <<  (this->c1).getY() << ", " << (this->c1).getZ() << ")" << endl;
-    cout << "vecteur 2: " << (this->c2).getX() << ", " <<  (this->c2).getY() << ", " << (this->c2).getZ() << ")" << endl;
+    cout << "vecteur 1: (" << (this->c1).getX() << ", " <<  (this->c1).getY() << ", " << (this->c1).getZ() << ")" << endl;
+    cout << "vecteur 2: (" << (this->c2).getX() << ", " <<  (this->c2).getY() << ", " << (this->c2).getZ() << ")" << endl;
     
 }
