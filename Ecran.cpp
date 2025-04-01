@@ -22,14 +22,6 @@ Ecran::Ecran(Resolution resolution){
     }
 }
 
-<<<<<<< HEAD
-// Ecran::~Ecran(){
-//     delete[] this->pixels;
-//     delete[] this->rayons;
-// }
-
-=======
->>>>>>> MC
 void Ecran::setResolution(int x, int y){
     return this->resolution.setResolution(x, y);
 }
@@ -38,19 +30,8 @@ Pixel Ecran::getPixel(int x, int y){
     return this->pixels.at(x*this->getResolution().getX() + y);
 }
 
-<<<<<<< HEAD
-// Coordonnee Ecran::getCentrePixel(int x, int y){
-//     return *(this->centre_pixels + x*this->resolution.getX() + y);
-// }
-
-Rayon Ecran::getRayon(int x, int y){
-    Rayon r = this->rayons.at(x*this->getResolution().getX() + y);
-    // r.afficheVecteur("ecran r");
-    return r;
-=======
 Rayon Ecran::getRayon(int x, int y){
     return this->rayons.at(x*this->getResolution().getX() + y);
->>>>>>> MC
 }
 
 Resolution Ecran::getResolution(){
@@ -91,18 +72,16 @@ void Ecran::updatePixels(){
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
             double intensite = this->getRayonIntensite(i, j);
-            // std::cout << "intensite " << intensite << std::endl;
             intensite_max = intensite_max > intensite ? intensite_max : intensite; 
         }
     }
 
     if(intensite_max == 0) return;
-    // std::cout << "max :" << intensite_max;
 
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
             double intensite = this->getRayonIntensite(i, j);
-            this->setPixelIntensite(i, j, (255*intensite)/(int)intensite_max);
+            this->setPixelIntensite(i, j, (255*intensite)/intensite_max);
         }
     }
 
