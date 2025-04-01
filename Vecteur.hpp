@@ -14,7 +14,7 @@ class Vecteur{
         Vecteur(Coordonnee v);
         Vecteur(Coordonnee x1, Coordonnee x2);
         Vecteur(double dx, double dy, double dz);
-        Vecteur(Vecteur &v);
+        Vecteur(Vecteur& v);
 
         /**
          * Entrée: un vecteur et un string

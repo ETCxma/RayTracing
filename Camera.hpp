@@ -12,18 +12,20 @@
 class Camera{
 
     public:
+        // Constructors
         Camera();
         Camera(Camera const &camera);
         Camera(Resolution resolution);
         Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution);
 
+        // Setters
         void setPosition(Coordonnee position);
         void setDistanceEcran(double distance_ecran);
         void setTheta(double theta);
         void setPhi(double phi);
         void setResolution(int x, int y);
-        // void setPixel(int x, int y, Pixel pix);
 
+        // Getters
         Coordonnee getPosition();
         double getDistanceEcran();
         double getTheta();
@@ -33,10 +35,9 @@ class Camera{
         Pixel getPixel(int x, int y);
         int getPixelIntensite(int x, int y);
 
+        // Others
         void addPixelIntensite(int x, int y, int intensite);
         void addRayonIntensite(int x, int y, double intensite);
-        // void setRayonIntensite(int x, int y, double intensite);
-
         void updatePixels();
 
     private:

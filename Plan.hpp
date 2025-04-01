@@ -2,6 +2,7 @@
 #define PLAN_H
 
 #include <vector>
+#include <array> 
 #include "Coordonnee.hpp"
 #include "Vecteur.hpp"
 
@@ -63,7 +64,7 @@ class Plan{
          * Entrée: rien
          * Sortie: renvoie un pointeur vers un tableau de vecteur contenant les deux vecteurs de plan
          */
-        std::vector<Vecteur> vec(); 
+        std::array<Vecteur, 2> vec();  
 
         /**
          * Entrée: un plan
