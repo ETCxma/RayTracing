@@ -15,12 +15,10 @@ class Rayon: public Vecteur{
         Rayon(Vecteur &vecteur, Couleur couleur=Couleur());
         Rayon(Coordonnee vecteur, Couleur couleur=Couleur());
         Rayon(Rayon &rayon);
-        // Rayon(const Rayon&) = default;
         Rayon(Rayon &&rayon);
 
         Rayon operator=(Rayon rayon){
-            Rayon r = Rayon(rayon.getVecteur(), rayon.getCouleur()); 
-            // r.afficheVecteur("r =");
+            Rayon r = Rayon(rayon.getVecteur(), rayon.getCouleur());
             return r;
         }
 

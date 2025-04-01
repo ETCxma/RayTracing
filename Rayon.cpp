@@ -44,7 +44,6 @@ void Rayon::addIntensite(double intensite){
     this->couleur.addIntensite(intensite);
 }
 
-
 Couleur Rayon::getCouleur(){
     return this->couleur;
 }
