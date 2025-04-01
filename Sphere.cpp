@@ -86,6 +86,8 @@ RaytracingPhongInfo Sphere::intersectionPhong(Rayon rayon, Coordonnee centre_cam
     double delta = sqrt(vdotd*vdotd - (v.norme()*v.norme() - this->rayon*this->rayon));
     
     if(delta > 0){
+        ret.intersection = true;
+
         Vecteur n;
         Vecteur y;
         Vecteur x;
@@ -96,16 +98,17 @@ RaytracingPhongInfo Sphere::intersectionPhong(Rayon rayon, Coordonnee centre_cam
 
         if(t1 < t2){
             y = (rayon*t1 + centre_camera);
+            ret.distance = t1;
         }
         else{
             y = (rayon*t2 + centre_camera);
+            ret.distance = t2;
         }
         n = (y - this->centre).unitaire();
         r = rayon - (n*n.produitScalaire(rayon)*2);
         r = r.unitaire();
 
 
-        ret.intersection = true;
         ret.normale = n;
         ret.objet_to_camera = (-y).unitaire();
         ret.objet_to_lumiere = Vecteur(y.getVecteur(), position_lumiere).unitaire();
