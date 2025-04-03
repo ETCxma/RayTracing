@@ -27,6 +27,7 @@ Triangle::Triangle(Point A, Point B, Point C){
 	(this->points[2]) = C;
 	// Matériau de base
 	this->materiau = Materiau();
+	// cast Point A -> Coordonnee A (B,C idem)
 	this->plan = Plan(Coordonnee(A), Coordonnee(B), Coordonnee(C));
 }
 
@@ -44,7 +45,12 @@ Plan Triangle::getPlan(){
 };
 
 Point Triangle::getPoint(int n){
-	return this->points[n]; 
+	if ((n < 0) | (n > 2)){
+		return;
+	}
+	else{
+		return this->points[n]; 
+	}
 };
 
 double Triangle::Aire(){
