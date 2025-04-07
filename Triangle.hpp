@@ -18,9 +18,11 @@ class Triangle: public Objet{
 
     public:
         // Constructeur
-        Triangle(); 
+        Triangle();
+        Triangle(Point* points);
         Triangle(Point* points, Materiau mat);        // On lui donne une référence vers un tableau de Points
 		Triangle(Point A, Point B, Point C);
+		Triangle(Point A, Point B, Point C, Materiau mat);
         Triangle(Triangle& t); 
 
         // Surcharges des méthodes virtuelles de Objet
