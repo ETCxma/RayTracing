@@ -4,7 +4,7 @@ This project is part of our training at Polytech Sorbonne engineering school.
 
 ## Avant d'exécuter le projet
 
-Il est important de noter que le projet ne fonctionne que sous UNIX. Plus précisément, ce dernier n'étant testé que sur Ubuntu 24.04, nous ne garantissons son bon fonctionnement que sous ce système. En principe, ça devrait marcher avec tous les systèmes qui gèrent les makefile. À utiliser à vos risques et périls !
+Il est important de noter que en principe, le projet fonctionnerait avec tous les systèmes qui compilent le C++. Cependant, nous n'avons pas trouvé de moyen de gérer les Makefile sous Windows (on pourrait compiler tous les fichiers à la main). Plus précisément, nous n'avons testé que sur Ubuntu 24.04, il est donc fonctionnel sous ce système.
 
 **Liste des librairies utilisées** :
 - `<cmath>`
@@ -22,47 +22,47 @@ Il est important de noter que le projet ne fonctionne que sous UNIX. Plus préci
 
 .
 `nepal@444-nuits:/RayTracing$ ls`
--     ├── Camera.hpp
--     │   └── Camera.cpp
--     │       └── Camera_test.cpp
--     ├── Coordonnee.hpp
--     │   └── Coordonnee.cpp
--     │       └── Coordonnee_test.cpp
--     ├── Couleur.hpp
--     │   └── Couleur.cpp
--     ├── Ecran.hpp
--     │   └── Ecran.cpp
--     ├── Espace.hpp
--     │   └── Espace.cpp
--     │       └── Espace_test.cpp
--     ├── Lumiere.hpp
--     │   └── Lumiere.cpp
--     ├── Materiau.hpp
--     │   └── Materiau.cpp
--     ├── Objet.hpp
--     │   └── Objet.cpp
--     ├── Pixel.hpp
--     │   └── Pixel.cpp
--     ├── Plan.hpp
--     │   └── Plan.cpp
--     │       └── Plan_test.cpp
--     ├── Point.hpp
--     │   └── Point.cpp
--     ├── Rayon.hpp
--     │   └── Rayon.cpp
--     ├── RayTracingPhongInfo.hpp
--     │   └── RayTracingPhongInfo.cpp
--     ├── Resolution.hpp
--     │   └── Resolution.cpp
--     ├── Sphere.hpp
--     │   └── Sphere.cpp
--     │       └── Sphere_test.cpp
--     ├── Triangle.hpp
--     │   └── Triangle.cpp
--     │       └── Triangle_test.cpp
--     └── Vecteur.hpp
--     │    └── Vecteur.cpp
--     │        └── Vecteur_test.cpp
+`     ├── Camera.hpp`
+`     │   └── Camera.cpp`
+`     │       └── Camera_test.cpp`
+`     ├── Coordonnee.hpp`
+`     │   └── Coordonnee.cpp`
+`     │       └── Coordonnee_test.cpp`
+`     ├── Couleur.hpp`
+`     │   └── Couleur.cpp`
+`     ├── Ecran.hpp`
+`     │   └── Ecran.cpp`
+`     ├── Espace.hpp`
+`     │   └── Espace.cpp`
+`     │       └── Espace_test.cpp`
+`     ├── Lumiere.hpp`
+`     │   └── Lumiere.cpp`
+`     ├── Materiau.hpp`
+`     │   └── Materiau.cpp`
+`     ├── Objet.hpp`
+`     │   └── Objet.cpp`
+`     ├── Pixel.hpp`
+`     │   └── Pixel.cpp`
+`     ├── Plan.hpp`
+`     │   └── Plan.cpp`
+`     │       └── Plan_test.cpp`
+`     ├── Point.hpp`
+`     │   └── Point.cpp`
+`     ├── Rayon.hpp`
+`     │   └── Rayon.cpp`
+`     ├── RayTracingPhongInfo.hpp`
+`     │   └── RayTracingPhongInfo.cpp`
+`     ├── Resolution.hpp`
+`     │   └── Resolution.cpp`
+`     ├── Sphere.hpp`
+`     │   └── Sphere.cpp`
+`     │       └── Sphere_test.cpp`
+`     ├── Triangle.hpp`
+`     │   └── Triangle.cpp`
+`     │       └── Triangle_test.cpp`
+`     └── Vecteur.hpp`
+`     │    └── Vecteur.cpp`
+`     │        └── Vecteur_test.cpp`
 
 ## Comment exécuter le projet
 
