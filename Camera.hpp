@@ -16,7 +16,7 @@ class Camera{
         Camera();
         Camera(Camera const &camera);
         Camera(Resolution resolution);
-        Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution);
+        Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution, double champ_vision = M_PI_2);
 
         // Setters
         void setPosition(Coordonnee position);
@@ -47,6 +47,7 @@ class Camera{
         Coordonnee position;
         double distance_ecran;
         double theta, phi; // gives Vecteur rotation_espace;
+        double champ_vision;
 
 
 };

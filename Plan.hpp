@@ -13,7 +13,7 @@
  *      - (Nx, Ny, Nz): composante du vecteur normal du plan 
  *      - d représente la distance du centre du plan à l'origine de l'espace 
  * 
- * Tout ces paramètres peuvent récupérés de la façon suivante:
+ * Tout ces paramètres peuvent être récupérés de la façon suivante:
  *      - (Nx, Ny, Nz): attributs de la classe Plan
  *      - d: on calcule la distance euclidienne entre l'origine notre plan et l'origine du repère 
  */
@@ -55,11 +55,11 @@ class Plan{
          */
         void afficher(); 
 
-        // /**
-        //  * Entrée: un rayon 
-        //  * Sortie: renvoie les coordonnées d'intersection du rayon et du plan si intersection il y a 
-        //  */
-        // Coordonnee intersectionPlan(Rayon r); 
+        /**
+         * Entrée: un rayon 
+         * Sortie: renvoie les coordonnées d'intersection du rayon et du plan si intersection il y a 
+         */
+        Coordonnee intersectionPlan(Rayon r); 
 
 };
 

@@ -1,6 +1,5 @@
 #include "Camera.hpp"
 #include <cmath>
-#include <bitset>
 
 // Constructors
 Camera::Camera():
@@ -10,6 +9,7 @@ Camera::Camera():
     this->distance_ecran = 1;
     this->theta = 0;
     this->phi = 0;
+    this->champ_vision = M_PI_2;
 }
 
 Camera::Camera(Resolution resolution):
@@ -19,6 +19,7 @@ Camera::Camera(Resolution resolution):
     this->distance_ecran = 1;
     this->theta = 0;
     this->phi = 0;
+    this->champ_vision = M_PI_2;
 
     this->calculRayonsCoord();
 }
@@ -30,17 +31,19 @@ Camera::Camera(Camera const &camera):
     this->distance_ecran = camera.distance_ecran;
     this->theta = camera.theta;
     this->phi = camera.phi;
+    this->champ_vision = camera.champ_vision;
 
     this->calculRayonsCoord();    
 }
 
-Camera::Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution):
+Camera::Camera(Coordonnee position, double distance_ecran, double theta, double phi, Resolution resolution, double champ_vision):
     ecran(resolution)
 {    
     this->position = position;
     this->distance_ecran = distance_ecran;
     this->theta = theta;
     this->phi = phi;
+    this->champ_vision = champ_vision;
 
     calculRayonsCoord();
 }
@@ -123,7 +126,7 @@ void Camera::calculRayonsCoord(){
     int k = this->getResolution().getX();
     int m = this->getResolution().getY();
 
-    double gx = this->distance_ecran*tan(M_PI_4);
+    double gx = this->distance_ecran*tan(this->champ_vision/2.0);
     double gy = gx*(double)(m-1)/(double)(k-1);
     
     Vecteur qx = bn*((double)2*gx/(double)(k-1));

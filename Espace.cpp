@@ -100,15 +100,18 @@ void Espace::rayTracingSimple(int camID){
 
 // Fonction de la mort v2.0 : On utilise la méthode de Phong afin de faire du RayTracing
 void Espace::rayTracingPhong(int camID){
+
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
+
     RaytracingPhongInfo phong_vectors, phong_vectors_min;
     int id_min = 0;
     double t_min = MAXFLOAT;
     double i_a = this->calcIntesiteAmbient();
+
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
-            i_a = 0;
+            // Pour chaque pixel, on reset les valeurs
             t_min = MAXFLOAT;
             // On détermine l'objet le plus proche de la caméra (on ne verra pas les objets derrière lui)
             for (int o = 0; o < (int)objets.size(); o++){ 
@@ -150,7 +153,8 @@ void Espace::rayTracingPhong(int camID){
                     // Decomment line for debug
                     // cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ i_m_s = " << i_m_s << "/ alpha = " << alpha << endl;
 
-                    calculus = k_a*i_a + k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(double)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s;
+                    // La partie multiplié par 1 déconne quand l'objet intersecté a un y < 0, on ne sait pas pourquoi
+                    calculus = k_a*i_a + k_d*(vL_m.produitScalaire(vN))*i_m_d + 1*(k_s*(double)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s);
                     // cout << calculus <<endl;
                     cameras.at(camID)->addRayonIntensite(i, j, calculus);
                 }
