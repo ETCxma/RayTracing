@@ -83,7 +83,7 @@ Afin de tester le raytracing, il faut exécuter la commande
   - L'image est alors ajoutée aux fichiers (si vous exécutez simplement sans modifier `Espace_test.cpp`, ça sera `IMAGE_POGGIES.ppm` mais le nom peut être changé directement dans le fichier source).
  
 ## Miscellaneous
-- **Diagramme de classes** : [image à ajouter]
+- **Diagramme de classes** : ![Diagramme UML](https://github.com/ETCxma/RayTracing/blob/main/uml_diagram.png?raw=true)
 - **Modèle de Ray Tracing implémenté** : [Modèle de Phong](https://en.wikipedia.org/wiki/Phong_reflection_model)
 - **Remerciements** : Merci à MM. Hilaire et Dorfsman pour nous avoir partagé leurs connaissances et pour nous avoir suivi tout au long de ce projet. Malgré toutes les galères (en particulier la gestion des branches git), vous nous avez apporté un savoir qui nous suivra tout au long de notre vie d'ingénieur (ou au moins d'informaticien du dimanche si dans le futur on checkout une autre branche de métiers...), en plus d'être un projet qui nous tient à cœur.
 
