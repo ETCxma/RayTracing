@@ -12,7 +12,6 @@ Il est important de noter que le projet ne fonctionne que sous UNIX. Plus préci
 - `<iostream>`
 - `<vector>`
 - `<fstream>`
-- `<bitset>`
 - `<utility>`
 - `<array>`
 
