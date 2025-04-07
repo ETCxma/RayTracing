@@ -7,11 +7,14 @@ class Resolution{
         Resolution();
         Resolution(int x, int y);
         Resolution(Resolution &resolution);
-        
-        void setResolution(int x, int y);
 
+        // Getters
         int getX();
         int getY();
+
+        // Setter
+        void setResolution(int x, int y);
+
     private:
         int x,y;
 };

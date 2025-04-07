@@ -14,6 +14,7 @@ Materiau::Materiau(double i_s, double i_d, double i_a, double a){
     this->alpha = a;
 }
 
+// Getters
 double Materiau::getIndiceSpecular(){
     return this->indice_specular;
 }

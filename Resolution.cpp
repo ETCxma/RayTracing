@@ -15,15 +15,17 @@ Resolution::Resolution(Resolution &resolution){
     this->y = resolution.y;
 }
 
-void Resolution::setResolution(int x, int y){
-    this->x = x;
-    this->y = y;    
-}
-
+// Getters
 int Resolution::getX(){
     return this->x;
 }
 
 int Resolution::getY(){
     return this->y;
+}
+
+// Setter
+void Resolution::setResolution(int x, int y){
+    this->x = x;
+    this->y = y;    
 }

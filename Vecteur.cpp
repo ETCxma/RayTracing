@@ -5,14 +5,8 @@
  */
 
 #include "Vecteur.hpp"
-/*
-TODO: 
-	- Coodonnee &Intersection(Objet &o); (see header)
-	- tests du produit vectoriel
-*/
 
 using namespace std; 
-
 
 // GETTERS
 Coordonnee Vecteur::getVecteur(){
@@ -47,7 +41,6 @@ void Vecteur::setDZ(double z){
 
 
 // CONSTRUCTEURS
-
 Vecteur::Vecteur(){
 	this->vecteur = Coordonnee(0,0,0);
 }
@@ -73,14 +66,9 @@ Vecteur::Vecteur(Vecteur &v){
 
 
 // SURCHARGES
-
 /**
  * OPÉRATEUR "+" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
  */
-// Vecteur operator+(Vecteur &v, Vecteur &v2){
-// 	return Vecteur((v.dx + v2.getDX()), (v.dy + v2.getDY()), (v.dz + v2.getDZ()));
-// }
-
 Vecteur operator+(Vecteur v, Vecteur v2){
 	return Vecteur((v.getDX() + v2.getDX()), (v.getDY() + v2.getDY()), (v.getDZ() + v2.getDZ()));
 }
@@ -88,10 +76,6 @@ Vecteur operator+(Vecteur v, Vecteur v2){
 /**
  * OPÉRATEUR "-" POUR DEUX VECTEURS EN COORDONNÉES CARTÉSIENNES
  */
-// Vecteur operator-(Vecteur &v, Vecteur &v2){
-// 	return Vecteur((v.dx - v2.getDX()), (v.dy - v2.getDY()), (v.dz - v2.getDZ()));
-// }
-
 Vecteur operator-(Vecteur v, Vecteur v2){
 	return Vecteur((v.getDX() - v2.getDX()), (v.getDY() - v2.getDY()), (v.getDZ() - v2.getDZ()));
 }
@@ -124,10 +108,6 @@ Vecteur operator+(Vecteur v, Coordonnee c){
 	return Vecteur((v.getDX()+c.getX()), (v.getDY()+c.getY()), (v.getDZ()+c.getZ()));
 }
 
-// Vecteur operator+(Vecteur &v, Coordonnee &c){
-// 	return Vecteur((v.dx+c.getX()), (v.dy+c.getY()), (v.dz+c.getZ()));
-// }
-
 /**
  * OPÉRATEUR "-" ENTRE UN VECTEUR ET UNE COORDONNÉE
  */
@@ -135,13 +115,7 @@ Vecteur operator-(Vecteur v, Coordonnee c){
 	return Vecteur((v.getDX()-c.getX()), (v.getDY()-c.getY()), (v.getDZ()-c.getZ()));
 }
 
-// Vecteur operator-(Vecteur &v, Coordonnee &c){
-// 	return Vecteur((v.dx-c.getX()), (v.dy-c.getY()), (v.dz-c.getZ()));
-// }
-
-
 // MÉTHODES
-
 void Vecteur::afficheVecteur(string nom){
 	cout << nom << " = (" << this->getDX() << "," << this->getDY() << "," << this->getDZ() << ")" << endl; 
 }

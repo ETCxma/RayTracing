@@ -18,7 +18,7 @@ class Pixel{
         void addIntensite(int value);
         
     private:
-        int intensite; // Can be replaced by r,g,b or anything else
+        int intensite; // Can be replaced by r,g,b
 
 };
 
