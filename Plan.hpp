@@ -26,7 +26,7 @@ class Plan{
 
     public: 
         // Constructeur
-        Plan();
+        // Plan();
         // Par défaut, un plan est contenu dans l'axe z
         Plan(Coordonnee origin=Coordonnee(0,0,0), Coordonnee c1=Coordonnee(1,0,0), Coordonnee c2=Coordonnee(0,1,0), Coordonnee centre=Coordonnee(0,0,0)); 
         Plan(Plan& p); 

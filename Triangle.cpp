@@ -12,13 +12,15 @@ Triangle::Triangle(){
 		(this->points)[i] = Point(); 
 	}
 	this->materiau = Materiau(); 
+	this->plan = Plan(Coordonnee(this->points[0]), Coordonnee(this->points[1]), Coordonnee(this->points[2]));
 }
 
 Triangle::Triangle(Point* points, Materiau mat){
 	for(int i=0; i<3; i++){
 		this->points[i] = *(points + i); 
 	}
-	this->materiau = Materiau(mat); 
+	this->materiau = Materiau(mat);
+	this->plan = Plan(Coordonnee(this->points[0]), Coordonnee(this->points[1]), Coordonnee(this->points[2]));
 }
 
 Triangle::Triangle(Point A, Point B, Point C){
