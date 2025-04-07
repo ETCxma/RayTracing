@@ -40,12 +40,7 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
     Vecteur v = Vecteur(this->centre, centre_camera);
     double vdotd = v.produitScalaire(rayon);
     
-    // std::cout << vdotd << std::endl;
-    
     double delta = sqrt(vdotd*vdotd - (v.norme()*v.norme() - this->rayon*this->rayon));
-    
-    // std::cout << vdotd*vdotd - (v.norme()*v.norme() - this->rayon*this->rayon) << std::endl;
-    // std::cout << delta << std::endl;
     
     if(delta > 0){
         Vecteur n;
@@ -69,11 +64,9 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
         r = rayon - (n*n.produitScalaire(rayon)*2);
         r = r.unitaire();
 
-
         // y.afficheVecteur("y");
         // n.afficheVecteur("n");
         // r.afficheVecteur("r");
-
 
         return 1;
     }
@@ -81,7 +74,7 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
         return 0;
 }
 
-
+// https://en.wikipedia.org/wiki/Phong_reflection_model
 RaytracingPhongInfo Sphere::intersectionPhong(Rayon rayon, Coordonnee centre_camera, Coordonnee position_lumiere){
     double t1, t2;
     RaytracingPhongInfo ret(false);
@@ -93,6 +86,8 @@ RaytracingPhongInfo Sphere::intersectionPhong(Rayon rayon, Coordonnee centre_cam
     double delta = sqrt(vdotd*vdotd - (v.norme()*v.norme() - this->rayon*this->rayon));
     
     if(delta > 0){
+        ret.intersection = true;
+
         Vecteur n;
         Vecteur y;
         Vecteur x;
@@ -103,16 +98,17 @@ RaytracingPhongInfo Sphere::intersectionPhong(Rayon rayon, Coordonnee centre_cam
 
         if(t1 < t2){
             y = (rayon*t1 + centre_camera);
+            ret.distance = t1;
         }
         else{
             y = (rayon*t2 + centre_camera);
+            ret.distance = t2;
         }
         n = (y - this->centre).unitaire();
         r = rayon - (n*n.produitScalaire(rayon)*2);
         r = r.unitaire();
 
 
-        ret.intersection = true;
         ret.normale = n;
         ret.objet_to_camera = (-y).unitaire();
         ret.objet_to_lumiere = Vecteur(y.getVecteur(), position_lumiere).unitaire();

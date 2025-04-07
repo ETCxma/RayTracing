@@ -15,6 +15,7 @@ using namespace std;
 Espace::Espace(){
 }
 
+// Getters
 vector<Camera *> &Espace::getCameras(){
     return cameras;
 }
@@ -40,63 +41,56 @@ int Espace::AjouterCamera(Camera *cam){
     return cameras.size() - 1;
 }
 
+// Return Lumiere id
 int Espace::AjouterLumiere (Lumiere *lum){
     lumieres.push_back(lum);
     return lumieres.size() - 1;
 }
 
-
-void Espace::takePicture(int camID, string path) {
+// Take a picture of space and save it at path
+void Espace::takePicture(int camID, string path){
     rayTracingPhong(camID);
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
-    
-    ofstream img(path);  // using "test.ppm" as test
+    ofstream img(path);
 
     if (!img.is_open()) {
         cerr << "Error opening file: " << path << endl;
         return;
     }
-
-    img << "P3\n" << x << " " << y << "\n255\n"; // PPM Header
-    Pixel p;
+    // PPM Header (needed)
+    img << "P3\n" << x << " " << y << "\n255\n";
 
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
-            p = cameras.at(camID)->getPixel(i, j);
-            int value = p.getIntensite();
+            int value = cameras.at(camID)->getPixelIntensite(i, j);
             int r = value, g = value, b = value;
-            img << r << " " << g << " " << b << "\n"; // Write RGB values
+            // Write RGB values
+            img << r << " " << g << " " << b << "\n";
         }
     }
 
     img.close();
-    system(("open " + path).c_str()); // Open the file
+    // Open the file
+    system(("open " + path).c_str());
     return;
 }
 
 
-// Fonction de la mort
+// Fonction Simple de la mort : Affiche la présence d'objets dans l'espace
 void Espace::rayTracingSimple(int camID){
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
-    Rayon r;
-    Pixel p;
 
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
             for (int o = 0; o < (int)objets.size(); o++){
-                // Envoyer un rayon
-                r = cameras.at(camID)->getRayon(i, j);
-                p = cameras.at(camID)->getPixel(i, j);
-                // S'il y a intersection
-                if (objets.at(o)->intersection(r, cameras.at(camID)->getPosition()) == 1){
-                    p.addIntensite(255);
-                    cameras.at(camID)->setPixel(i, j, p);
+                // On envoie un Rayon et on check s'il y a intersection (pour chacun des pixels et chacun des objets)
+                if (objets.at(o)->intersection(cameras.at(camID)->getRayon(i,j), cameras.at(camID)->getPosition()) == 1){
+                    cameras.at(camID)->addPixelIntensite(i, j, 255);
                 }
                 else{   
-                    p.addIntensite(0);
-                    cameras.at(camID)->setPixel(i, j, p);
+                    cameras.at(camID)->addPixelIntensite(i, j, 0);
                 }
             }
         }
@@ -104,60 +98,77 @@ void Espace::rayTracingSimple(int camID){
     return;
 }
 
-// Fonction de la mort v2.0
+// Fonction de la mort v2.0 : On utilise la méthode de Phong afin de faire du RayTracing
 void Espace::rayTracingPhong(int camID){
     int x = cameras.at(camID)->getResolution().getX();
     int y = cameras.at(camID)->getResolution().getY();
-    Rayon r;
-    Pixel p;
-    RaytracingPhongInfo Phong_Vectors;
-
+    RaytracingPhongInfo phong_vectors, phong_vectors_min;
+    int id_min = 0;
+    double t_min = MAXFLOAT;
+    double i_a = this->calcIntesiteAmbient();
     for (int i = 0; i < x; i++){
         for (int j = 0; j < y; j++){
-            for (int o = 0; o < (int)objets.size(); o++){
-                // Envoyer un rayon
-                r = cameras.at(camID)->getRayon(i, j);
-                p = cameras.at(camID)->getPixel(i, j);
+            i_a = 0;
+            t_min = MAXFLOAT;
+            // On détermine l'objet le plus proche de la caméra (on ne verra pas les objets derrière lui)
+            for (int o = 0; o < (int)objets.size(); o++){ 
+                phong_vectors = objets.at(o)->intersectionPhong(cameras.at(camID)->getRayon(i, j), cameras.at(camID)->getPosition(), Coordonnee(0,0,0));
+                if(phong_vectors.distance < t_min){
+                    phong_vectors_min = phong_vectors;
+                    t_min = phong_vectors.distance;
+                    id_min = o;
+                }
+            }
 
-                double k_a = 1;
-                double k_d = 0.5;
-                double k_s = 0.5;
-
-                double i_a = objets.at(o)->getIndiceAmbient();
-                double i_m_d = objets.at(o)->getIndiceDiffuse();
-                double i_m_s = objets.at(o)->getIndiceSpecular();
-                double alpha = objets.at(o)->getAlpha();;
-                double calculus = k_a*i_a;
-                //cout << calculus <<endl;
-                // cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ i_m_s = " << i_m_s << "/ alpha = " << alpha << endl;  
+            // Au moins un objet trouvé 
+            if(t_min != MAXFLOAT){
+                // std::cout << t_min << std::endl;
+                double k_a = objets.at(id_min)->getIndiceAmbient();
+                double k_d = objets.at(id_min)->getIndiceDiffuse();
+                double k_s = objets.at(id_min)->getIndiceSpecular();
+                double alpha = objets.at(id_min)->getAlpha();
 
                 for (int l = 0; l < (int)lumieres.size(); l++){
-                    // On utilise la méthode de Maxime afin d'obtenir les vecteurs nécessaires à la méthode de Phong
-                    Phong_Vectors = objets.at(o)->intersectionPhong(r, cameras.at(camID)->getPosition(), lumieres.at(l)->getPosition());
+                
+                    phong_vectors = objets.at(id_min)->intersectionPhong(cameras.at(camID)->getRayon(i, j), cameras.at(camID)->getPosition(), lumieres.at(l)->getPosition());
+                    double i_m_d = lumieres.at(l)->getIntensiteDiffuse();
+                    double i_m_s = lumieres.at(l)->getIntensiteSpecular();
 
-                    Vecteur vL_m = Phong_Vectors.objet_to_lumiere;
-                    Vecteur vN = Phong_Vectors.normale;
-                    Vecteur vR_m = Phong_Vectors.objet_to_lumiere_reflechi;
-                    Vecteur vV = Phong_Vectors.objet_to_camera;
+                    Vecteur vL_m = phong_vectors.objet_to_lumiere;
+                    Vecteur vN = phong_vectors.normale;
+                    Vecteur vR_m = phong_vectors.objet_to_lumiere_reflechi;
+                    Vecteur vV = phong_vectors.objet_to_camera;
+
+                    double calculus = 0;
+
+                    // Decomment lines for debug
                     // vL_m.afficheVecteur(string("vL_m"));
                     // vN.afficheVecteur(string("vN"));
                     // vR_m.afficheVecteur(string("vR_m"));
                     // vV.afficheVecteur(string("vV"));
 
-                    calculus += abs(k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(double)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s);
-                    calculus = (int)calculus;
+                    // Decomment line for debug
+                    // cout << "i_a = " << i_a << "/ i_m_d = " << i_m_d << "/ i_m_s = " << i_m_s << "/ alpha = " << alpha << endl;
+
+                    calculus = k_a*i_a + k_d*(vL_m.produitScalaire(vN))*i_m_d + k_s*(double)pow((vR_m.produitScalaire(vV)),alpha)*i_m_s;
                     // cout << calculus <<endl;
-                    r.addIntensite(calculus);
-                    // plutôt que de modifier l'intensité du pixel, on va modifier l'intensité de la couleur associée au rayon
-                    // On fera ensuite une autre méthode qui permet de transformer les rayons en pixel afin d'avoir leur intensité et all gud
-                    p.addIntensite(calculus);
-                    cameras.at(camID)->setPixel(i, j, p);
+                    cameras.at(camID)->addRayonIntensite(i, j, calculus);
                 }
-                // cout << calculus <<endl;
             }
-            // r.RayontoPixel(r.couleur, 255);
+            // Pas d'objet 
+            else{
+                cameras.at(camID)->addRayonIntensite(i, j, 0); // Useless
+            }
         }
     }
-    //ecran.RayontoPixel();
+    cameras.at(camID)->updatePixels();
     return;
+}
+
+double Espace::calcIntesiteAmbient(){
+    double i_a = 0;
+    for (int l = 0; l < (int)lumieres.size(); l++){
+        i_a += lumieres.at(l)->getIntensiteAmbient();
+    }
+    return i_a;
 }

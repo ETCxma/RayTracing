@@ -9,28 +9,28 @@ class Lumiere: public Coordonnee{
 
     public:
         Lumiere();
-        Lumiere(Couleur intensite, Coordonnee soure, float intensite_specular, float intensite_diffuse, float intensite_ambient); 
+        Lumiere(Couleur intensite, Coordonnee soure, double intensite_specular, double intensite_diffuse, double intensite_ambient); 
         Lumiere(Lumiere &l);
 
         // Getters
         Couleur getIntensite();
         Coordonnee getPosition(); 
-		float getIntensiteSpecular();
-		float getIntensiteDiffuse();
-		float getIntensiteAmbient();
+		double getIntensiteSpecular();
+		double getIntensiteDiffuse();
+		double getIntensiteAmbient();
 
         void afficheLumiere(); // À IMPLÉMENTER (???)
 
 		// Setteurs.
 		void setIntensite(Couleur intensite);
 		void setPosition(Coordonnee source);
-		void setIntensiteSpecular(float intensite_specular);
-		void setIntensiteDiffuse(float intensite_diffuse);
-		void setIntensiteAmbient(float intensite_ambient);
+		void setIntensiteSpecular(double intensite_specular);
+		void setIntensiteDiffuse(double intensite_diffuse);
+		void setIntensiteAmbient(double intensite_ambient);
 
     private:
         Couleur intensite;
-		float intensite_specular, intensite_diffuse, intensite_ambient; // Intensité lumineuse (speculaire, diffuse, ambiante)
+		double intensite_specular, intensite_diffuse, intensite_ambient; // Intensité lumineuse (speculaire, diffuse, ambiante)
         // Coordonnee source; 
 
 };
