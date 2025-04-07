@@ -33,6 +33,7 @@ void Sphere::affichInfos(){
     cout << "Materiau : alpha = " << this->getAlpha() << "/ i_s = " <<this->getIndiceSpecular() << "/ i_d = " << this->getIndiceDiffuse() << "/ i_a = " << this->getIndiceAmbient() << endl; 
 }
 
+// https://en.wikipedia.org/wiki/Ray_tracing_(graphics)#Example
 RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera){
     double t1, t2;
     
@@ -43,10 +44,9 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
     double delta = sqrt(vdotd*vdotd - (v.norme()*v.norme() - this->rayon*this->rayon));
     
     if(delta > 0){
-        Vecteur n;
-        Vecteur y;
-        Vecteur x;
-        Vecteur r;
+        Vecteur normale; // Normale
+        Vecteur intersect; // Vecteur d'intersection
+        Vecteur reflected; // Rayon réfléchi
         
         t1 = -vdotd + delta;
         t2 = -vdotd - delta;
@@ -55,18 +55,14 @@ RaytracingSimpleInfo Sphere::intersection(Rayon rayon, Coordonnee centre_camera)
         // std::cout << t2 << std::endl;
                 
         if(t1 < t2){
-            y = (rayon*t1 + centre_camera);
+            intersect = (rayon*t1 + centre_camera);
         }
         else{
-            y = (rayon*t2 + centre_camera);
+            intersect = (rayon*t2 + centre_camera);
         }
-        n = (y - this->centre).unitaire();
-        r = rayon - (n*n.produitScalaire(rayon)*2);
-        r = r.unitaire();
-
-        // y.afficheVecteur("y");
-        // n.afficheVecteur("n");
-        // r.afficheVecteur("r");
+        normale = (intersect - this->centre).unitaire();
+        reflected = rayon - (normale*normale.produitScalaire(rayon)*2);
+        reflected = reflected.unitaire();
 
         return 1;
     }
@@ -88,31 +84,30 @@ RaytracingPhongInfo Sphere::intersectionPhong(Rayon rayon, Coordonnee centre_cam
     if(delta > 0){
         ret.intersection = true;
 
-        Vecteur n;
-        Vecteur y;
-        Vecteur x;
-        Vecteur r;
+        Vecteur normale; // Normale
+        Vecteur intersect; // Vecteur d'intersection
+        Vecteur reflected; // Rayon réfléchi
 
         t1 = -vdotd + delta;
         t2 = -vdotd - delta;
 
         if(t1 < t2){
-            y = (rayon*t1 + centre_camera);
+            intersect = (rayon*t1 + centre_camera);
             ret.distance = t1;
         }
         else{
-            y = (rayon*t2 + centre_camera);
+            intersect = (rayon*t2 + centre_camera);
             ret.distance = t2;
         }
-        n = (y - this->centre).unitaire();
-        r = rayon - (n*n.produitScalaire(rayon)*2);
-        r = r.unitaire();
+        normale = (intersect - this->centre).unitaire();
+        reflected = rayon - (normale*normale.produitScalaire(rayon)*2);
+        reflected = reflected.unitaire();
 
 
-        ret.normale = n;
-        ret.objet_to_camera = (-y).unitaire();
-        ret.objet_to_lumiere = Vecteur(y.getVecteur(), position_lumiere).unitaire();
-        ret.objet_to_lumiere_reflechi = -ret.objet_to_lumiere + (n*n.produitScalaire(ret.objet_to_lumiere)*2);
+        ret.normale = normale;
+        ret.objet_to_camera = (-intersect).unitaire();
+        ret.objet_to_lumiere = Vecteur(intersect.getVecteur(), position_lumiere).unitaire();
+        ret.objet_to_lumiere_reflechi = -ret.objet_to_lumiere + (normale*normale.produitScalaire(ret.objet_to_lumiere)*2);
 
     }
     return ret;
