@@ -49,7 +49,6 @@ double Plan::distance(){
     return d; 
 }
 
-
 void Plan::afficher(){
     cout << "Information du plan: " << endl; 
     cout << "\t"; 
@@ -57,6 +56,11 @@ void Plan::afficher(){
     cout << "\t Origine = (" << this->origin.getX() << ", " << this->origin.getY() << ", " << this->origin.getZ() << ")." << endl;  
 }
 
-// Coordonnee Plan::intersectionPlan(Rayon r){
-        
-// }
+Coordonnee Plan::intersectionPlan(Rayon r){
+    double d = distance(); 
+
+    // On détermine l'origine de rayon ainsi que sa direction
+    Coordonnee origin_rayon = ; 
+    Coordonnee direction_rayon = ; 
+
+}

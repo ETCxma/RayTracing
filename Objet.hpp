@@ -28,7 +28,6 @@ class Objet{
 
     protected:
         Materiau materiau;
-        std::vector<Objet> objets;
 };
 
 #endif
