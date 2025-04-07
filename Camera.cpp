@@ -1,6 +1,5 @@
 #include "Camera.hpp"
 #include <cmath>
-#include <bitset>
 
 // Constructors
 Camera::Camera():
