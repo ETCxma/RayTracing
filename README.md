@@ -22,47 +22,47 @@ Il est important de noter que en principe, le projet fonctionnerait avec tous le
 
 .
 `nepal@444-nuits:/RayTracing$ ls`
-`     ├── Camera.hpp`
-`     │   └── Camera.cpp`
-`     │       └── Camera_test.cpp`
-`     ├── Coordonnee.hpp`
-`     │   └── Coordonnee.cpp`
-`     │       └── Coordonnee_test.cpp`
-`     ├── Couleur.hpp`
-`     │   └── Couleur.cpp`
-`     ├── Ecran.hpp`
-`     │   └── Ecran.cpp`
-`     ├── Espace.hpp`
-`     │   └── Espace.cpp`
-`     │       └── Espace_test.cpp`
-`     ├── Lumiere.hpp`
-`     │   └── Lumiere.cpp`
-`     ├── Materiau.hpp`
-`     │   └── Materiau.cpp`
-`     ├── Objet.hpp`
-`     │   └── Objet.cpp`
-`     ├── Pixel.hpp`
-`     │   └── Pixel.cpp`
-`     ├── Plan.hpp`
-`     │   └── Plan.cpp`
-`     │       └── Plan_test.cpp`
-`     ├── Point.hpp`
-`     │   └── Point.cpp`
-`     ├── Rayon.hpp`
-`     │   └── Rayon.cpp`
-`     ├── RayTracingPhongInfo.hpp`
-`     │   └── RayTracingPhongInfo.cpp`
-`     ├── Resolution.hpp`
-`     │   └── Resolution.cpp`
-`     ├── Sphere.hpp`
-`     │   └── Sphere.cpp`
-`     │       └── Sphere_test.cpp`
-`     ├── Triangle.hpp`
-`     │   └── Triangle.cpp`
-`     │       └── Triangle_test.cpp`
-`     └── Vecteur.hpp`
-`     │    └── Vecteur.cpp`
-`     │        └── Vecteur_test.cpp`
+- `     ├── Camera.hpp`
+- `     │   └── Camera.cpp`
+- `     │       └── Camera_test.cpp`
+- `     ├── Coordonnee.hpp`
+- `     │   └── Coordonnee.cpp`
+- `     │       └── Coordonnee_test.cpp`
+- `     ├── Couleur.hpp`
+- `     │   └── Couleur.cpp`
+- `     ├── Ecran.hpp`
+- `     │   └── Ecran.cpp`
+- `     ├── Espace.hpp`
+- `     │   └── Espace.cpp`
+- `     │       └── Espace_test.cpp`
+- `     ├── Lumiere.hpp`
+- `     │   └── Lumiere.cpp`
+- `     ├── Materiau.hpp`
+- `     │   └── Materiau.cpp`
+- `     ├── Objet.hpp`
+- `     │   └── Objet.cpp`
+- `     ├── Pixel.hpp`
+- `     │   └── Pixel.cpp`
+- `     ├── Plan.hpp`
+- `     │   └── Plan.cpp`
+- `     │       └── Plan_test.cpp`
+- `     ├── Point.hpp`
+- `     │   └── Point.cpp`
+- `     ├── Rayon.hpp`
+- `     │   └── Rayon.cpp`
+- `     ├── RayTracingPhongInfo.hpp`
+- `     │   └── RayTracingPhongInfo.cpp`
+- `     ├── Resolution.hpp`
+- `     │   └── Resolution.cpp`
+- `     ├── Sphere.hpp`
+- `     │   └── Sphere.cpp`
+- `     │       └── Sphere_test.cpp`
+- `     ├── Triangle.hpp`
+- `     │   └── Triangle.cpp`
+- `     │       └── Triangle_test.cpp`
+- `     └── Vecteur.hpp`
+- `     │    └── Vecteur.cpp`
+- `     │        └── Vecteur_test.cpp`
 
 ## Comment exécuter le projet
 
