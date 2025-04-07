@@ -1,5 +1,7 @@
 #include "Triangle.hpp"
 
+//Can't test, waiting for NB to finish Plan
+
 int main(int argc, char* argv[]){
 
 	Point A = Point(Coordonnee(0, 0, 0), Couleur(1.0));
