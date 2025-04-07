@@ -7,20 +7,33 @@ using namespace std;
 
 // CONSTRUCTEURS
 
+//Celui de base, à éviter à tout prix (jhésite à lenlever)
 Triangle::Triangle(){
 	for(int i=0; i<3; i++){
 		(this->points)[i] = Point(); 
 	}
 	this->materiau = Materiau(); 
+	this->plan = Plan(Coordonnee(this->points[0]), Coordonnee(this->points[1]), Coordonnee(this->points[2]));
+}
+//Celui avec un tableau de points sans matériau
+Triangle::Triangle(Point* points){
+	for(int i=0; i<3; i++){
+		this->points[i] = *(points + i); 
+	}
+	this->materiau = Materiau();
+	this->plan = Plan(Coordonnee(this->points[0]), Coordonnee(this->points[1]), Coordonnee(this->points[2]));
 }
 
+//Celui avec un tableau de points et un matériau
 Triangle::Triangle(Point* points, Materiau mat){
 	for(int i=0; i<3; i++){
 		this->points[i] = *(points + i); 
 	}
-	this->materiau = Materiau(mat); 
+	this->materiau = Materiau(mat);
+	this->plan = Plan(Coordonnee(this->points[0]), Coordonnee(this->points[1]), Coordonnee(this->points[2]));
 }
 
+//Celui avec 3 points mais pas de matériau
 Triangle::Triangle(Point A, Point B, Point C){
 	(this->points[0]) = A;
 	(this->points[1]) = B;
@@ -31,10 +44,23 @@ Triangle::Triangle(Point A, Point B, Point C){
 	this->plan = Plan(Coordonnee(A), Coordonnee(B), Coordonnee(C));
 }
 
+//Celui avec 3 points et un matériau
+Triangle::Triangle(Point A, Point B, Point C, Materiau mat){
+	(this->points[0]) = A;
+	(this->points[1]) = B;
+	(this->points[2]) = C;
+	// Matériau de base
+	this->materiau = mat;
+	// cast Point A -> Coordonnee A (B,C idem)
+	this->plan = Plan(Coordonnee(A), Coordonnee(B), Coordonnee(C));
+}
+
 Triangle::Triangle(Triangle& t){
 	for(int i=0; i<3; i++){
 		this->points[i] = t.points[i]; 
 	}
+	this->plan = t.plan;
+	this->materiau = t.materiau;
 }
 
 Plan Triangle::getPlan(){
