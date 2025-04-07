@@ -37,6 +37,8 @@ Triangle::Triangle(Triangle& t){
 	for(int i=0; i<3; i++){
 		this->points[i] = t.points[i]; 
 	}
+	this->plan = t.plan;
+	this->materiau = t.materiau;
 }
 
 Plan Triangle::getPlan(){
