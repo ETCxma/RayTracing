@@ -19,50 +19,49 @@ Il est important de noter que en principe, le projet fonctionnerait avec tous le
 **Format d'image :** Portable Pixel Map (.ppm). C'est format complètement dénué de toute compression.
 
 ## Fichiers du projet
-
-.
-`nepal@444-nuits:/RayTracing$ ls`
-- `     ├── Camera.hpp`
-- `     │   └── Camera.cpp`
-- `     │       └── Camera_test.cpp`
-- `     ├── Coordonnee.hpp`
-- `     │   └── Coordonnee.cpp`
-- `     │       └── Coordonnee_test.cpp`
-- `     ├── Couleur.hpp`
-- `     │   └── Couleur.cpp`
-- `     ├── Ecran.hpp`
-- `     │   └── Ecran.cpp`
-- `     ├── Espace.hpp`
-- `     │   └── Espace.cpp`
-- `     │       └── Espace_test.cpp`
-- `     ├── Lumiere.hpp`
-- `     │   └── Lumiere.cpp`
-- `     ├── Materiau.hpp`
-- `     │   └── Materiau.cpp`
-- `     ├── Objet.hpp`
-- `     │   └── Objet.cpp`
-- `     ├── Pixel.hpp`
-- `     │   └── Pixel.cpp`
-- `     ├── Plan.hpp`
-- `     │   └── Plan.cpp`
-- `     │       └── Plan_test.cpp`
-- `     ├── Point.hpp`
-- `     │   └── Point.cpp`
-- `     ├── Rayon.hpp`
-- `     │   └── Rayon.cpp`
-- `     ├── RayTracingPhongInfo.hpp`
-- `     │   └── RayTracingPhongInfo.cpp`
-- `     ├── Resolution.hpp`
-- `     │   └── Resolution.cpp`
-- `     ├── Sphere.hpp`
-- `     │   └── Sphere.cpp`
-- `     │       └── Sphere_test.cpp`
-- `     ├── Triangle.hpp`
-- `     │   └── Triangle.cpp`
-- `     │       └── Triangle_test.cpp`
-- `     └── Vecteur.hpp`
-- `     │    └── Vecteur.cpp`
-- `     │        └── Vecteur_test.cpp`
+```
+├── Camera.hpp  
+│   └── Camera.cpp  
+│       └── Camera_test.cpp  
+├── Coordonnee.hpp  
+│   └── Coordonnee.cpp  
+│       └── Coordonnee_test.cpp  
+├── Couleur.hpp  
+│   └── Couleur.cpp  
+├── Ecran.hpp  
+│   └── Ecran.cpp  
+├── Espace.hpp  
+│   └── Espace.cpp  
+│       └── Espace_test.cpp  
+├── Lumiere.hpp  
+│   └── Lumiere.cpp  
+├── Materiau.hpp  
+│   └── Materiau.cpp  
+├── Objet.hpp  
+│   └── Objet.cpp  
+├── Pixel.hpp  
+│   └── Pixel.cpp  
+├── Plan.hpp  
+│   └── Plan.cpp  
+│       └── Plan_test.cpp  
+├── Point.hpp  
+│   └── Point.cpp  
+├── Rayon.hpp  
+│   └── Rayon.cpp  
+├── RayTracingPhongInfo.hpp  
+│   └── RayTracingPhongInfo.cpp  
+├── Resolution.hpp  
+│   └── Resolution.cpp  
+├── Sphere.hpp  
+│   └── Sphere.cpp  
+│       └── Sphere_test.cpp  
+├── Triangle.hpp  
+│   └── Triangle.cpp  
+│       └── Triangle_test.cpp  
+└── Vecteur.hpp  
+    └── Vecteur.cpp  
+        └── Vecteur_test.cpp  
+```
 
 ## Comment exécuter le projet
 
@@ -70,14 +69,15 @@ Il est important de noter que en principe, le projet fonctionnerait avec tous le
   On a choisi de faire une paire de fichiers `.hpp` et `.cpp` pour chaque classe. Au besoin, on créée aussi un fichier `_test.cpp`. Certaines classes héritent d'autres classes (e.g. Lumière hérite de Coordonnée). Ainsi pour tester une partie clé du projet, il suffit de faire `make NomDeLaPartieCle`
 
 - **Exécution du projet** :
-Afin de tester le raytracing, il faut exécuter la commande
-  `make espace_test` 
-  À chaque image que vous souhaitez créer, il faut que vous créiez  la forme que vous souhaitez dans `Espace_test.cpp`.
-  - Dans un premier temps, créez un espace,
+Afin de tester le Raytracing, il faut exécuter la commande
+  `make espace_test`
+  Vous générerez alors une image représentatif de l'espace décrit dans `Espace_test.cpp`.
+  Pour avoir la forme souhaité, il suffit de modifier directement les Objets, Lumières et positionnement de la Caméra dans `Espace_test.cpp`. Voilà une façon de s'y prendre :
+  - dans un premier temps, créez un espace,
   - puis une caméra,
   - puis une source de lumière.
   - Ajoutez ces deux derniers à l'espace.
-  - Ensuite, créez les objets que vous voulez aux coordonnées que vous voulez (e.g. une sphère).
+  - Ensuite, créez les objets que vous voulez aux coordonnées que vous voulez (e.g. des sphères).
   - Ajoutez les objets à l'espace.
   - Pour capturer l'image, utilisez la méthode takePicture() de l'espace que vous avez créé.
   - L'image est alors ajoutée aux fichiers (si vous exécutez simplement sans modifier `Espace_test.cpp`, ça sera `IMAGE_POGGIES.ppm` mais le nom peut être changé directement dans le fichier source).
