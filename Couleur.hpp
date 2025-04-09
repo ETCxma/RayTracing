@@ -8,15 +8,16 @@ class Couleur{
         Couleur(Couleur &Couleur);
         Couleur(double intensité);
 
-		//getteur
+		// Getter
 		double getIntensite();
 		
+        // Setters
         void setIntensite(double intensite);
         void addIntensite(double intensite);
     
 
     private:
-        double intensite; // or r,g,b/spectrogram/...
+        double intensite; // or r,g,b later
 
 };
 

@@ -3,6 +3,7 @@
 
 // Objet::Objet(){}
 
+// Getters
 double Objet::getIndiceSpecular(){
     return this->materiau.getIndiceSpecular();
 }

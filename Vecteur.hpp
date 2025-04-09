@@ -2,8 +2,6 @@
 #define VECTEUR_H
 
 #include "Coordonnee.hpp"
-// #include "Objet.hpp"
-// #include "Triangle.hpp"
 #include <cmath>
 
 class Vecteur{
@@ -79,17 +77,6 @@ class Vecteur{
          */
         void rotationPhi(double angle); 
 
-        /**
-         * Entrée: rien
-         * Sortie: convertit le vecteur des coordonnées cartésiennes à cylindriques
-         */
-        
-        // NEED MORE FOR RAY TRACING
-        // Coordonnee &Intersection(Objet &o); // Pass vecteur to o.intersection() and get usefulData for ray calc
-        // Coordonnee &Intersection(Triangle &t); Not used because calculation will be done through the object
-        
-        // WIP
-        // Vecteur &Reflechi(Triangle &t);
 
         // Getter
         Coordonnee getVecteur();
@@ -139,10 +126,6 @@ class Vecteur{
 
     protected:
         Coordonnee vecteur;
-        // double dx, dy, dz; 
-
-
 };
-
 
 #endif

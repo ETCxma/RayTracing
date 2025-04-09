@@ -9,6 +9,7 @@ class Materiau{
         Materiau(Materiau &materiau);
         Materiau(double i_s, double i_d, double i_a, double a);
 
+        // Getters
         double getIndiceSpecular();
         double getIndiceDiffuse();
         double getIndiceAmbient();

@@ -19,6 +19,7 @@ class Objet{
         virtual RaytracingSimpleInfo intersection(Rayon rayon, Coordonnee centre_camera) = 0;
         virtual RaytracingPhongInfo intersectionPhong(Rayon rayon, Coordonnee centre_camera, Coordonnee position_lumiere) = 0;
 
+        // Getters
         double getIndiceSpecular();
         double getIndiceDiffuse();
         double getIndiceAmbient();

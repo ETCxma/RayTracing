@@ -22,10 +22,7 @@ Ecran::Ecran(Resolution resolution){
     }
 }
 
-void Ecran::setResolution(int x, int y){
-    return this->resolution.setResolution(x, y);
-}
-
+// Getters
 Pixel Ecran::getPixel(int x, int y){
     return this->pixels.at(x*this->getResolution().getX() + y);
 }
@@ -38,24 +35,31 @@ Resolution Ecran::getResolution(){
     return this->resolution;
 }
 
-void Ecran::SetRayon(int x, int y, Rayon &rayon){
-    this->rayons.at(x*this->getResolution().getX() + y).setVecteur(rayon.getVecteur());
-}
-
-void Ecran::addPixelIntensite(int x, int y, int intensite){
-    this->pixels.at(x*this->getResolution().getX() + y).addIntensite(intensite);
-}
-
-void Ecran::setPixelIntensite(int x, int y, int intensite){
-    this->pixels.at(x*this->getResolution().getX() + y).setIntensite(intensite);
-}
-
 int Ecran::getPixelIntensite(int x, int y){
     return this->pixels.at(x*this->getResolution().getX() + y).getIntensite();
 }
 
 double Ecran::getRayonIntensite(int x, int y){
     return this->rayons.at(x*this->getResolution().getX() + y).getIntensite();
+}
+
+// Setters
+void Ecran::setResolution(int x, int y){
+    return this->resolution.setResolution(x, y);
+}
+
+void Ecran::SetRayon(int x, int y, Rayon &rayon){
+    this->rayons.at(x*this->getResolution().getX() + y).setVecteur(rayon.getVecteur());
+}
+
+void Ecran::setPixelIntensite(int x, int y, int intensite){
+    this->pixels.at(x*this->getResolution().getX() + y).setIntensite(intensite);
+}
+
+
+// Others
+void Ecran::addPixelIntensite(int x, int y, int intensite){
+    this->pixels.at(x*this->getResolution().getX() + y).addIntensite(intensite);
 }
 
 void Ecran::addRayonIntensite(int x, int y, double intensite){
